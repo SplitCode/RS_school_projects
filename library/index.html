@@ -10,29 +10,35 @@
     <div class="general-container">
     <header class="header">
         <h1 class="header-title">Brooklyn Public Library</h1>
-        <nav>
+        <nav class="menu">
             <ul class="nav-list">
-                <li>
+                <li class="nav-item">
                     <a href="#about" class="nav-link">About</a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="#favorites" class="nav-link">Favorites</a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="#coffeeShop" class="nav-link">Coffee shop</a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="#contacts" class="nav-link">Contacts</a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="#libraryCard" class="nav-link">Library Card</a>
                 </li>
             </ul>
         </nav>
+        <img src="./assets/img/icon_profile.png" alt="user icon">
     </header>
-    <main>
-        <section>
-        <p>Welcome to the Brooklyn Library</p>
+
+    <main class="main">
+        <section class="welcome">
+            <div class="welcome-bg-container">
+            <div class="welcome-bg">
+                <p>Welcome<br> to the Brooklyn Library</p>
+            </div>
+            </div>
         </section>
 
         <section id="about">
@@ -43,6 +49,20 @@
         <section id="favorites">
             <h2 class="section-title">Favorites</h2>
             <p>Pick favorites of season</p>
+            <div class="favorites-item">
+            <div class="book">
+                <button class="book-button">Buy</button>
+            </div>
+            <div class="book">
+                <button class="book-button">Buy</button>
+            </div>
+            <div class="book">
+                <button class="book-button">Buy</button>
+            </div>
+            <div class="book">
+                <button class="book-button">Own</button>
+            </div>
+            </div>
         </section>
 
         <section id="coffeeShop">
@@ -56,11 +76,46 @@
 
         <section id="libraryCard">
             <h2 class="section-title">Digital Library Cards</h2>
+
+            <div class="find-card">
+                <h3>Find your Library card</h3>
+                <div class="white-bg">
+                    <div class="gold-bg">
+                        <h3>Brooklyn Public Library</h3>
+                        <div class="form-input">
+                            <input type="text" placeholder="Reader's name" id="name">
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Card number" id="card">
+                        </div>
+                    </div>
+                    <button>Check the card</button>
+                </div>
+            </div>
+            <div class="get-card">
+                <h3>Get a reader card</h3>
+                <p>You will be able to see a reader card after logging into account or you can register a new account</p>
+                <button>Sign Up</button>
+                <button>Log in</button>
+            </div>
         </section>
     </main>
+
     <footer class="footer">
+        <div class="media">
+            <ul class="media-list">
+                <li class="media-item"></li>
+                <li class="media-item"></li>
+                <li class="media-item"></li>
+            </ul>
+        </div>
+
         <a href="https://rs.school/js-stage0/">The Rolling Scopes School</a>
     </footer>
     </div>
 </body>
 </html>
+
+
+
+tel это имелось введу <a href="tel:(617) 730-2370">(617) 730-2370</a> Я правильно понял? 
