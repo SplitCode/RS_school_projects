@@ -9,19 +9,19 @@
 @font-face {
     font-weight: 400;
     font-family: Forum;
-    src: url('./assets/font/Forum-Regular.ttf');
+    src: url('./assets/fonts/Forum-Regular.ttf');
 }
 
 @font-face {
     font-weight: 400;
     font-family: Inter;
-    src: url('./assets/font/Inter-Regular.ttf');
+    src: url('./assets/fonts/Inter-Regular.ttf');
 }
 
 @font-face {
     font-weight: 700;
     font-family: Inter;
-    src: url('./assets/font/Inter-Bold.ttf');
+    src: url('./assets/fonts/Inter-Bold.ttf');
 }
 
 * {
@@ -41,6 +41,7 @@ body {
 .general-container {
     max-width: 1440px;
     margin: 0 auto;
+    border: 1px solid blue;
 }
 
 .header {
@@ -67,6 +68,7 @@ body {
 .nav-list {
     display: flex;
     padding: 0;
+    margin-right: 10px;
     justify-content: flex-end;
     align-items: center;
     list-style: none;
@@ -74,7 +76,7 @@ body {
 
 .nav-link {
     padding: 0;
-    margin-right: 30px;
+    padding-right: 30px;
     text-decoration: none;
     font-size: 20px;
     font-weight: 400;
@@ -88,18 +90,18 @@ body {
     font-weight: 700;
   }
 
-  .welcome {
+.welcome {
     background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%), url("./assets/img/Welcome.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
 
-  .welcome-bg-container {
+.welcome-bg-container {
     padding: 220px 0 160px 0;
-  }
+}
 
-  .welcome-bg {
+.welcome-bg {
     display: flex;
     width: 600px;
     height: 220px;
@@ -120,6 +122,11 @@ body {
     text-align: center;
   }
 
+.section {
+  padding: 20px 20px 40px 20px;
+  border: 1px solid blue;
+}
+
   .section-title {
     color: var(--dark);
     font-family: Forum, cursive;
@@ -130,5 +137,158 @@ body {
     letter-spacing: 2px;
     text-transform: capitalize;
     text-align: center;
+    position: relative;
+    padding-bottom: 20px;
   }
 
+  .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50px;
+    height: 1px;
+    background-color: var(--dark);
+    display: block;
+  }
+
+  p {
+    text-align: center;
+    padding-top: 40px;
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+    color: var(--black);
+  }
+
+  .images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .carousel {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--dark);
+    cursor: pointer;
+    border: none;
+  }
+
+  .carousel:first-child {
+    background-color: var(--sand);
+  }
+
+.favorite-section {
+  padding: 20px 60px 40px 20px;
+}
+
+  .favorites-text {
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .favorites-check {
+    padding: 20px 0;
+  }
+
+  .favorites-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .book {
+    border: 1px solid var(--black);
+    width: 550px;
+    height: 555px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 15px 0 15px 20px;
+    }
+
+  .book-button {
+    margin-top: auto;
+    width: 75px;
+    height: 30px;
+    border: 1px solid var(--dark);
+    background-color: var(--white);
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .book-img {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    bottom: 0;
+    right: -40px;
+  }
+
+  .item-title {
+    font-family: Forum, cursive;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .item-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 60px;
+    height: 1px;
+    background-color: var(--sand);
+    display: block;
+  }
+
+    .book-title {
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 2px;
+    padding-top: 20px;
+  }
+
+  .book-title span {
+    text-transform: uppercase;
+  }
+
+  .book-text {
+    color: var(--black);
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    padding-top: 20px;
+    padding-right: 175px;
+  }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.ico">
 </head>
 <body>
     <div class="general-container">
@@ -29,7 +30,7 @@
                 </li>
             </ul>
         </nav>
-        <img src="./assets/img/icon_profile.png" alt="user icon">
+        <img src="./assets/svg/icon_profile.svg" alt="user icon">
     </header>
 
     <main class="main">
@@ -41,40 +42,82 @@
             </div>
         </section>
 
-        <section id="about">
+        <section class="section" id="about">
             <h2 class="section-title">About</h2>
             <p>The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</p>
+            <div class="images">
+                <img src="./assets/img/about1.png" alt="image1">
+                <img src="./assets/img/about2.png" alt="image2">
+                <img src="./assets/img/about3.png" alt="image3">
+            </div>
+
+           <div class="carousel-container">
+            <button class="carousel" type="button"></button>
+            <button class="carousel" type="button"></button>
+            <button class="carousel" type="button"></button>
+        </div>
         </section>
 
-        <section id="favorites">
+        <section class="section favorite-section" id="favorites">
             <h2 class="section-title">Favorites</h2>
-            <p>Pick favorites of season</p>
+            <p class="favorites-text">Pick favorites of season</p>
+
+            <div class="favorites-check">
+                <label>Winter
+                    <input type="radio" class="radio">
+                </label>
+                <label>Spring
+                    <input type="radio">
+                </label>
+                <label>Summer
+                    <input type="radio">
+                </label>
+                <label>Autumn
+                    <input type="radio">
+                </label>
+            </div>
             <div class="favorites-item">
             <div class="book">
+                <div class="item-title">Staff Picks</div>
+                <div class="book-title"><span>The Book Eaters</span><br>By Sunyi Dean</div>
+                <div class="book-text">An unusual sci-fi story about a book eater woman who tries desperately to save her dangerous mind-eater son from tradition and certain death. Complete with dysfunctional family values, light Sapphic romance, and a strong, complex protagonist. Not for the faint of heart.</div>
                 <button class="book-button">Buy</button>
+                <img class="book-img" src="./assets/img/book01.png" alt="The Book Eaters">
             </div>
             <div class="book">
+                <div class="item-title">Staff Picks</div>
+                <div class="book-title"><span>Cackle</span><br>By Rachel Harrison</div>
+                <div class="book-text">Are your Halloween movies of choice The Witches of Eastwick and Practical Magic? Look no further than here - where a woman recovering from a breakup moves to a quaint town in upstate New York and befriends a beautiful witch.</div>
                 <button class="book-button">Buy</button>
+                <img class="book-img" src="./assets/img/book02.png" alt="The Book Eaters">
             </div>
             <div class="book">
+                <div class="item-title">Staff Picks</div>
+                <div class="book-title"><span>Dante: Poet of the Secular World</span><br>By Erich Auerbach</div>
+                <div class="book-text">Auerbach's engaging book places the 'Comedy' within the tradition of epic, tragedy, and philosophy in general, arguing for Dante's uniqueness as one who raised the individual and his drama of soul into something of divine significance—an inspired introduction to Dante's main themes.</div>
                 <button class="book-button">Buy</button>
+                <img class="book-img" src="./assets/img/book03.png" alt="The Book Eaters">
             </div>
             <div class="book">
+                <div class="item-title">Staff Picks</div>
+                <div class="book-title"><span>The Last Queen</span><br>By Clive Irving</div>
+                <div class="book-text">A timely and revelatory new biography of Queen Elizabeth (and her family) exploring how the Windsors have evolved and thrived as the modern world has changed around them.</div>
                 <button class="book-button">Own</button>
+                <img class="book-img" src="./assets/img/book04.png" alt="The Book Eaters">
             </div>
             </div>
         </section>
 
-        <section id="coffeeShop">
+        <section class="section" id="coffeeShop">
             <h2 class="section-title">Coffee shop</h2>
             <p>In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly conversation. You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.</p>
         </section>
 
-        <section id="contacts">
+        <section class="section" id="contacts">
             <h2 class="section-title">Our Contacts</h2>
         </section>
 
-        <section id="libraryCard">
+        <section class="section" id="libraryCard">
             <h2 class="section-title">Digital Library Cards</h2>
 
             <div class="find-card">
