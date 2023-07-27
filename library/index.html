@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <script src="index.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/img/favicon.ico">
   </head>
@@ -437,8 +438,8 @@
             <form class="card-form">
               <div class="card-form-content">
                 <p class="card-text">Brooklyn Public Library</p>
-                <input type="text" id="name" placeholder="Reader's name" class="input-text">
-                <input type="text" id="card" placeholder="Card number" class="input-text">
+                <input type="text" id="name" placeholder="Reader's name" class="input-text" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+                <input type="text" id="card" placeholder="Card number" class="input-text" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
               </div>
               <button class="find-button">Check the card</button>
             </form>
@@ -470,13 +471,19 @@
       <div class="line-2">
         <ul class="media-list">
           <li class="media-item">
-            <img src="./assets/svg/u_twitter-alt.svg" alt="twitter icon">
+            <a href="https://twitter.com/home">
+              <img src="./assets/svg/u_twitter-alt.svg" alt="twitter icon">
+            </a>
           </li>
           <li class="media-item">
+            <a href="https://www.instagram.com/natabandurova/">
             <img src="./assets/svg/u_instagram.svg" alt="twitter icon">
+            </a>
           </li>
           <li class="media-item">
+            <a href="https://www.facebook.com/natalya.bandurova.3/">
             <img src="./assets/svg/u_facebook-f.svg" alt="twitter icon">
+            </a>
           </li>
         </ul>
         <p class="line-text work-time">Sat - Sun<br>10:00 am - 06:00 pm</p>

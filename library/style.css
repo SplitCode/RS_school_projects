@@ -78,7 +78,7 @@ html {
 }
 
 .nav-link {
-  padding-right: 30px;
+  margin-right: 30px;
   text-decoration: none;
   font-size: 20px;
   font-weight: 400;
@@ -270,7 +270,7 @@ html {
  cursor: pointer;
 }
 
-.radio-label:has(:checked){
+.radio-label:has(input:checked) {
  font-weight: 700;
 }
 
@@ -657,7 +657,7 @@ html {
 }
 
 .card-description {
-  color: var();
+  color: var(--black);
   text-align: right;
   font-family: Inter, sans-serif;
   font-size: 20px;
@@ -701,7 +701,6 @@ html {
   display: flex;
   flex-direction: column;
   background: var(--dark);
-  /* height: 250px; */
   padding: 20px 20px 44px 20px;
 }
 
@@ -727,11 +726,30 @@ html {
   margin: auto 0;
 }
 
+.media-item img {
+  transition-duration: 0.5s;
+}
+
+.media-item img:hover {
+    filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
+     -webkit-filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
+   }
+
 .content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 36px;
+}
+
+.content a {
+  transition: color 0.5s;
+}
+
+.content a:hover {
+  font-weight: 500;
+  color: var(--sand);
+  cursor: pointer;
 }
 
 .line-text {
@@ -745,6 +763,13 @@ html {
 .line-text a {
   text-decoration: none;
   color: var(--white);
+  transition: color 0.5s;
+}
+
+.line-text a:hover {
+  font-weight: 500;
+  color: var(--sand);
+  cursor: pointer;
 }
 
 .work-time {
