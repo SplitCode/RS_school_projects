@@ -54,7 +54,6 @@ html {
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
-  /* border: 1px solid blue; */
 }
 
 .header-title {
@@ -270,8 +269,26 @@ html {
  cursor: pointer;
 }
 
-.radio-label:has(input:checked) {
- font-weight: 700;
+.first {
+  width: 110px;
+}
+
+.second {
+  width: 108px;
+}
+
+.third {
+  width: 125px;
+  margin-left: -4px;
+}
+
+.fourth {
+  width: 108px;
+  margin-left: -3px;
+}
+
+.radio-label:has(.radio-input:checked) {
+  font-weight: 700;
 }
 
 .radio-input-container {
@@ -305,7 +322,7 @@ html {
   justify-content: space-between;
   border: 1px solid var(--black);
   width: 550px;
-  height: 555px;
+  min-height: 555px;
   margin-bottom: 40px;
   padding: 15px 0 15px 20px;
 }
@@ -538,6 +555,13 @@ html {
 .contacts a {
   text-decoration: none;
   color: var(--black);
+  transition: color 0.5s;
+}
+
+.contacts a:hover {
+  font-weight: 500;
+  color: var(--sand);
+  cursor: pointer;
 }
 
 .card-section{
