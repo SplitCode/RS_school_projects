@@ -42,19 +42,26 @@ html {
 
 .header {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  width: 100%;
   align-items: center;
+  justify-content: space-between;
   height: 90px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
   background: var(--dark);
 }
 
-.container {
+/* .container {
   width: 1440px;
   display: flex;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
-}
+} */
 
 .header-title {
   color: var(--white);
@@ -66,11 +73,14 @@ html {
 }
 
 .nav-menu {
+  display: flex;
+  flex-wrap: wrap;
   margin-left: auto;
 }
 
 .nav-list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   list-style: none;
@@ -115,9 +125,9 @@ html {
   height: 600px;
 }
 
-.welcome-container {
+/* .welcome-container {
   padding: 0;
-}
+} */
 
 .welcome-text-bg {
   margin-top: 220px;
@@ -141,6 +151,8 @@ html {
 
 .section {
   padding: 20px 20px 40px 20px;
+  display: flex;
+  flex-direction: column;
   background-color: var(--white);
   width: 1440px;
   margin: 0 auto;
@@ -187,8 +199,8 @@ html {
   justify-content: center;
   align-items: center;
   gap: 25px;
-  padding-top: 20px;
-  padding-bottom: 35px;
+  margin-top: 20px;
+  margin-bottom: 35px;
 }
 
 .image-about {
@@ -219,6 +231,10 @@ html {
   background-color: var(--dark);
   cursor: pointer;
   border: none;
+}
+
+.non-display-button {
+  display: none;
 }
 
 .active {
@@ -355,7 +371,7 @@ html {
   font-weight: 700;
   line-height: 40px;
   letter-spacing: 2px;
-  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .book-title span {
@@ -828,3 +844,35 @@ html {
 .rss {
   margin-left: 148px;
 }
+
+/* адаптив */
+
+@media (max-width: 1024px) {
+
+.nav-list {
+  display: none;
+}
+
+  .header {
+    position: relative;
+  }
+
+  /* .nav-list {
+    flex-direction: column;
+    position: absolute;
+    right: 50px;
+  } */
+
+  .user-icon {
+    margin-right: 40px;
+  }
+
+  .non-display-button {
+    display: block;
+  }
+
+
+}
+
+
+  /* .header__menu {margin-left: 354px}} */
