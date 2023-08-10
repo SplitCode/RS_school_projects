@@ -1,81 +1,122 @@
 /* адаптив */
 
-@media (max-width: 1110px) {
+@media (max-width: 1420px) {
 
-    .burger-menu
-    {
-      display: block;
-    }
-
-    .nav-menu {
-        display: none
-      }
-
-    .user-icon {
-      margin-right: 40px;
-    }
-
+  .image-none {
+    display: none;
   }
 
-    @media (max-width: 1439px) {
+  .non-display-button {
+    display: block;
+  }
 
-    .non-display-button {
-        display: block;
-      }
+  .carret-left,
+  .carret-right {
+    display: block;
+  }
 
-      .carret-left,
-      .carret-right {
-        display: block;
-        /* margin-top: 45px; */
-    }
+  /* .favorites-books {
+    flex-direction: column;
+  } */
 
-    .image-none {
+}
+
+@media (max-width: 1300px) {
+
+  .favorites-books {
+    flex-direction: column;
+  }
+
+  .contacts-container {
+    flex-direction: column;
+    gap: 100px;
+  }
+
+  .coffeeshop-menu {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .coffee-menu {
+    align-self: flex-start;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .get-card {
+    align-self: center;
+     text-align: center;
+     margin-top: 20px;
+  }
+
+  .get-card-text {
+  /* margin-left: 4px;
+  margin-top: 2px; */
+    /* text-align: center; */
+    /* display: block; */
+    width: 650px;
+  }
+
+  .card-description {
+    text-align: center;
+    width: 650px;
+    /* display: block; */
+  }
+
+  .card-buttons {
+    align-self: center;
+    /* margin-left: 4px; */
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+  .burger-menu
+  {
+    display: block;
+  }
+
+  .nav-menu {
       display: none;
     }
 
-    .about-container {
-      margin: 0 auto;
-    }
+  .user-icon {
+    margin-right: 40px;
   }
 
-    /* .header {
-      position: relative;
-    } */
+  /* .coffeeshop-menu {
+      flex-direction: column;
+      gap: 40px;
+  }
 
-    /* .nav-menu {
+  .coffee-menu {
+   align-self: flex-start;
+  } */
+
+}
+
+@media (max-width: 768px) {
+  .coffeeshop {
+    max-width: 768px;
+    width: 100%;
+  }
+}
+
+
+  /* .nav-menu {
       position: absolute;
       right: 0;
       top: 73px;
       width: 332px;
       height: auto;
       background-color: var(--black);
-      /* z-index: 1000; */
-    /* } */ */
+      z-index: 1000;
+  }
 
-    /* .nav-list {
+  .nav-list {
       flex-direction: column;
-    } */
-
-    
-  
-  }
-  
-  @media (max-width: 991px) {
-    .carret-left,
-    .carret-right {
-      display: block;
-      /* margin-top: 45px; */
-  }
-  
-  .image-none {
-    display: none;
-  }
-  
-  
-  
-  }
-  
-  
-  
-    /* .header__menu {margin-left: 354px}} */
-  
+    }  */
