@@ -1,0 +1,81 @@
+/* адаптив */
+
+@media (max-width: 1110px) {
+
+    .burger-menu
+    {
+      display: block;
+    }
+
+    .nav-menu {
+        display: none
+      }
+
+    .user-icon {
+      margin-right: 40px;
+    }
+
+  }
+
+    @media (max-width: 1439px) {
+
+    .non-display-button {
+        display: block;
+      }
+
+      .carret-left,
+      .carret-right {
+        display: block;
+        /* margin-top: 45px; */
+    }
+
+    .image-none {
+      display: none;
+    }
+
+    .about-container {
+      margin: 0 auto;
+    }
+  }
+
+    /* .header {
+      position: relative;
+    } */
+
+    /* .nav-menu {
+      position: absolute;
+      right: 0;
+      top: 73px;
+      width: 332px;
+      height: auto;
+      background-color: var(--black);
+      /* z-index: 1000; */
+    /* } */ */
+
+    /* .nav-list {
+      flex-direction: column;
+    } */
+
+    
+  
+  }
+  
+  @media (max-width: 991px) {
+    .carret-left,
+    .carret-right {
+      display: block;
+      /* margin-top: 45px; */
+  }
+  
+  .image-none {
+    display: none;
+  }
+  
+  
+  
+  }
+  
+  
+  
+    /* .header__menu {margin-left: 354px}} */
+  
