@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <script src="index.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mq.css">
+
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/mq.css">
     <link rel="icon" href="assets/img/favicon.ico">
   </head>
 
   <body class="body">
-
+<div class="body-wrapper">
     <header class="header">
 
       <div class="container header-container flex-container">
@@ -42,7 +42,7 @@
         </nav>
         <img class="user-icon" src="./assets/img/svg/icon_profile.svg" alt="user icon">
 
-        <button class="burger-menu" aria-label="Открыть меню" aria-expanded="false">
+        <button class="burger-menu">
           <span class="burger-menu-line"></span>
         </button>
       </div>
@@ -72,11 +72,11 @@
           <button class="carret-left">
             <img src="./assets/img/svg/Carret_Left.svg" alt="carret-left">
           </button>
-          <img class="image-about image-display" src="./assets/img/about1.png" alt="image1">
+          <img class="image-about image-display-2 image-display" src="./assets/img/about1.png" alt="image1">
           <button class="carret-right">
             <img src="./assets/img/svg/Carret_Right.svg" alt="carret-left">
           </button>
-          <img class="image-about image-none" src="./assets/img/about2.png" alt="image2">
+          <img class="image-about image-display-2 image-none" src="./assets/img/about2.png" alt="image2">
           <img class="image-about image-none" src="./assets/img/about3.png" alt="image3">
         </div>
 
@@ -90,7 +90,7 @@
           <div class="pagination-container">
             <button class="pagination-button" type="button"></button>
           </div>
-          <div class="pagination-container non-display-button">
+          <div class="pagination-container display-first non-display-button">
             <button class="pagination-button" type="button"></button>
           </div>
           <div class="pagination-container non-display-button">
@@ -100,7 +100,7 @@
       </div>
       </section>
 
-      <section class="section favorites-section" id="favorites">
+      <section class="section favorites favorites-section" id="favorites">
 
         <div class="container">
         <h2 class="section-title">Favorites</h2>
@@ -372,7 +372,7 @@
       <section class="section coffeeshop" id="coffeeShop">
         <div class="container">
         <h2 class="section-title">Coffee shop</h2>
-        <p class="section-description space">
+        <p class="section-description coffeeshop-description space">
           In our library, we have of cozy coffee shop, welcoming in customers
           with frothy cappuccinos and friendly conversation. You can
           get a favorite book and read in coffee shop. our barista to cook you
@@ -464,7 +464,7 @@
             <p class="call">Library Director: <a href="mailto:AmandaHirst@gmail.com"><span class="bold">Amanda Hirst</span></a></p>
           </div>
           <div class="map">
-            <img src="./assets/img/map.png" alt="map">
+            <img src="./assets/img/map.png" alt="map" class="map-img">
           </div>
         </div>
       </div>
@@ -489,8 +489,8 @@
           <div class="get-card">
             <p class="get-card-text">Get a reader card</p>
             <p class="card-description">
-              You will be able to see a reader card after<br>logging into
-              account or you can register a new<br>account
+              You will be able to see a reader card after logging into
+              account or you can register a new account
             </p>
             <div class="card-buttons">
               <button class="card-button">Sign Up</button>
@@ -547,5 +547,7 @@
     </div>
     </div>
     </footer>
+  </div>
+  <script src="index.js"></script>
   </body>
 </html>
