@@ -42,14 +42,14 @@
     /* width: 100%; */
   }
 
-  .coffeeshop-menu {
+  /* .coffeeshop-menu {
     flex-direction: column;
     gap: 40px;
   }
 
   .coffee-menu {
     align-self: flex-start;
-  }
+  } */
 
   .cards-container {
     flex-direction: column;
@@ -200,6 +200,18 @@
     margin: 0 auto;
     margin-top: 40px;
   }
+
+  .coffeeshop-menu {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .coffee-menu {
+    align-self: flex-start;
+  }
+
+
+
 }
 
   @media (max-width: 768px) {
