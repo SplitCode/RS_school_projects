@@ -9,19 +9,19 @@
 @font-face {
   font-weight: 400;
   font-family: Forum;
-  src: url("/assets/fonts/Forum-Regular.ttf");
+  src: url("../assets/fonts/Forum-Regular.ttf");
 }
 
 @font-face {
   font-weight: 400;
   font-family: Inter;
-  src: url("/assets/fonts/Inter-Regular.ttf");
+  src: url("../assets/fonts/Inter-Regular.ttf");
 }
 
 @font-face {
   font-weight: 700;
   font-family: Inter;
-  src: url("/assets/fonts/Inter-Bold.ttf");
+  src: url("../assets/fonts/Inter-Bold.ttf");
 }
 
 html {
@@ -53,7 +53,6 @@ button {
   max-width: 1440px;
   margin: 0 auto;
   /* background-color: var(--grey); */
-  
 }
 
 .body-wrapper {
@@ -129,7 +128,7 @@ button {
   padding-top: 220px;
   padding-bottom: 160px;
   min-height: 600px;
-  background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%), url("/assets/img/Welcome.jpg");
+  background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%), url("../assets/img/Welcome.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
