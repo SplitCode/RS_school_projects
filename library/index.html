@@ -44,26 +44,53 @@
 
 <!-- модалка profile -->
 
-        <div class="drop-menu">
+        <div class="modal-drop-menu">
           <p class="drop-menu-text profile">Profile</p>
-          <div class="flex-container">
-            <ul class="drop-menu-list">
-              <li class="drop-menu-text">Log In</li>
-              <li class="drop-menu-text">Register</li>
-            </ul>
+          <div class="drop-menu-btn-container">
+              <button class="drop-menu-button drop-menu-text">Log In</button>
+              <button class="drop-menu-button drop-menu-text">Register</button>
           </div>
         </div>
 
-        <div class="drop-menu">
+        <div class="modal-drop-menu">
           <p class="drop-menu-text profile">Profile</p>
-          <div class="flex-container">
-            <ul class="drop-menu-list">
-              <li class="drop-menu-text">My profile</li>
-              <li class="drop-menu-text">Log Out</li>
-            </ul>
+          <div class="drop-menu-btn-container">
+              <button class="drop-menu-button drop-menu-text">My profile</button>
+              <button class="drop-menu-button drop-menu-text">Log Out</button>
           </div>
         </div>
 <!-- модалка profile -->
+
+<!-- скорее всего переместить login/register в самый конец -->
+
+<!-- модалка LOGIN -->
+<div class="modal-login">
+  <p class="modal-title">Login</p>
+  <div class="modal-login-content">
+    <p class="modal-content-title">E-mail or readers card</p>
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    <p class="modal-content-title">Password</p>
+    <input type="text" id="password" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </div>
+  <button class="modal-button">Log In</button>
+</div>
+
+<!-- модалка REGISTER -->
+<div class="modal-register">
+  <p class="modal-title">Register</p>
+  <div class="modal-login-content">
+    <p class="modal-content-title">First name</p>
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    <p class="modal-content-title">Last name</p>
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    <p class="modal-content-title">E-mail</p>
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    <p class="modal-content-title">Password</p>
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </div>
+  <button class="modal-button">Sign Up</button>
+</div>
+
 
 <!-- бургер-меню -->
 
@@ -75,8 +102,7 @@
     </header>
 
 
-<!-- модалка LOGIN -->
-     
+
 
     <main class="main">
 

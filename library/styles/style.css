@@ -119,9 +119,11 @@ button {
   margin: 31px 0 31px 40px;
 }
 
-.drop-menu {
-  /* display: none; */
+/* перенести в медиа */
+
+.modal-drop-menu {
   display: flex;
+  display: none; /*здесь оставить только дисплей нан, закоментить для просмотра*/
   flex-direction: column;
   align-items: center;
   width: 80px;
@@ -132,9 +134,10 @@ button {
   background: var(--white);
 }
 
-.drop-menu-list {
+.drop-menu-btn-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
   margin-top: 15px;
 }
@@ -166,6 +169,79 @@ button {
   width: 40px;
   height: 1px;
   background-color: var(--sand);
+}
+
+.modal-login {
+  /* display: none; */
+  width: 250px;
+  height: 262px;
+  padding: 20px 25px;
+  background: var(--white);
+  margin-right: 5px; /*delete after?*/
+}
+
+.modal-register {
+  /* display: none; */
+  width: 250px;
+  height: 382px;
+  padding: 20px 25px;
+  background: var(--white);
+}
+
+.modal-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: Forum, cursive;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--black)
+}
+
+.modal-content-title {
+  text-align: left;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  color: var(--black);
+}
+
+.modal-input {
+  padding-left: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1px solid #BB945F;
+}
+
+.modal-button {
+  margin-bottom: 10px;
+  width: 75px;
+  height: 30px;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: var(--black)
 }
 
 .burger-menu {
