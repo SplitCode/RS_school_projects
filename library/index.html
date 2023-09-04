@@ -40,7 +40,7 @@
             </li>
           </ul>
         </nav>
-        <img class="user-icon" src="./assets/img/svg/icon_profile.svg" alt="user icon">
+        <img class="user-icon" src="./assets/img/svg/icon_profile.svg" alt="user_icon">
 
 <!-- модалка profile -->
 
@@ -65,7 +65,12 @@
 
 <!-- модалка LOGIN -->
 <div class="modal-login">
+  <div class="modal-top">
   <p class="modal-title">Login</p>
+  <button class="modal-close-button">
+    <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
+  </button>
+</div>
   <div class="modal-login-content">
     <p class="modal-content-title">E-mail or readers card</p>
     <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
@@ -73,11 +78,20 @@
     <input type="text" id="password" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
   </div>
   <button class="modal-button">Log In</button>
+  <div class="modal-bottom">
+    <p class="modal-bottom-text">Don’t have an account?</p>
+    <button class="register">Register</button>
+  </div>
 </div>
 
 <!-- модалка REGISTER -->
 <div class="modal-register">
+  <div class="modal-top">
   <p class="modal-title">Register</p>
+  <button class="modal-close-button">
+    <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
+  </button>
+</div>
   <div class="modal-login-content">
     <p class="modal-content-title">First name</p>
     <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
@@ -89,6 +103,10 @@
     <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
   </div>
   <button class="modal-button">Sign Up</button>
+  <div class="modal-bottom">
+    <p class="modal-bottom-text">Already have an account?</p>
+    <button class="login">Login</button>
+  </div>
 </div>
 
 

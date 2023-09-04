@@ -123,7 +123,7 @@ button {
 
 .modal-drop-menu {
   display: flex;
-  display: none; /*здесь оставить только дисплей нан, закоментить для просмотра*/
+  /*display: none;  здесь оставить только дисплей нан, закоментить для просмотра */
   flex-direction: column;
   align-items: center;
   width: 80px;
@@ -150,6 +150,11 @@ button {
   font-weight: 400;
   line-height: 20px;
   color: var(--black);
+  transition: color 0.5s;
+}
+
+.drop-menu-text:hover {
+  color: var(--sand);
 }
 
 .profile {
@@ -172,7 +177,7 @@ button {
 }
 
 .modal-login {
-  /* display: none; */
+  /* display: none; */ /*  здесь оставить только дисплей нан, закоментить для просмотра */
   width: 250px;
   height: 262px;
   padding: 20px 25px;
@@ -181,11 +186,16 @@ button {
 }
 
 .modal-register {
-  /* display: none; */
+  /* display: none; */  /*  здесь оставить только дисплей нан, закоментить для просмотра */
   width: 250px;
   height: 382px;
   padding: 20px 25px;
   background: var(--white);
+}
+
+.modal-top {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .modal-title {
@@ -199,6 +209,14 @@ button {
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: var(--black)
+}
+
+.modal-close-button {
+  /* position: absolute; */
+  width: 15px;
+  height: 15px;
+  margin-top: -5px;
+  margin-left: 54px ;
 }
 
 .modal-content-title {
@@ -229,7 +247,7 @@ button {
 }
 
 .modal-button {
-  margin-bottom: 10px;
+  margin-top: 20px;
   width: 75px;
   height: 30px;
   border-radius: 2px;
@@ -241,7 +259,48 @@ button {
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1px;
-  color: var(--black)
+  color: var(--black);
+  transition-duration: 0.5s;
+}
+
+.modal-button:hover {
+  background-color: var(--sand);
+  border-color: var(--sand);
+}
+
+.modal-bottom {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.modal-bottom-text {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--black);
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+}
+
+.register,
+.login {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-decoration-line: underline;
+  color: #0C0C0E;
+  transition: color 0.5s;
+}
+
+.register:hover,
+.login:hover {
+  color: var(--sand);
 }
 
 .burger-menu {
