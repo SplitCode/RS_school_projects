@@ -123,7 +123,7 @@ button {
 
 .modal-drop-menu {
   display: flex;
-  /*display: none;  здесь оставить только дисплей нан, закоментить для просмотра */
+  display: none; /* здесь оставить только дисплей нан, закоментить для просмотра */
   flex-direction: column;
   align-items: center;
   width: 80px;
@@ -177,7 +177,7 @@ button {
 }
 
 .modal-login {
-  /* display: none; */ /*  здесь оставить только дисплей нан, закоментить для просмотра */
+  display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
   width: 250px;
   height: 262px;
   padding: 20px 25px;
@@ -186,7 +186,7 @@ button {
 }
 
 .modal-register {
-  /* display: none; */  /*  здесь оставить только дисплей нан, закоментить для просмотра */
+  display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
   width: 250px;
   height: 382px;
   padding: 20px 25px;
@@ -212,7 +212,6 @@ button {
 }
 
 .modal-close-button {
-  /* position: absolute; */
   width: 15px;
   height: 15px;
   margin-top: -5px;
@@ -305,6 +304,163 @@ button {
 
 .burger-menu {
   display: none;
+}
+
+.modal-my-profile {
+  /* display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
+  display: flex;
+  width: 600px;
+  /* height: 400px; */
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid red;
+}
+
+.my-profile-left {
+  width: 170px;
+  /* height: 403px; */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark);
+}
+
+.my-profile-init {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background: var(--white);
+  color: #BB945F;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: capitalize;
+  color: var(--sand);
+}
+
+.my-profile-name {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 15px;
+  /* width: 120px;
+  height: 30px; */
+  flex-shrink: 0;
+  background: var(--white);
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--black)
+}
+
+.my-profile-right {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 25px 39px 20px;
+
+}
+
+.modal-top-profile {
+  display: flex;
+}
+
+.big-modal-title {
+  font-size: 40px;
+  letter-spacing: 0.8px;
+  margin-bottom: 40px;
+  margin-right: 160px;
+}
+
+.close-profile {
+  margin-left: 0;
+  margin-top: -15px;
+}
+
+.profile-count {
+  display: flex;
+  gap: 20px;
+}
+
+.profile-count-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-count-text {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+}
+
+.rented-books-text {
+  font-family: Inter, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 30px;
+  color: var(--dark);
+}
+
+/* хз */
+.rented-books-count {
+  height: 70px;
+  width: 350px;
+  overflow-x: auto;
+  white-space: nowrap;
+  border: 1px solid black;
+}
+
+.card-number-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.card-number-text {
+font-family: Inter, sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
+color: var(--dark);
+}
+
+.card-number {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--sand);
+}
+
+.proverka {
+  color: white;
 }
 
 .welcome {
