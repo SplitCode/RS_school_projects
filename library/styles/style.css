@@ -313,7 +313,7 @@ button {
   /* height: 400px; */
   background: var(--white);
   color: var(--black);
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .my-profile-left {
@@ -459,8 +459,14 @@ color: var(--dark);
   color: var(--sand);
 }
 
-.proverka {
-  color: white;
+.card-copy {
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+.card-copy:hover {
+  filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
+  -webkit-filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
 }
 
 .welcome {
