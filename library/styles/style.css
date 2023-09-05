@@ -579,7 +579,6 @@ color: var(--dark);
   color: var(--dark)
 }
 
-
 .welcome {
   /* display: flex; */
   padding-top: 220px;
@@ -1178,6 +1177,55 @@ margin-right: -2px;
   cursor: pointer;
   background-color: var(--sand);
   border-color: var(--sand);
+}
+
+.non-display-card {
+  display: none;
+}
+
+.cards-container-login {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.card-count-container {
+  display: flex;
+  margin-top: 15px;
+  gap: 35px;
+}
+
+.mini-v {
+font-size: 10px;
+letter-spacing: 0.2px;
+color: var(--black);
+}
+
+.no-gap {
+  gap: 0;
+  margin: 0;
+}
+
+.bottom-p {
+  padding: 20px 20px 16px 20px;
+}
+
+.input-text-login {
+  margin-bottom: 25px;
+  padding: 8px 0 8px 20px;
+  width: 520px;
+  height: 66px;
+  font-family: Forum, cursive;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--sand)
 }
 
 .footer {
