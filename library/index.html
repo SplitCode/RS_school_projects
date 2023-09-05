@@ -65,18 +65,20 @@
 
 <!-- модалка LOGIN -->
 <div class="modal-login">
-  <div class="modal-top">
+  <div class="modal-top login-gap">
   <p class="modal-title">Login</p>
   <button class="modal-close-button">
     <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
   </button>
 </div>
-  <div class="modal-login-content">
-    <p class="modal-content-title">E-mail or readers card</p>
+  <form class="modal-login-content">
+    <label class="modal-content-title">E-mail or readers card
     <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-    <p class="modal-content-title">Password</p>
+    </label>
+    <label class="modal-content-title">Password
     <input type="text" id="password" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </div>
+    </label>
+  </form>
   <button class="modal-button">Log In</button>
   <div class="modal-bottom">
     <p class="modal-bottom-text">Don’t have an account?</p>
@@ -88,22 +90,26 @@
 
 <!-- модалка REGISTER -->
 <div class="modal-register">
-  <div class="modal-top">
+  <div class="modal-top register-gap">
   <p class="modal-title">Register</p>
   <button class="modal-close-button">
     <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
   </button>
 </div>
-  <div class="modal-login-content">
-    <p class="modal-content-title">First name</p>
+  <form class="modal-login-content">
+    <label class="modal-content-title">First name
     <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-    <p class="modal-content-title">Last name</p>
+  </label>
+    <label class="modal-content-title">Last name
     <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-    <p class="modal-content-title">E-mail</p>
+  </label>
+    <label class="modal-content-title">E-mail
     <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-    <p class="modal-content-title">Password</p>
+  </label>
+    <label class="modal-content-title">Password
     <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </div>
+  </label>
+  </form>
   <button class="modal-button">Sign Up</button>
   <div class="modal-bottom">
     <p class="modal-bottom-text">Already have an account?</p>
@@ -132,17 +138,17 @@
       <div class="profile-count-container">
         <p class="profile-count-text">visits</p>
         <img src="./assets/img/svg/Union.svg" alt="profile">
-        <p class="visits-count">1</p>
+        <p class="count visits-count">1</p>
       </div>
       <div class="profile-count-container">
         <p class="profile-count-text">bonuses</p>
         <img src="./assets/img/svg/Star 1.svg" alt="bonuses">
-        <p class="bonuses-count">1240</p>
+        <p class="count bonuses-count">1240</p>
       </div>
       <div class="profile-count-container">
         <p class="profile-count-text">Books</p>
         <img src="./assets/img/svg/book.svg" alt="books">
-        <p class="books-count">0</p>
+        <p class="count books-count">0</p>
       </div>
     </div>
     <div class="rented-books">
@@ -157,7 +163,9 @@
     <div class="card-number-container">
       <p class="card-number-text">Card number</p>
       <p class="card-number">F00234030</p>
+      <button class="card-copy-button">
       <img class="card-copy" src="./assets/img/svg/icon copy.svg" alt="ccard_copy">
+      </button>
     </div>
   </div>
 
@@ -165,6 +173,61 @@
 
 <!----------------------------------------------->
 
+<!-- модалка BY A LIBRARY CARD -->
+
+<div class="buy-card">
+<div class="buy-card-top">
+  <p class="modal-title white-modal-title">Buy a library card</p>
+  <button class="modal-close-button close-white">
+    <img src="./assets/img/svg/close_btn_white.svg" alt="modal_close_button">
+  </button>
+</div>
+<div class="buy-card-container">
+  <div>
+  <form class="buy-card-left">
+  <label class="modal-content-title">Bank card number
+    <input type="text" id="bank-card-number" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+  <label class="modal-content-title">Expiration code
+    <div class="exp-code">
+    <label>
+    <input type="text" id="mounth" class="modal-input small-modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </label>
+    <label>
+    <input type="text" id="year" class="modal-input small-modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+  </div>
+</label>
+  <label class="modal-content-title">CVC
+    <div>
+    <input type="text" id="cvc" class="modal-input small-modal-input big-int" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </div>
+  </label>
+  <label class="modal-content-title">Cardholder name
+    <input type="text" id="cardholder-name" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+  <label class="modal-content-title">Postal code
+    <input type="text" id="postal-code" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+  <label class="modal-content-title">City / Town
+    <input type="text" id="city-town" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+  </form>
+  <div class="buy-card-bottom">
+  <button class="book-button">Buy</button>
+  <p class="buy-card-price">$ 25.00</p>
+</div>
+</div>
+  <div class="buy-card-right">
+<p class="buy-card-text">If you are live, work, attend school, or pay property taxes in New York State,
+  you can get a $25 digital library card right now using this online form.
+  Visitors to New York State can also use this form to apply for a temporary card.
+</p>
+  </div>
+</div>
+</div>
+
+<!----------------------------------------------->
 
 
 
@@ -324,7 +387,8 @@
                 her family) exploring how the Windsors have evolved and thrived
                 as the modern world has changed around them.
               </div>
-              <button disabled="" class="own-button">Own</button>
+              <!-- <button disabled="" class="own-button">Own</button> -->
+              <button class="book-button">Buy</button>
               <img class="book-img" src="./assets/img/book04.png" alt="The Last Queen">
             </div>
             <div class="favorites-book non-display-book">
@@ -378,7 +442,8 @@
                 is an opportunity for her family to eventually immigrate. For
                 fans of Isabel Allende and Julia Alvarez.
               </div>
-              <button disabled="" class="own-button">Own</button>
+              <!-- <button disabled="" class="own-button">Own</button> -->
+              <button class="book-button">Buy</button>
               <img class="book-img" src="./assets/img/book4.png" alt="Dominicana">
             </div>
             <div class="favorites-book non-display-book">

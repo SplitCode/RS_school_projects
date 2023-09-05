@@ -180,7 +180,7 @@ button {
   display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
   width: 250px;
   height: 262px;
-  padding: 20px 25px;
+  padding: 20px 15px 20px 25px;
   background: var(--white);
   margin-right: 5px; /*delete after?*/
 }
@@ -189,7 +189,7 @@ button {
   display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
   width: 250px;
   height: 382px;
-  padding: 20px 25px;
+  padding: 20px 15px 20px 25px;
   background: var(--white);
 }
 
@@ -197,6 +197,15 @@ button {
   display: flex;
   justify-content: flex-end;
 }
+
+.login-gap {
+  gap: 67px;
+}
+
+.register-gap {
+  gap: 54px;
+}
+
 
 .modal-title {
   margin-bottom: 20px;
@@ -215,7 +224,7 @@ button {
   width: 15px;
   height: 15px;
   margin-top: -5px;
-  margin-left: 54px ;
+  /* margin-left: 54px ; */
 }
 
 .modal-content-title {
@@ -246,7 +255,7 @@ button {
 }
 
 .modal-button {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 75px;
   height: 30px;
   border-radius: 2px;
@@ -307,8 +316,8 @@ button {
 }
 
 .modal-my-profile {
-  /* display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
   display: flex;
+  display: none;  /*здесь оставить только дисплей нан, закоментить для просмотра */
   width: 600px;
   /* height: 400px; */
   background: var(--white);
@@ -363,7 +372,7 @@ button {
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: var(--black)
 }
 
@@ -415,6 +424,19 @@ button {
   text-transform: capitalize;
 }
 
+.count {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  color: var(--black)
+}
+
+
 .rented-books-text {
   font-family: Inter, sans-serif;
   font-size: 25px;
@@ -427,7 +449,7 @@ button {
 
 /* хз */
 .rented-books-count {
-  height: 70px;
+  height: 50px;
   width: 350px;
   overflow-x: auto;
   white-space: nowrap;
@@ -436,6 +458,7 @@ button {
 
 .card-number-container {
   display: flex;
+  align-items: center;
   gap: 15px;
   margin-top: 40px;
 }
@@ -460,7 +483,6 @@ color: var(--dark);
 }
 
 .card-copy {
-  cursor: pointer;
   transition-duration: 0.5s;
 }
 
@@ -468,6 +490,95 @@ color: var(--dark);
   filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
   -webkit-filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
 }
+
+.buy-card {
+  display: none;  /*здесь оставить только дисплей нан, закоментить для просмотра */
+  width: 650px;
+  height: 540px;
+  background: var(--white);
+  /* border: 1px solid red; */
+}
+
+.buy-card-top {
+  display: flex;
+  /* width: 650px; */
+  height: 60px;
+  padding: 20px 25px 20px 143px;
+  flex-shrink: 0;
+  background: var(--dark)
+}
+
+.white-modal-title {
+  margin-bottom: 0;
+  font-size: 40px;
+  letter-spacing: 0.8px;
+  color: var(--white)
+}
+
+.close-white {
+  margin-left: 100px;
+  margin-top: 0;
+}
+
+.buy-card-container {
+  display: flex;
+  padding: 30px 40px 40px 40px;
+}
+
+.buy-card-left {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-right: 40px;
+}
+
+.small-modal-input {
+  width: 45px;
+}
+
+.big-int {
+  margin-bottom: 20px;
+}
+
+.exp-code {
+  display: flex;
+  gap: 10px;
+}
+
+.buy-card-right {
+  width: 330px;
+}
+
+.buy-card-text {
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 2px;
+  color: var(--grey)
+}
+
+.buy-card-bottom {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 10px;
+}
+
+.buy-card-price {
+  margin-left: 25px;
+  margin-top: 10px;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dark)
+}
+
 
 .welcome {
   /* display: flex; */
