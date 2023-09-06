@@ -113,11 +113,46 @@ button {
   cursor: pointer;
 }
 
-.user-icon {
+.user-icon-container {
   width: 28px;
   height: 28px;
   margin: 31px 0 31px 40px;
+  display: none;
 }
+
+.user-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: none;
+}
+
+/* .non-display-icon {
+  display: none;
+} */
+
+.user-icon-login {
+  /* display: none; */
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  margin: 31px 0 31px 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--white);
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--sand)
+}
+
+
 
 /* перенести в медиа */
 
@@ -436,7 +471,6 @@ button {
   color: var(--black)
 }
 
-
 .rented-books-text {
   font-family: Inter, sans-serif;
   font-size: 25px;
@@ -723,68 +757,81 @@ color: var(--dark);
 
 .favorites-radio {
   display: flex;
-  gap: 76px;
-  margin-left: 10px;
-  margin-top: 35px;
-}
-
-.radio-label-input-container {
-  margin: 5px;
-  cursor: pointer;
+  flex-direction: row;
+  gap: 70px;
+  margin-left: 12px;
+  margin-top: 40px;
 }
 
 .radio-label {
-  display: flex;
   font-family: Inter, sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: normal;
   cursor: pointer;
   color: var(--black);
-}
-
-.first {
-  width: 110px;
-}
-
-.second {
-  width: 108px;
-}
-
-.third {
-  width: 125px;
-  margin-left: -4px;
-}
-
-.fourth {
-  width: 108px;
-  margin-left: -3px;
-}
-
-.radio-label:has(.radio-input:checked) {
-  font-weight: 700;
+  word-wrap: break-word;
 }
 
 .radio-input-container {
-  margin-right: 15px;
-  text-align: center;
-  width: 27px;
-  height: 27px;
-  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  padding: 3px 5px 1px 5px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 118px;
+  height: 24px;
 }
 
-.radio-input {
-  margin-top: 5px;
+.first {
+  width: 118px;
+  margin-right: 4px;
+}
+
+.second {
+  width: 118px;
+  margin-right: 4px;
+}
+
+.third {
+  width: 130px;
+  margin-right: 9px;
+}
+
+.fourth {
+  width: 125px;
+  margin-left: -3px;
+}
+
+.radio-input[type='radio'] {
   width: 17px;
   height: 17px;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
+  margin: 0;
   accent-color: var(--black);
+  /* cursor: pointer; */
+}
+
+.radio-input1[type='radio'] {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  stroke-width: 5px;
+  stroke: var(--black);
+  accent-color: var(--black);
+  /* cursor: pointer; */
+}
+
+.radio-input[type='radio']:checked ~ .radio-input-text {
+  font-weight: 700;
+}
+
+.radio-input1[type='radio']:checked ~ .radio-input-text {
+  font-weight: 700;
 }
 
 .favorites-books {
-  margin-top: 32px;
+  margin-top: 40px;
   padding-right: 60px;
   padding-left: 20px;
 }
@@ -1179,12 +1226,13 @@ margin-right: -2px;
   border-color: var(--sand);
 }
 
-.non-display-card {
+/* .non-display-card {
   display: none;
-}
+} */
 
 .cards-container-login {
   display: flex;
+  display: none;
   justify-content: space-between;
   margin-top: 40px;
 }

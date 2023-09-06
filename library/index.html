@@ -40,7 +40,12 @@
             </li>
           </ul>
         </nav>
-        <img class="user-icon" src="./assets/img/svg/icon_profile.svg" alt="user_icon">
+        <div class="user-icon-container non-display-icon">
+        <img class="user-icon non-display-icon" src="./assets/img/svg/icon_profile.svg" alt="user_icon">
+      </div>
+
+      <div class="user-icon-login non-display-icon" title>JD</div>
+
 
 <!-- модалка profile -->
 
@@ -295,38 +300,41 @@
         <p class="favorites-text">Pick favorites of season</p>
 
         <div class="favorites-radio">
-          <span class="radio-label-input-container">
-            <label class="radio-label first">
-              <span class="radio-input-container">
-                <input class="radio-input" type="radio" value="winter" name="favorites" checked>
+          <div>
+            <label for="winter" class="radio-label">
+              <span class="radio-input-container first">
+                <input class="radio-input" type="radio" id="winter" value="winter" name="favorites" checked>
+                <span class="radio-input-text">Winter</span>
               </span>
-              Winter
             </label>
-          </span>
-          <span class="radio-label-input-container">
-            <label class="radio-label second">
-              <span class="radio-input-container">
-                <input class="radio-input" type="radio" value="spring" name="favorites">
+          </div>
+
+          <div>
+            <label for="spring" class="radio-label">
+              <span class="radio-input-container second">
+                <input class="radio-input1" type="radio" id="spring"  value="spring" name="favorites">
+                <span class="radio-input-text">Spring</span>
               </span>
-              Spring
             </label>
-          </span>
-          <span class="radio-label-input-container">
-            <label class="radio-label third">
-              <span class="radio-input-container">
-                <input class="radio-input" type="radio" value="summer" name="favorites">
+          </div>
+
+          <div>
+            <label for="summer" class="radio-label">
+              <span class="radio-input-container third">
+                <input class="radio-input1" type="radio" id="summer"  value="summer" name="favorites">
+                <span class="radio-input-text">Summer</span>
               </span>
-              Summer
             </label>
-          </span>
-          <span class="radio-label-input-container">
-            <label class="radio-label fourth">
-              <span class="radio-input-container">
-                <input class="radio-input" type="radio" value="autumn" name="favorites">
+          </div>
+
+          <div>
+            <label for="autumn" class="radio-label">
+              <span class="radio-input-container fourth">
+                <input class="radio-input1" type="radio" id="autumn"  value="autumn" name="favorites">
+                <span class="radio-input-text">Autumn</span>
               </span>
-              Autumn
             </label>
-          </span>
+          </div>
         </div>
 
         <div class="favorites-books flex-container">
@@ -722,9 +730,6 @@
                 <p class="count books-count">0</p>
               </div>
             </div>
-
-
-
             </div>
           </div>
 
