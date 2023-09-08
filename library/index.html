@@ -256,41 +256,53 @@
 
 
       <section class="section section-about" id="about">
-         <div class="container">
+         <!-- <div class="container-about"> -->
         <h2 class="section-title">About</h2>
-        <p class="section-description">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</p>
+        <p class="section-description section-description-about">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</p>
 
-        <div class="images-about-container flex-container">
+        <div class="container-about">
 
-          <button class="carret-left">
-            <img src="./assets/img/svg/Carret_Left.svg" alt="carret-left">
-          </button>
-          <img class="image-about image-display-2 image-display" src="./assets/img/about1.png" alt="image1">
-          <button class="carret-right">
-            <img src="./assets/img/svg/Carret_Right.svg" alt="carret-left">
-          </button>
-          <img class="image-about image-display-2 image-none" src="./assets/img/about2.png" alt="image2">
-          <img class="image-about image-none" src="./assets/img/about3.png" alt="image3">
+        <div class="slider-container">
+
+          <!-- <button class="carret-left left-slide"> -->
+            <img id="left" class="carret carret-left left-slide" src="./assets/img/svg/Carret_Left.svg" alt="carret-left" draggable="false">
+          <!-- </button> -->
+
+          <div class="slider">
+
+          <img class="image-about" src="./assets/img/about1.png" alt="image1" draggable="false">
+          <img class="image-about" src="./assets/img/about2.png" alt="image2" draggable="false">
+          <img class="image-about" src="./assets/img/about3.png" alt="image3" draggable="false">
+          <img class="image-about" src="./assets/img/about4.png" alt="image4" draggable="false">
+          <img class="image-about" src="./assets/img/about5.png" alt="image5" draggable="false">
         </div>
 
+        <!-- <button class="carret-right right-slide"> -->
+          <img id="right" class="carret carret-right right-slide" src="./assets/img/svg/Carret_Right.svg" alt="carret-right">
+        <!-- </button> -->
+      </div>
+    </div>
+<!-- -------------------- -->
         <div class="pagination-about-container">
           <div class="pagination-container">
-            <button class="pagination-button active" type="button"></button>
+            <button id="leftbtn" class="pagination-button active" type="button"></button>
+          </div>
+          <div class="pagination-container">
+            <button id="leftbtn" class="pagination-button" type="button"></button>
           </div>
           <div class="pagination-container">
             <button class="pagination-button" type="button"></button>
           </div>
-          <div class="pagination-container">
-            <button class="pagination-button" type="button"></button>
-          </div>
-          <div class="pagination-container display-first non-display-button">
+          <div class="pagination-container non-display-button display-first ">
             <button class="pagination-button" type="button"></button>
           </div>
           <div class="pagination-container non-display-button">
             <button class="pagination-button" type="button"></button>
           </div>
         </div>
-      </div>
+  
+<!-- ------------------------------- -->
+      <!-- </div> -->
       </section>
 
       <section class="section favorites favorites-section" id="favorites">

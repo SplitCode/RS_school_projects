@@ -684,32 +684,80 @@ color: var(--dark);
   color: var(--black);
 }
 
+.section-description-about {
+  margin-bottom: 20px;
+}
+
 .section-about {
   padding-right: 0;
   padding-left: 0;
 }
 
-.carret-left,
-.carret-right {
-  display: none;
+.container-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.images-about-container {
-  justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-  margin-bottom: 35px;
+
+.slider-container {
+  /* display: flex;
+  width: 100%; */
+  position: relative;
+  white-space: nowrap;
+  /* overflow: hidden; */
+  max-width: 1400px;
+  scroll-behavior: smooth;
+}
+
+.slider {
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  scroll-behavior: smooth;
 }
 
 .image-about {
-  width: 450px;
+  /* display: flex; */
   height: 560px;
+  width: 450px;
+  object-fit: cover;
+  margin-left: 25px;
+
 }
+
+.slider img:first-child {
+  margin-left: 0px;
+}
+
+.pointer-events{
+  pointer-events: none;
+}
+
+.carret-left,
+.carret-right {
+  display: none;
+  width: 24px;
+  height: 25px;
+  position: absolute;
+  cursor: pointer;
+  top: 288px;
+}
+
+.carret-left {
+  left: -83px;
+}
+
+.carret-right {
+  right: -83px;
+}
+
 
 .pagination-about-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 35px;
 }
 
 .pagination-container {
@@ -737,6 +785,7 @@ color: var(--dark);
 
 .active {
   background-color: var(--sand);
+  cursor: default;
 }
 
 .favorites-section {
@@ -836,6 +885,18 @@ color: var(--dark);
   padding-left: 20px;
 }
 
+/* .favorites-book {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 15px 0 15px 20px;
+  min-width: 550px;
+  min-height: 555px;
+  border: 1px solid var(--black);
+} */
+
 .favorites-book {
   position: relative;
   display: flex;
@@ -846,6 +907,8 @@ color: var(--dark);
   min-width: 550px;
   min-height: 555px;
   border: 1px solid var(--black);
+  transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+  opacity: 1;
 }
 
 .item-title {
@@ -939,9 +1002,20 @@ color: var(--dark);
   height: 300px;
 }
 
-.non-display-book {
+/* .non-display-book {
   display: none;
+} */
+
+.non-display-book {
+    position: absolute !important;
+    top: -100%;
+    opacity: 0 !important;
+    visibility: hidden;
+    transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
 }
+
+
+
 
 .space {
   letter-spacing: 2px;
