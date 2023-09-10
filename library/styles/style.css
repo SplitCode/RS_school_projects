@@ -114,25 +114,22 @@ button {
 }
 
 .user-icon-container {
-  width: 28px;
-  height: 28px;
-  margin: 31px 0 31px 40px;
-  display: none;
+  /* z-index: 50; */
 }
 
 .user-icon {
   width: 28px;
   height: 28px;
   cursor: pointer;
+  /* display: none; */
+  margin: 31px 0 31px 40px;
+}
+
+.non-display-icon {
   display: none;
 }
 
-/* .non-display-icon {
-  display: none;
-} */
-
 .user-icon-login {
-  /* display: none; */
   width: 28px;
   height: 28px;
   padding: 4px;
@@ -152,21 +149,50 @@ button {
   color: var(--sand)
 }
 
-
-
-/* перенести в медиа */
-
-.modal-drop-menu {
+.register-drop-menu {
   display: flex;
-  display: none; /* здесь оставить только дисплей нан, закоментить для просмотра */
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  margin-top: -20px;
+  margin-left: -10px;
   width: 80px;
   height: 115px;
   padding-bottom: 20px;
   padding-top: 5px;
-  margin-right: 5px; /*delete after?*/
+  /* margin-right: 5px; */
   background: var(--white);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.profile-drop-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  margin-top: -20px;
+  margin-left: -10px;
+  width: 80px;
+  height: 115px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  /* margin-right: 5px; */
+  background: var(--white);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+}
+
+.non-display-menu {
+  display: none;
+}
+
+.register-drop-menu.menu-open {
+  opacity: 1;
+}
+
+.profile-drop-menu.login-menu-open {
+  opacity: 1;
 }
 
 .drop-menu-btn-container {
@@ -211,17 +237,27 @@ button {
   background-color: var(--sand);
 }
 
-.modal-login {
-  display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
-  width: 250px;
-  height: 262px;
-  padding: 20px 15px 20px 25px;
-  background: var(--white);
-  margin-right: 5px; /*delete after?*/
+.burger-menu {
+  display: none;
+}
+
+.pop-up-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  background-color: rgba(15, 15, 15, 0.5);
+  /* visibility: hidden; */
+  opacity: 1;
+  transition: opacity 0.4s ease 0s, visibility 0.4s ease 0s;
 }
 
 .modal-register {
-  display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
   width: 250px;
   height: 382px;
   padding: 20px 15px 20px 25px;
@@ -240,7 +276,6 @@ button {
 .register-gap {
   gap: 54px;
 }
-
 
 .modal-title {
   margin-bottom: 20px;
@@ -346,23 +381,56 @@ button {
   color: var(--sand);
 }
 
-.burger-menu {
-  display: none;
+.pop-up-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  background-color: rgba(15, 15, 15, 0.5);
+  /* visibility: hidden; */
+  opacity: 1;
+  transition: opacity 0.4s ease 0s, visibility 0.4s ease 0s;
+}
+
+.modal-login {
+  width: 250px;
+  height: 262px;
+  padding: 20px 15px 20px 25px;
+  background: var(--white);
+}
+
+.pop-up-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  background-color: rgba(15, 15, 15, 0.5);
+  /* visibility: hidden; */
+  opacity: 1;
+  transition: opacity 0.4s ease 0s, visibility 0.4s ease 0s;
 }
 
 .modal-my-profile {
   display: flex;
-  display: none;  /*здесь оставить только дисплей нан, закоментить для просмотра */
   width: 600px;
-  /* height: 400px; */
+  height: 400px;
   background: var(--white);
   color: var(--black);
-  /* border: 1px solid red; */
 }
 
 .my-profile-left {
   width: 170px;
-  /* height: 403px; */
+  height: 400px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -481,13 +549,33 @@ button {
   color: var(--dark);
 }
 
-/* хз */
 .rented-books-count {
   height: 50px;
   width: 350px;
   overflow-x: auto;
   white-space: nowrap;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+.rented-books-count>ul {
+  padding-left: 10px;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  color: #000;
+}
+
+.rented-books-count>ul>li {
+  margin-bottom: 10px;
+}
+
+.rented-books-count>ul>li:before {
+  content: "•";
+  margin-right: 9px;
 }
 
 .card-number-container {
@@ -524,6 +612,26 @@ color: var(--dark);
   filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
   -webkit-filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
 }
+
+.non-visible-1 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.non-visible-2 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.non-visible-3 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* .pop-up-open {
+  visibility: visible;
+  opacity: 1;
+} */
 
 .buy-card {
   display: none;  /*здесь оставить только дисплей нан, закоментить для просмотра */
@@ -730,7 +838,7 @@ color: var(--dark);
   margin-left: 0px;
 }
 
-.pointer-events{
+.pointer-events {
   pointer-events: none;
   opacity: 0.3;
   cursor: default;
@@ -860,7 +968,7 @@ color: var(--dark);
   height: 17px;
   margin: 0;
   accent-color: var(--black);
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 
 .radio-input1[type='radio'] {
@@ -870,7 +978,7 @@ color: var(--dark);
   stroke-width: 5px;
   stroke: var(--black);
   accent-color: var(--black);
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 
 .radio-input[type='radio']:checked ~ .radio-input-text {
