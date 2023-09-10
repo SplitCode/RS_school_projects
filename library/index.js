@@ -30,123 +30,84 @@ navItems.addEventListener('click', () => {
 });
 
 
-
 // Slider-----------------------------------------------------
 
-// const windowWidth = window.innerWidth;
-// const slider = document.querySelector('.slider');
-// const leftSlide = document.querySelector('.left-slide');
-// const rightSlide = document.querySelector('.right-slide');
-// const buttons = document.querySelectorAll('.pagination-button');
-
 const slider = document.querySelector('.slider');
-const firstImage = slider.querySelectorAll('.image-about')[0];
-const arrows = document.querySelectorAll('.carret');
-// const leftSlide = document.querySelector('.left-slide');
-// const rightSlide = document.querySelector('.right-slide');
-const buttons = document.querySelectorAll('.pagination-button');
+const leftArrow = document.querySelector('.left-slide');
+const rightArrow = document.querySelector('.right-slide');
+// const dotButtons = document.querySelectorAll('.pagination-button');
 
-let firstImageWidth = firstImage.clientWidth + 25;
-let twoImageWidth = firstImage.clientWidth + 200;
+const slideWidth = 475; // Ширина одного слайда
 
-// leftSlide.addEventListener('click', prevSlide);
-// rightSlide.addEventListener('click', nextSlide);
+let currentIndex = 0; // Текущий индекс слайда
+
+// Функция для прокрутки слайдера к указанному индексу
+const goToSlide = (index) => {
+    if (index >= 0 && index < slider.children.length) {
+        currentIndex = index;
+        updateSliderPosition();
+        updateDotButtons();
+    }
+};
+
+// Функция для обновления положения слайдера
+const updateSliderPosition = () => {
+    slider.scrollLeft = currentIndex * slideWidth;
+};
+
+// Функция для обновления состояния точек активации
+const updateDotButtons = () => {
+    const dotButtons = document.querySelectorAll('.pagination-button');
+    dotButtons.forEach((button, index) => {
+        if (index === currentIndex) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+};
 
 
-arrows.forEach(arrow => {
-  arrow.addEventListener("click", () => {
-    slider.scrollLeft += arrow.id === 'left' ? -firstImageWidth : firstImageWidth;
-  });
+const updateButtonState = () => {
+  if (currentIndex === 0) {
+      leftArrow.classList.add('pointer-events');
+  } else {
+      leftArrow.classList.remove('pointer-events');
+  }
+
+  if (currentIndex === slider.children.length - 1) {
+      rightArrow.classList.add('pointer-events');
+  } else {
+      rightArrow.classList.remove('pointer-events');
+  }
+};
+
+// Добавляем слушатели событий на кнопки "вправо" и "влево"
+rightArrow.addEventListener('click', () => {
+  if (currentIndex < slider.children.length - 1) {
+      currentIndex++;
+      updateSliderPosition();
+      updateDotButtons();
+      updateButtonState();
+  }
 });
 
-buttons.forEach(button => {
-  button.addEventListener("click", () => {
-    button.classList.add('active');
-    slider.scrollLeft += button.id === 'leftbtn' ? -firstImageWidth : firstImageWidth;
-  });
+leftArrow.addEventListener('click', () => {
+  if (currentIndex > 0) {
+      currentIndex--;
+      updateSliderPosition();
+      updateDotButtons();
+      updateButtonState();
+  }
 });
 
-
-// let position = 0;
-// let i = 0;
-
-// const nextSlide = () => {
-//     if (position < (buttons.length - 1) * 475) {
-//       position += 475;
-//       i += 1;
-//       leftSlide.classList.remove('pointer-events');
-//     } else{
-//       rightSlide.classList.add('pointer-events');
-//     }
-//     slider.style.left = -position + 'px';
-//     currentSlide(i);
-//   }
-
-//   const previousSlide = () => {
-//     if (position > 0) {
-//       position -= 465
-//       i -= 1
-//       rightSlide.classList.remove('pointer-events')
-//     } else{
-//       leftSlide.classList.add('pointer-events')
-//     }
-//     slider.style.left = -position + 'px'
-//    currentSlide(i)
-//   }
-
-//   const currentSlide = (index) => {
-//     for (let button of buttons) {
-//       button.classList.remove('active')
-//     }
-//     buttons[index].classList.add('active')
-//   }
-
-//   rightSlide.addEventListener('click', nextSlide);
-//   leftSlide.addEventListener('click', previousSlide);
-
-
-//   if (windowWidth < 1024){
-//     buttons.forEach( (button, index) => {
-//       button.addEventListener('click', () => {
-//         position = 465 * index
-//         slider.style.left = -position + 'px'
-//         i = index
-//         currentSlide(i)
-//       })
-//     })
-//   } else if (windowWidth >= 1440) {
-//       buttons.forEach( (button, index) => {
-//         button.addEventListener('click', () => {
-//           position = 475 * index
-//           slider.style.left = -position + 'px'
-//           i = index
-//           currentSlide(i)
-//         })
-//       })
-//   } else if (windowWidth >= 1024) {
-//     buttons.forEach( (button, index) => {
-//       button.addEventListener('click', () => {
-//         position = 335 * index
-//         slider.style.left = -position + 'px'
-//         i = index
-//         currentSlide(i)
-//       })
-//     })
-//  }
-
-
-
-
-// const dragging = (e) => {
-//   slider.scrollLeft = e.pageX;
-// }
-
-// slider.addEventListener('mousemove', dragging);
-
-
-
-
-
+// Добавляем слушатели событий на кнопки пагинации
+const paginationButtons = document.querySelectorAll('.pagination-button');
+paginationButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        goToSlide(index);
+    });
+});
 
 // Favorites-books----------------------------------------------------
 

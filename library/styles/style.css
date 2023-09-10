@@ -732,6 +732,8 @@ color: var(--dark);
 
 .pointer-events{
   pointer-events: none;
+  opacity: 0.3;
+  cursor: default;
 }
 
 .carret-left,
