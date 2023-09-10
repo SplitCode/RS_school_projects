@@ -12,8 +12,8 @@ const body = document.body;
 
 burger.addEventListener('click', () => {
     // body.classList.toggle('stop-scroll');
-    burger?.classList.toggle('cross');
-    nav?.classList.toggle('open');
+    burger.classList.toggle('cross');
+    nav.classList.toggle('open');
 });
 
 body.addEventListener('click', function(e) {
@@ -67,7 +67,7 @@ const updateDotButtons = () => {
     });
 };
 
-
+// Функция для обновления состояния стрелок
 const updateButtonState = () => {
   if (currentIndex === 0) {
       leftArrow.classList.add('pointer-events');
@@ -129,3 +129,60 @@ radiobuttons.forEach(button => {
 		}
 	})
 });
+
+// Drop-menu----------------------------------------------------
+
+const user = document.querySelector('.user-icon');
+const registerMenu = document.querySelector('.register-drop-menu');
+const profileMenu = document.querySelector('.profile-drop-menu')
+const loginUser = document.querySelector('.user-icon-login');
+const userIcon = document.querySelector('.my-profile-init');
+const userName = document.querySelector('.my-profile-name');
+const visitsCount = document.querySelectorAll('.visits-count');
+const booksCount = document.querySelectorAll('.books-count');
+const cardNumber = document.querySelector('.card-number');
+const modalLogin = document.querySelector('.pop-up-2');
+const modalReg = document.querySelector('.pop-up-1');
+
+let isOpenMenu = false;
+// let isTransitioning = false;
+
+
+const closeMenu = () => {
+  isOpenMenu = false;
+  burger.classList.remove("cross");
+  nav.classList.remove('open');
+}
+
+user.addEventListener('click', (event) => {
+  event.stopPropagation();
+  if (!registerMenu.classList.contains('registered')) {
+  registerMenu.classList.toggle('menu-open');
+} else {
+  profileMenu.classList.toggle('login-menu-open');
+  }
+  if (!modalLogin.classList.contains('non-visible-2')) {
+    modalLogin.classList.toggle('non-visible-2');
+  }
+  if (!modalReg.classList.contains('non-visible-1')) {
+  modalReg.classList.toggle('non-visible-1');
+  }
+  closeMenu();
+  });
+
+
+loginUser.addEventListener('click', (event) => {
+  event.stopPropagation();
+  profileMenu.classList.toggle('login-menu-open');
+  closeMenu();
+ });
+
+document.addEventListener('click', (event) => {
+ if (!registerMenu.contains(event.target)) {
+   registerMenu.classList.remove('menu-open');
+ }
+ if (!profileMenu.contains(event.target)) {
+   profileMenu.classList.remove('login-menu-open');
+ }
+});
+

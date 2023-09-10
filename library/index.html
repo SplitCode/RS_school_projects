@@ -23,41 +23,30 @@
 <div class="nav-container flex-container">
         <nav class="nav-menu">
           <ul class="nav-list flex-container">
-            <li class="nav-item">
-              <a href="#about" class="nav-link">About</a>
-            </li>
-            <li class="nav-item">
-              <a href="#favorites" class="nav-link">Favorites</a>
-            </li>
-            <li class="nav-item">
-              <a href="#coffeeShop" class="nav-link">Coffee shop</a>
-            </li>
-            <li class="nav-item">
-              <a href="#contacts" class="nav-link">Contacts</a>
-            </li>
-            <li class="nav-item">
-              <a href="#libraryCard" class="nav-link">Library Card</a>
-            </li>
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#favorites" class="nav-link">Favorites</a></li>
+            <li class="nav-item"><a href="#coffeeShop" class="nav-link">Coffee shop</a></li>
+            <li class="nav-item"><a href="#contacts" class="nav-link">Contacts</a></li>
+            <li class="nav-item"><a href="#libraryCard" class="nav-link">Library Card</a></li>
           </ul>
         </nav>
-        <div class="user-icon-container non-display-icon">
-        <img class="user-icon non-display-icon" src="./assets/img/svg/icon_profile.svg" alt="user_icon">
-      </div>
 
-      <div class="user-icon-login non-display-icon" title>JD</div>
+        <div class="user-icon-container">
 
+        <img class="user-icon" src="./assets/img/svg/icon_profile.svg" alt="user_icon">
+        <div class="user-icon-login non-display-icon" title=""></div>
 
 <!-- модалка profile -->
 
-        <div class="modal-drop-menu">
+        <div class="register-drop-menu">
           <p class="drop-menu-text profile">Profile</p>
           <div class="drop-menu-btn-container">
               <button class="drop-menu-button drop-menu-text">Log In</button>
-              <button class="drop-menu-button drop-menu-text">Register</button>
+              <button class="drop-menu-button register-button drop-menu-text">Register</button>
           </div>
         </div>
 
-        <div class="modal-drop-menu">
+        <div class="profile-drop-menu non-display-menu">
           <p class="drop-menu-text profile">Profile</p>
           <div class="drop-menu-btn-container">
               <button class="drop-menu-button drop-menu-text">My profile</button>
@@ -66,115 +55,16 @@
         </div>
 <!----------------------------------------------->
 
-<!-- скорее всего переместить login/register в самый конец -->
-
-<!-- модалка LOGIN -->
-<div class="modal-login">
-  <div class="modal-top login-gap">
-  <p class="modal-title">Login</p>
-  <button class="modal-close-button">
-    <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
-  </button>
-</div>
-  <form class="modal-login-content">
-    <label class="modal-content-title">E-mail or readers card
-    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-    </label>
-    <label class="modal-content-title">Password
-    <input type="text" id="password" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-    </label>
-  </form>
-  <button class="modal-button">Log In</button>
-  <div class="modal-bottom">
-    <p class="modal-bottom-text">Don’t have an account?</p>
-    <button class="register">Register</button>
-  </div>
-</div>
-<!----------------------------------------------->
-
-
-<!-- модалка REGISTER -->
-<div class="modal-register">
-  <div class="modal-top register-gap">
-  <p class="modal-title">Register</p>
-  <button class="modal-close-button">
-    <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
-  </button>
-</div>
-  <form class="modal-login-content">
-    <label class="modal-content-title">First name
-    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-    <label class="modal-content-title">Last name
-    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-    <label class="modal-content-title">E-mail
-    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-    <label class="modal-content-title">Password
-    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-  </form>
-  <button class="modal-button">Sign Up</button>
-  <div class="modal-bottom">
-    <p class="modal-bottom-text">Already have an account?</p>
-    <button class="login">Login</button>
-  </div>
-</div>
-<!----------------------------------------------->
-
-<!-- модалка MY PROFILE -->
-
-<div class="modal-my-profile">
-  <div class="my-profile-left">
-  <div class="my-profile-init">JD</div>
-  <div class="my-profile-name">John Doe</div>
-
-  </div>
-
-  <div class="my-profile-right">
-    <div class="modal-top-profile">
-      <p class="modal-title big-modal-title">My profile</p>
-      <button class="modal-close-button close-profile">
-        <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
-      </button>
     </div>
-    <div class="profile-count">
-      <div class="profile-count-container">
-        <p class="profile-count-text">visits</p>
-        <img src="./assets/img/svg/Union.svg" alt="profile">
-        <p class="count visits-count">1</p>
-      </div>
-      <div class="profile-count-container">
-        <p class="profile-count-text">bonuses</p>
-        <img src="./assets/img/svg/Star 1.svg" alt="bonuses">
-        <p class="count bonuses-count">1240</p>
-      </div>
-      <div class="profile-count-container">
-        <p class="profile-count-text">Books</p>
-        <img src="./assets/img/svg/book.svg" alt="books">
-        <p class="count books-count">0</p>
-      </div>
-    </div>
-    <div class="rented-books">
-      <p class="rented-books-text">Rented books</p>
 
-      <!-- хз -->
-      <div class="rented-books-count">
+<!-- бургер-меню -->
 
-      </div>
-      <!--------------------------->
-    </div>
-    <div class="card-number-container">
-      <p class="card-number-text">Card number</p>
-      <p class="card-number">F00234030</p>
-      <button class="card-copy-button">
-      <img class="card-copy" src="./assets/img/svg/icon copy.svg" alt="ccard_copy">
-      </button>
-    </div>
-  </div>
-
+<button class="burger-menu">
+  <span class="burger-menu-line"></span>
+</button>
 </div>
+</div>
+</header>
 
 <!----------------------------------------------->
 
@@ -234,17 +124,136 @@
 
 <!----------------------------------------------->
 
-<!-- бургер-меню -->
 
-        <button class="burger-menu">
-          <span class="burger-menu-line"></span>
-        </button>
-      </div>
-      </div>
-    </header>
-<!----------------------------------------------->
 
     <main class="main">
+
+<!-- модалка REGISTER -->
+<div class="pop-up-1 non-visible-1">
+<div class="modal-register">
+  <div class="modal-top register-gap">
+  <p class="modal-title">Register</p>
+  <button class="modal-close-button">
+    <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
+  </button>
+</div>
+  <form class="modal-login-content">
+    <label class="modal-content-title">First name
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+    <label class="modal-content-title">Last name
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+    <label class="modal-content-title">E-mail
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+    <label class="modal-content-title">Password
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+  </label>
+  </form>
+  <button class="modal-button">Sign Up</button>
+  <div class="modal-bottom">
+    <p class="modal-bottom-text">Already have an account?</p>
+    <button class="login">Login</button>
+  </div>
+</div>
+</div>
+<!----------------------------------------------->
+
+<!-- модалка LOGIN -->
+<div class="pop-up-2 non-visible-2">
+<div class="modal-login">
+  <div class="modal-top login-gap">
+  <p class="modal-title">Login</p>
+  <button class="modal-close-button">
+    <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
+  </button>
+</div>
+  <form class="modal-login-content">
+    <label class="modal-content-title">E-mail or readers card
+    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </label>
+    <label class="modal-content-title">Password
+    <input type="text" id="password" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </label>
+  </form>
+  <button class="modal-button">Log In</button>
+  <div class="modal-bottom">
+    <p class="modal-bottom-text">Don’t have an account?</p>
+    <button class="register">Register</button>
+  </div>
+</div>
+</div>
+<!----------------------------------------------->
+
+<!-- модалка MY PROFILE -->
+
+<div class="pop-up-3 non-visible-3">
+<div class="modal-my-profile">
+  <div class="my-profile-left">
+  <div class="my-profile-init"></div>
+  <div class="my-profile-name"></div>
+
+  </div>
+
+  <div class="my-profile-right">
+    <div class="modal-top-profile">
+      <p class="modal-title big-modal-title">My profile</p>
+      <button class="modal-close-button close-profile">
+        <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
+      </button>
+    </div>
+    <div class="profile-count">
+      <div class="profile-count-container">
+        <p class="profile-count-text">visits</p>
+        <img src="./assets/img/svg/Union.svg" alt="profile">
+        <p class="count visits-count">1</p>
+      </div>
+      <div class="profile-count-container">
+        <p class="profile-count-text">bonuses</p>
+        <img src="./assets/img/svg/Star 1.svg" alt="bonuses">
+        <p class="count bonuses-count">1240</p>
+      </div>
+      <div class="profile-count-container">
+        <p class="profile-count-text">Books</p>
+        <img src="./assets/img/svg/book.svg" alt="books">
+        <p class="count books-count">0</p>
+      </div>
+    </div>
+    <div class="rented-books">
+      <p class="rented-books-text">Rented books</p>
+
+
+      <div class="rented-books-count">
+<ul>
+  <li></li>
+  <li></li>
+</ul>
+      </div>
+
+    </div>
+    <div class="card-number-container">
+      <p class="card-number-text">Card number</p>
+      <p class="card-number">F00234030</p>
+      <button class="card-copy-button">
+      <img class="card-copy" src="./assets/img/svg/icon copy.svg" alt="ccard_copy">
+      </button>
+    </div>
+  </div>
+
+</div>
+</div>
+<!----------------------------------------------->
+
+
+
+
+
+
+
+
+
+
 
       <section class="welcome">
         <div class="container welcome-container">
@@ -687,14 +696,14 @@
         <div class="cards-container non-display-card">
           <div class="find-card">
             <p class="find-card-title">Find your Library card</p>
-            <form class="card-form">
+            <div class="card-form">
               <div class="card-form-content">
                 <p class="card-text">Brooklyn Public Library</p>
                 <input type="text" id="name" placeholder="Reader's name" class="input-text" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
                 <input type="text" id="card" placeholder="Card number" class="input-text" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
               </div>
               <button class="find-button">Check the card</button>
-            </form>
+            </div>
           </div>
 
           <div class="get-card">
