@@ -721,6 +721,22 @@ color: var(--dark);
   color: var(--dark)
 }
 
+.buy-book-button {
+  margin-top: auto;
+  width: 75px;
+  height: 30px;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border: 1px solid var(--dark);
+  background-color: var(--white);
+  color: var(--dark);
+  transition-duration: 0.5s;
+}
+
+
 .welcome {
   /* display: flex; */
   padding-top: 220px;
