@@ -113,14 +113,504 @@ button {
   cursor: pointer;
 }
 
-.user-icon {
+.user-icon-container {
   width: 28px;
   height: 28px;
   margin: 31px 0 31px 40px;
+  display: none;
+}
+
+.user-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: none;
+}
+
+/* .non-display-icon {
+  display: none;
+} */
+
+.user-icon-login {
+  /* display: none; */
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  margin: 31px 0 31px 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--white);
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--sand)
+}
+
+
+
+/* перенести в медиа */
+
+.modal-drop-menu {
+  display: flex;
+  display: none; /* здесь оставить только дисплей нан, закоментить для просмотра */
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  height: 115px;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  margin-right: 5px; /*delete after?*/
+  background: var(--white);
+}
+
+.drop-menu-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.drop-menu-text {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--black);
+  transition: color 0.5s;
+}
+
+.drop-menu-text:hover {
+  color: var(--sand);
+}
+
+.profile {
+  position: relative;
+  padding-bottom: 5px;
+  font-weight: 700;
+}
+
+.profile::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 40px;
+  height: 1px;
+  background-color: var(--sand);
+}
+
+.modal-login {
+  display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
+  width: 250px;
+  height: 262px;
+  padding: 20px 15px 20px 25px;
+  background: var(--white);
+  margin-right: 5px; /*delete after?*/
+}
+
+.modal-register {
+  display: none;  /*  здесь оставить только дисплей нан, закоментить для просмотра */
+  width: 250px;
+  height: 382px;
+  padding: 20px 15px 20px 25px;
+  background: var(--white);
+}
+
+.modal-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-gap {
+  gap: 67px;
+}
+
+.register-gap {
+  gap: 54px;
+}
+
+
+.modal-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: Forum, cursive;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--black)
+}
+
+.modal-close-button {
+  width: 15px;
+  height: 15px;
+  margin-top: -5px;
+  /* margin-left: 54px ; */
+}
+
+.modal-content-title {
+  text-align: left;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  color: var(--black);
+}
+
+.modal-input {
+  padding-left: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1px solid #BB945F;
+}
+
+.modal-button {
+  margin-top: 10px;
+  width: 75px;
+  height: 30px;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: var(--black);
+  transition-duration: 0.5s;
+}
+
+.modal-button:hover {
+  background-color: var(--sand);
+  border-color: var(--sand);
+}
+
+.modal-bottom {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.modal-bottom-text {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--black);
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+}
+
+.register,
+.login {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-decoration-line: underline;
+  color: #0C0C0E;
+  transition: color 0.5s;
+}
+
+.register:hover,
+.login:hover {
+  color: var(--sand);
 }
 
 .burger-menu {
   display: none;
+}
+
+.modal-my-profile {
+  display: flex;
+  display: none;  /*здесь оставить только дисплей нан, закоментить для просмотра */
+  width: 600px;
+  /* height: 400px; */
+  background: var(--white);
+  color: var(--black);
+  /* border: 1px solid red; */
+}
+
+.my-profile-left {
+  width: 170px;
+  /* height: 403px; */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark);
+}
+
+.my-profile-init {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background: var(--white);
+  color: #BB945F;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: capitalize;
+  color: var(--sand);
+}
+
+.my-profile-name {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 15px;
+  /* width: 120px;
+  height: 30px; */
+  flex-shrink: 0;
+  background: var(--white);
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: capitalize;
+  color: var(--black)
+}
+
+.my-profile-right {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 25px 39px 20px;
+
+}
+
+.modal-top-profile {
+  display: flex;
+}
+
+.big-modal-title {
+  font-size: 40px;
+  letter-spacing: 0.8px;
+  margin-bottom: 40px;
+  margin-right: 160px;
+}
+
+.close-profile {
+  margin-left: 0;
+  margin-top: -15px;
+}
+
+.profile-count {
+  display: flex;
+  gap: 20px;
+}
+
+.profile-count-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-count-text {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+}
+
+.count {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  color: var(--black)
+}
+
+.rented-books-text {
+  font-family: Inter, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 30px;
+  color: var(--dark);
+}
+
+/* хз */
+.rented-books-count {
+  height: 50px;
+  width: 350px;
+  overflow-x: auto;
+  white-space: nowrap;
+  border: 1px solid black;
+}
+
+.card-number-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.card-number-text {
+font-family: Inter, sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
+color: var(--dark);
+}
+
+.card-number {
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--sand);
+}
+
+.card-copy {
+  transition-duration: 0.5s;
+}
+
+.card-copy:hover {
+  filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
+  -webkit-filter: invert(50%) sepia(8000%) saturate(120%) hue-rotate(-5deg) brightness(87%) contrast(153%);
+}
+
+.buy-card {
+  display: none;  /*здесь оставить только дисплей нан, закоментить для просмотра */
+  width: 650px;
+  height: 540px;
+  background: var(--white);
+  /* border: 1px solid red; */
+}
+
+.buy-card-top {
+  display: flex;
+  /* width: 650px; */
+  height: 60px;
+  padding: 20px 25px 20px 143px;
+  flex-shrink: 0;
+  background: var(--dark)
+}
+
+.white-modal-title {
+  margin-bottom: 0;
+  font-size: 40px;
+  letter-spacing: 0.8px;
+  color: var(--white)
+}
+
+.close-white {
+  margin-left: 100px;
+  margin-top: 0;
+}
+
+.buy-card-container {
+  display: flex;
+  padding: 30px 40px 40px 40px;
+}
+
+.buy-card-left {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-right: 40px;
+}
+
+.small-modal-input {
+  width: 45px;
+}
+
+.big-int {
+  margin-bottom: 20px;
+}
+
+.exp-code {
+  display: flex;
+  gap: 10px;
+}
+
+.buy-card-right {
+  width: 330px;
+}
+
+.buy-card-text {
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 2px;
+  color: var(--grey)
+}
+
+.buy-card-bottom {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 10px;
+}
+
+.buy-card-price {
+  margin-left: 25px;
+  margin-top: 10px;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dark)
 }
 
 .welcome {
@@ -194,32 +684,82 @@ button {
   color: var(--black);
 }
 
+.section-description-about {
+  margin-bottom: 20px;
+}
+
 .section-about {
   padding-right: 0;
   padding-left: 0;
 }
 
-.carret-left,
-.carret-right {
-  display: none;
+.container-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.images-about-container {
-  justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-  margin-bottom: 35px;
+
+.slider-container {
+  /* display: flex;
+  width: 100%; */
+  position: relative;
+  white-space: nowrap;
+  /* overflow: hidden; */
+  max-width: 1400px;
+  scroll-behavior: smooth;
+}
+
+.slider {
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  scroll-behavior: smooth;
 }
 
 .image-about {
-  width: 450px;
+  /* display: flex; */
   height: 560px;
+  width: 450px;
+  object-fit: cover;
+  margin-left: 25px;
+
 }
+
+.slider img:first-child {
+  margin-left: 0px;
+}
+
+.pointer-events{
+  pointer-events: none;
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carret-left,
+.carret-right {
+  display: none;
+  width: 24px;
+  height: 25px;
+  position: absolute;
+  cursor: pointer;
+  top: 288px;
+}
+
+.carret-left {
+  left: -83px;
+}
+
+.carret-right {
+  right: -83px;
+}
+
 
 .pagination-about-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 35px;
 }
 
 .pagination-container {
@@ -247,6 +787,7 @@ button {
 
 .active {
   background-color: var(--sand);
+  cursor: default;
 }
 
 .favorites-section {
@@ -267,71 +808,96 @@ button {
 
 .favorites-radio {
   display: flex;
-  gap: 76px;
-  margin-left: 10px;
-  margin-top: 35px;
-}
-
-.radio-label-input-container {
-  margin: 5px;
-  cursor: pointer;
+  flex-direction: row;
+  gap: 70px;
+  margin-left: 12px;
+  margin-top: 40px;
 }
 
 .radio-label {
-  display: flex;
   font-family: Inter, sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: normal;
   cursor: pointer;
   color: var(--black);
-}
-
-.first {
-  width: 110px;
-}
-
-.second {
-  width: 108px;
-}
-
-.third {
-  width: 125px;
-  margin-left: -4px;
-}
-
-.fourth {
-  width: 108px;
-  margin-left: -3px;
-}
-
-.radio-label:has(.radio-input:checked) {
-  font-weight: 700;
+  word-wrap: break-word;
 }
 
 .radio-input-container {
-  margin-right: 15px;
-  text-align: center;
-  width: 27px;
-  height: 27px;
-  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  padding: 3px 5px 1px 5px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 118px;
+  height: 24px;
 }
 
-.radio-input {
-  margin-top: 5px;
+.first {
+  width: 118px;
+  margin-right: 4px;
+}
+
+.second {
+  width: 118px;
+  margin-right: 4px;
+}
+
+.third {
+  width: 130px;
+  margin-right: 9px;
+}
+
+.fourth {
+  width: 125px;
+  margin-left: -3px;
+}
+
+.radio-input[type='radio'] {
   width: 17px;
   height: 17px;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
+  margin: 0;
   accent-color: var(--black);
+  /* cursor: pointer; */
+}
+
+.radio-input1[type='radio'] {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  stroke-width: 5px;
+  stroke: var(--black);
+  accent-color: var(--black);
+  /* cursor: pointer; */
+}
+
+.radio-input[type='radio']:checked ~ .radio-input-text {
+  font-weight: 700;
+}
+
+.radio-input1[type='radio']:checked ~ .radio-input-text {
+  font-weight: 700;
 }
 
 .favorites-books {
-  margin-top: 32px;
+  margin-top: 40px;
   padding-right: 60px;
   padding-left: 20px;
 }
+
+/* .favorites-book {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 15px 0 15px 20px;
+  min-width: 550px;
+  min-height: 555px;
+  border: 1px solid var(--black);
+} */
 
 .favorites-book {
   position: relative;
@@ -343,6 +909,8 @@ button {
   min-width: 550px;
   min-height: 555px;
   border: 1px solid var(--black);
+  transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+  opacity: 1;
 }
 
 .item-title {
@@ -436,9 +1004,20 @@ button {
   height: 300px;
 }
 
-.non-display-book {
+/* .non-display-book {
   display: none;
+} */
+
+.non-display-book {
+    position: absolute !important;
+    top: -100%;
+    opacity: 0 !important;
+    visibility: hidden;
+    transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
 }
+
+
+
 
 .space {
   letter-spacing: 2px;
@@ -721,6 +1300,56 @@ margin-right: -2px;
   cursor: pointer;
   background-color: var(--sand);
   border-color: var(--sand);
+}
+
+/* .non-display-card {
+  display: none;
+} */
+
+.cards-container-login {
+  display: flex;
+  display: none;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.card-count-container {
+  display: flex;
+  margin-top: 15px;
+  gap: 35px;
+}
+
+.mini-v {
+font-size: 10px;
+letter-spacing: 0.2px;
+color: var(--black);
+}
+
+.no-gap {
+  gap: 0;
+  margin: 0;
+}
+
+.bottom-p {
+  padding: 20px 20px 16px 20px;
+}
+
+.input-text-login {
+  margin-bottom: 25px;
+  padding: 8px 0 8px 20px;
+  width: 520px;
+  height: 66px;
+  font-family: Forum, cursive;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--sand)
 }
 
 .footer {
