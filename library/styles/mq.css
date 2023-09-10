@@ -2,20 +2,16 @@
 
 @media (max-width: 1420px) {
 
-  .images-about-container {
-    margin-bottom: 20px;
+  .pagination-about-container {
+    margin-top: 20px;
 }
+
+  .slider-container {
+    max-width: 925px;
+  }
 
   .image-none {
     display: none;
-  }
-
-  .image-display {
-    align-items: center;
-  }
-
-  .image-display-2 {
-    display: block;
   }
 
   .display-first {
@@ -82,24 +78,21 @@
     display: block;
   }
 
-  .image-display-2 {
-    display: none;
-  }
-
-  .image-display {
-    display: block;
-    align-items: center;
-    margin-right: 34px;
-    margin-left: 34px;
+  .slider-container {
+    max-width: 450px;
   }
 
   .carret-left,
   .carret-right {
     display: block;
-    margin-top: 45px;
+    /* margin-top: 45px; */
   }
 
   .user-icon {
+    margin-right: 40px;
+  }
+
+  .user-icon-login {
     margin-right: 40px;
   }
 
@@ -197,8 +190,7 @@
 
   .section-description {
     width: 728px;
-    margin: 0 auto;
-    margin-top: 40px;
+    margin: 40px auto 20px;
   }
 
   .coffeeshop-menu {
