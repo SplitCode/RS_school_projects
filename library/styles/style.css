@@ -1151,7 +1151,13 @@ color: var(--dark);
   transition-duration: 0.5s;
 }
 
-.own-button {
+.book-button:hover {
+  background: var(--sand);
+  border: var(--sand);
+  /* cursor: pointer; */
+}
+
+/* .own-button {
   margin-top: auto;
   width: 75px;
   height: 30px;
@@ -1163,12 +1169,18 @@ color: var(--dark);
   border: 1px solid var(--sand);
   background-color: var(--white);
   color: var(--sand);
+  cursor: default;
+} */
+
+.own-button {
+    color: var(--sand);
+    border: 1px solid #BB945F;
+    cursor: default;
 }
 
-.book-button:hover {
-  background-color: var(--sand);
-  border-color: var(--sand);
-  cursor: pointer;
+.own-button:hover {
+  background: var(--white);
+  border: 1px solid #BB945F;
 }
 
 .buy-book-button:hover {
@@ -1176,7 +1188,6 @@ color: var(--dark);
   border-color: var(--sand);
   cursor: pointer;
 }
-
 
 .book-img {
   position: absolute;
@@ -1197,9 +1208,6 @@ color: var(--dark);
     visibility: hidden;
     transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
 }
-
-
-
 
 .space {
   letter-spacing: 2px;
