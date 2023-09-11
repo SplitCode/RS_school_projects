@@ -145,10 +145,10 @@
     <input type="text" id="last-name" class="modal-input">
   </label>
     <label class="modal-content-title">E-mail
-    <input type="text" id="email" class="modal-input">
+    <input type="email" id="email" class="modal-input">
   </label>
     <label class="modal-content-title">Password
-    <input type="text" id="password" class="modal-input">
+    <input type="password" id="password" class="modal-input">
   </label>
   </form>
   <button class="modal-button sign-up-btn">Sign Up</button>
@@ -165,16 +165,16 @@
 <div class="modal-login">
   <div class="modal-top login-gap">
   <p class="modal-title">Login</p>
-  <button class="modal-close-button">
+  <button class="modal-close-button modal-close">
     <img src="./assets/img/svg/close_btn.svg" alt="modal_close_button">
   </button>
 </div>
   <form class="modal-login-content">
     <label class="modal-content-title">E-mail or readers card
-    <input type="text" id="email" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    <input type="email" id="email-login" class="modal-input">
     </label>
     <label class="modal-content-title">Password
-    <input type="text" id="password" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    <input type="password" id="password-login" class="modal-input">
     </label>
   </form>
   <button class="modal-button">Log In</button>
@@ -714,7 +714,7 @@
             </p>
             <div class="card-buttons">
               <button class="card-button register-card-btn">Sign Up</button>
-              <button class="card-button">Log in</button>
+              <button class="card-button login-card-btn">Log in</button>
             </div>
           </div>
         </div>

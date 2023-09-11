@@ -284,3 +284,56 @@ const newUser = {
   localStorage.setItem('isLoggedIn', 'true');
   localStorage.setItem('loggedInEmail', email);
  });
+
+ // Log-In----------------------------------------------------
+
+ const loginModal = document.querySelector('.pop-up-2');
+ const emailLoginInput = document.querySelector('#email-login');
+ const passwordLoginInput = document.querySelector('#password-login');
+ const loginCardBtn = document.querySelector('.login-card-btn')
+ const registerLogin = document.querySelector('.register')
+ const loginRegister = document.querySelector('.login');
+ const closeModal = document.querySelector('.modal-close');
+
+ const clearLoginData = () => {
+  emailLoginInput.value = '';
+  passwordLoginInput.value = '';
+ }
+
+ loginCardBtn.addEventListener('click', () => {
+  loginModal.classList.toggle('non-visible-2');
+  clearLoginData();
+  registerMenu.classList.toggle('menu-open');
+ });
+
+ registerLogin.addEventListener('click', () => {
+ loginModal.classList.toggle('non-visible-2');
+  setTimeout(() => {
+    registerModal.classList.toggle('non-visible-1');
+  }, 200);
+ })
+
+ loginRegister.addEventListener('click', () => {
+ registerModal.classList.toggle('non-visible-1');
+  setTimeout(() => {
+    loginModal.classList.toggle('non-visible-2');
+  }, 200);
+ })
+
+ loginCardBtn.addEventListener('click', () => {
+  loginModal.classList.toggle('non-visible-2');
+  clearLoginData();
+ });
+
+ loginModal.addEventListener('click', (event) => {
+  if (event.target.classList.contains('pop-up-2')) {
+    loginModal.classList.toggle('non-visible-2');
+    clearLoginData();
+  }
+ });
+
+ closeModal.addEventListener('click', () => {
+  loginModal.classList.toggle('non-visible-2');
+  clearLoginData();
+ });
+
