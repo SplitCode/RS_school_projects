@@ -547,13 +547,13 @@ logOut.addEventListener('click', () => {
   }
 });
 
-var cardCopyButtons = document.querySelectorAll(".card-copy");
+let cardCopyButtons = document.querySelectorAll(".card-copy");
   cardCopyButtons.forEach(function(button) {
     button.addEventListener("click", function() {
-      var cardNumberElement = this.parentNode.querySelector(".card-number");
-      var cardNumber = cardNumberElement.textContent.trim();
+      let cardNumberElement = this.parentNode.querySelector(".card-number");
+      let cardNumber = cardNumberElement.textContent.trim();
 
-      var tempElement = document.createElement("textarea");
+      let tempElement = document.createElement("textarea");
       tempElement.value = cardNumber;
       document.body.appendChild(tempElement);
 
@@ -586,9 +586,9 @@ var cardCopyButtons = document.querySelectorAll(".card-copy");
     }
    });
 
-   const DLCProfile = document.querySelector('.dlc-button');
+   const cardProfile = document.querySelector('.dlc-button');
 
-   DLCProfile.addEventListener('click', () => {
+   cardProfile.addEventListener('click', () => {
     myProfile.classList.toggle('non-visible-3')
    })
 
@@ -634,7 +634,7 @@ const closeBuy = document.querySelector('.close-buy');
   }
 });
 
-const clearDLCData =() => {
+const clearDLCData = () => {
   name.value = '';
   number.value = '';
 }
