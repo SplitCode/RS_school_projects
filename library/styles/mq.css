@@ -47,17 +47,18 @@
     align-self: flex-start;
   } */
 
-  .cards-container {
+  .cards-container,
+  .cards-container-login {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .cards-container-login {
+  /* .cards-container-login {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
   .get-card {
     /* margin: auto; */
