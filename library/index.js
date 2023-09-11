@@ -1,4 +1,4 @@
-console.log('Выполненные пункты:\n1) Вёрстка соответствует макету - +26\n2) Ни на одном из разрешений до 640px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется - +12\nНа ширине экрана 768рх реализовано адаптивное меню - +12')
+// console.log('Выполненные пункты:\n1) Вёрстка соответствует макету - +26\n2) Ни на одном из разрешений до 640px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется - +12\nНа ширине экрана 768рх реализовано адаптивное меню - +12')
 
 console.log('Сумма баллов - 50');
 
@@ -145,8 +145,6 @@ const modalLogin = document.querySelector('.pop-up-2');
 const modalReg = document.querySelector('.pop-up-1');
 
 let isOpenMenu = false;
-// let isTransitioning = false;
-
 
 const closeMenu = () => {
   isOpenMenu = false;
@@ -170,7 +168,6 @@ user.addEventListener('click', (event) => {
   closeMenu();
   });
 
-
 loginUser.addEventListener('click', (event) => {
   event.stopPropagation();
   profileMenu.classList.toggle('login-menu-open');
@@ -185,4 +182,158 @@ document.addEventListener('click', (event) => {
    profileMenu.classList.remove('login-menu-open');
  }
 });
+
+// Registration----------------------------------------------------
+
+const registerModal = document.querySelector('.pop-up-1');
+const registerButton = document.querySelector('.register-button');
+const registerCardBtn = document.querySelector('.register-card-btn');
+const signUpBtn = registerModal.querySelector('.sign-up-btn');
+const firstNameInput = registerModal.querySelector('#first-name');
+const lastNameInput = registerModal.querySelector('#last-name');
+const emailInput = registerModal.querySelector('#email');
+const passwordInput = registerModal.querySelector('#password');
+const closeRegister = document.querySelector('.register-close');
+const buyButtons = document.querySelectorAll(".book-button");
+
+const clearData = () => {
+  firstNameInput.value = '';
+  lastNameInput.value = '';
+  emailInput.value = '';
+  passwordInput.value = '';
+ }
+
+const isValidEmail = (email) => {
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailPattern.test(email);
+ }
+
+ const generateCardNumber = () => {
+   const randomNumber = Math.floor(Math.random() * 0x1000000000);
+   return randomNumber.toString(16).toUpperCase().slice(-9);
+ }
+
+ let storedUserData = localStorage.getItem('userData');
+ let userDataArray = storedUserData ? JSON.parse(storedUserData) : [];
+
+ if (!Array.isArray(userDataArray)) {
+  userDataArray = [];
+ }
+
+ registerButton.addEventListener('click', () => {
+  registerModal.classList.toggle('non-visible-1');
+  clearData();
+  registerMenu.classList.toggle('menu-open');
+ });
+
+ registerCardBtn.addEventListener('click', () => {
+   registerModal.classList.toggle('non-visible-1');
+  clearData();
+ });
+
+ registerModal.addEventListener('click', (event) => {
+  if (event.target.classList.contains('pop-up-1')) {
+    registerModal.classList.toggle('non-visible-1');
+    clearData();
+  }
+ });
+
+ closeRegister.addEventListener('click', () => {
+  registerModal.classList.toggle('non-visible-1');
+  clearData();
+ });
+
+ signUpBtn.addEventListener('click', () => {
+  const firstName = firstNameInput.value.trim();
+  const lastName = lastNameInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
+
+  if (!firstName || !lastName || !email || !password || password.length < 8 || !isValidEmail(email)) {
+    alert('The form contains errors! All fields must be filled in. The password must contain at least 8 characters.');
+    return;
+  }
+
+  const existingUser = userDataArray.find(user => user.email === email);
+  if (existingUser) {
+    alert('A user with such an email already exists. Log in or use another email to register.');
+    return;
+  }
+
+  const cardNumber = generateCardNumber();
+
+const newUser = {
+  firstName,
+  lastName,
+  email,
+  password,
+  cardNumber,
+  visitsCount: 1,
+  booksCount: 0,
+  subscription: false,
+  buyButton: [],
+  booksName: []
+ };
+
+  userDataArray.push(newUser);
+  localStorage.setItem('userData', JSON.stringify(userDataArray));
+
+  alert('Congratulations! You have successfully registered!');
+  location.reload();
+  clearData();
+  localStorage.setItem('isLoggedIn', 'true');
+  localStorage.setItem('loggedInEmail', email);
+ });
+
+ // Log-In----------------------------------------------------
+
+ const loginModal = document.querySelector('.pop-up-2');
+ const emailLoginInput = document.querySelector('#email-login');
+ const passwordLoginInput = document.querySelector('#password-login');
+ const loginCardBtn = document.querySelector('.login-card-btn')
+ const registerLogin = document.querySelector('.register')
+ const loginRegister = document.querySelector('.login');
+ const closeModal = document.querySelector('.modal-close');
+
+ const clearLoginData = () => {
+  emailLoginInput.value = '';
+  passwordLoginInput.value = '';
+ }
+
+ loginCardBtn.addEventListener('click', () => {
+  loginModal.classList.toggle('non-visible-2');
+  clearLoginData();
+  registerMenu.classList.toggle('menu-open');
+ });
+
+ registerLogin.addEventListener('click', () => {
+ loginModal.classList.toggle('non-visible-2');
+  setTimeout(() => {
+    registerModal.classList.toggle('non-visible-1');
+  }, 200);
+ })
+
+ loginRegister.addEventListener('click', () => {
+ registerModal.classList.toggle('non-visible-1');
+  setTimeout(() => {
+    loginModal.classList.toggle('non-visible-2');
+  }, 200);
+ })
+
+ loginCardBtn.addEventListener('click', () => {
+  loginModal.classList.toggle('non-visible-2');
+  clearLoginData();
+ });
+
+ loginModal.addEventListener('click', (event) => {
+  if (event.target.classList.contains('pop-up-2')) {
+    loginModal.classList.toggle('non-visible-2');
+    clearLoginData();
+  }
+ });
+
+ closeModal.addEventListener('click', () => {
+  loginModal.classList.toggle('non-visible-2');
+  clearLoginData();
+ });
 
