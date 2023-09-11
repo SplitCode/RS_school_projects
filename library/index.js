@@ -290,17 +290,19 @@ const newUser = {
  const loginModal = document.querySelector('.pop-up-2');
  const emailLoginInput = document.querySelector('#email-login');
  const passwordLoginInput = document.querySelector('#password-login');
+ const loginButton = document.querySelector('.login-button');
  const loginCardBtn = document.querySelector('.login-card-btn')
  const registerLogin = document.querySelector('.register')
  const loginRegister = document.querySelector('.login');
  const closeModal = document.querySelector('.modal-close');
+//  const loginButton = document.querySelector('.log-in-btn');
 
  const clearLoginData = () => {
   emailLoginInput.value = '';
   passwordLoginInput.value = '';
  }
 
- loginCardBtn.addEventListener('click', () => {
+ loginButton.addEventListener('click', () => {
   loginModal.classList.toggle('non-visible-2');
   clearLoginData();
   registerMenu.classList.toggle('menu-open');
@@ -337,3 +339,252 @@ const newUser = {
   clearLoginData();
  });
 
+ let currentUser = null;
+
+loginButton.addEventListener('click', () => {
+  const email = emailInputLog.value.trim();
+  const password = passwordInputLog.value;
+
+  const storedUserData = localStorage.getItem('userData');
+  if (storedUserData) {
+    const userDataArray = JSON.parse(storedUserData);
+    const user = userDataArray.find(user => user.email === email && user.password === password);
+
+    if (user) {
+     alert('Вы успешно авторизованы!');
+     user.visits += 1; 
+     popupLog.classList.toggle('hidden-log');
+     clearFieldsLog();
+     buyButtons.forEach((button) => {
+       button.classList.add('registered')
+     })
+     registerMenu.classList.add('none')
+     profile.classList.remove('none')
+     const fullName = `${user.firstName} ${user.lastName}`;
+  
+     const firstNameInitial = user.firstName[0];
+     const lastNameInitial = user.lastName[0];
+     
+     userIcon.textContent = `${firstNameInitial}${lastNameInitial}`.toUpperCase();
+     profileIcon.textContent = `${firstNameInitial}${lastNameInitial}`.toUpperCase();
+     profileName.textContent = fullName;
+     cardNumber.textContent = user.cardNumber
+     visits.textContent = `${user.visits}`;
+     books.textContent = `${user.books}`;
+     userIcon.setAttribute('title', fullName);
+     userIcon.style.display = 'block';
+     userIcon.style.font
+     icon.classList.add('none')
+     currentUser = user;
+     localStorage.setItem('isLoggedIn', 'true');
+     localStorage.setItem('loggedInEmail', email);
+     const numberProfileElement = document.querySelector('.number-profile');
+     localStorage.setItem('userData', JSON.stringify(userDataArray));
+     location.reload();
+     if (numberProfileElement) {
+       numberProfileElement.textContent = `${currentUser.cardNumber}`;
+     }
+    } else {
+      alert('Неверный email или пароль.');
+    }
+  } else {
+    alert('Пользователь не найден. Зарегистрируйтесь сначала.');
+  }
+});
+
+const logOut = document.querySelector('.Log-out')
+
+logOut.addEventListener('click', () => {
+  localStorage.setItem('isLoggedIn', 'false');
+  location.reload();
+})
+
+closestPopupLog.addEventListener('click', () => {
+ popupLog.classList.toggle('hidden-log');
+ clearFieldsLog();
+});
+
+ buyButtons.forEach(function(button) {
+   button.addEventListener("click", function() {
+     if (button.textContent.includes("Buy") && !button.classList.contains('registered')) {
+       window.scrollTo({
+         top: 0,
+         behavior: 'smooth'
+       });
+       popupLog.classList.toggle('hidden-log');
+       clearFieldsLog();
+     }
+   });
+ });
+
+ document.addEventListener('DOMContentLoaded', () => {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  
+  if (isLoggedIn === 'true') {
+    const storedUserData = localStorage.getItem('userData');
+    if (storedUserData) {
+      const userDataArray = JSON.parse(storedUserData);
+      const email = localStorage.getItem('loggedInEmail');
+      const currentUser = userDataArray.find(user => user.email === email);
+
+      if (currentUser) {
+        libraruCard.classList.add('none');
+        libraruCardLogin.classList.remove('none');
+        buyButtons.forEach(function(button) {
+          button.addEventListener("click", function() {
+            if (currentUser && !currentUser.subscription && button.classList.contains('registered')) {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+              popupBc.classList.toggle('hidden-Bc');
+            } else if(button.classList.contains('own')){
+
+            } else {
+              button.classList.add('own');
+              button.textContent = 'Own';
+
+              currentUser.books += 1;
+
+              const buttonId = button.dataset.id;
+
+              if (!currentUser.buyButton.includes(buttonId)) {
+                currentUser.buyButton.push(buttonId);
+              }
+
+              const bookElement = button.closest('.item');
+              const bookSubtitle = bookElement.querySelector('.book_subtitle').textContent;
+              const bookNextTitle = bookElement.querySelector('.book_nexttitle').textContent;
+
+              currentUser.booksName.push({ subtitle: bookSubtitle, nextTitle: bookNextTitle });
+
+              const userIndex = userDataArray.findIndex(user => user.email === currentUser.email);
+              if (userIndex !== -1) {
+                userDataArray[userIndex] = currentUser;
+                localStorage.setItem('userData', JSON.stringify(userDataArray));
+              }
+              const li = document.createElement('li');
+              li.textContent = `${bookSubtitle}, ${bookNextTitle}`;
+              li.classList.add('li-rentendet');
+              document.querySelector('.rented-books nav').appendChild(li);
+            }
+          });
+        });
+        currentUser.booksName.forEach(book => {
+          const li = document.createElement('li');
+          li.textContent = `${book.subtitle}, ${book.nextTitle}`;
+          li.classList.add('li-rentendet');
+          document.querySelector('.rented-books nav').appendChild(li);
+        });
+        buyButtons.forEach(function(button) {
+          const buttonId = button.dataset.id;
+          if (currentUser.buyButton.includes(buttonId)) {
+            button.classList.add('own');
+            button.textContent = 'Own';
+          }
+        });
+        buyBc.addEventListener('click', () => {
+          const BCN = BCNInput.value.trim();
+          const mounth = mounthInput.value.trim();
+          const years = yearsInput.value.trim();
+          const CVC = CVCInput.value.trim();
+          const cardholderName = cardholderNameInput.value.trim();
+          const postalCode = postalCodeInput.value.trim();
+          const CT = CTInput.value.trim();
+        
+          if (BCN.length !== 16 || mounth.length !== 2 || years.length !== 2 || CVC.length !== 3 || !cardholderName || !postalCode || !CT) {
+            alert('Заполните все поля правильно!');
+          } else {
+            alert('Спасибо за покупку');
+            popupBc.classList.toggle('hidden-Bc');
+            currentUser.subscription = true;
+            const userIndex = userDataArray.findIndex(user => user.email === currentUser.email);
+            if (userIndex !== -1) {
+              userDataArray[userIndex] = currentUser;
+              localStorage.setItem('userData', JSON.stringify(userDataArray));
+            }
+          }
+        });     
+        const fullName = `${currentUser.firstName} ${currentUser.lastName}`;
+        const firstNameInitial = currentUser.firstName[0];
+        const lastNameInitial = currentUser.lastName[0];
+        const visitsVBB = currentUser.visits;
+        const booksVBB = currentUser.books;
+        
+        userIcon.textContent = `${firstNameInitial}${lastNameInitial}`.toUpperCase();
+        profileIcon.textContent = `${firstNameInitial}${lastNameInitial}`.toUpperCase();
+        visits.forEach(visits => {
+          visits.textContent = `${visitsVBB}`;
+        })
+        books.forEach(books => {
+          books.textContent = `${booksVBB}`;
+        })
+        fullNameDlC.textContent = `${fullName}`
+        cardNumberDLC.textContent = `${currentUser.cardNumber}`
+        cardNumber.textContent = currentUser.cardNumber
+        profileName.textContent = fullName;
+        userIcon.setAttribute('title', fullName);
+        userIcon.style.display = 'block';
+        icon.classList.add('none');
+        buyButtons.forEach((button) => {
+          button.classList.add('registered');
+        });
+        registerMenu.classList.add('registered');
+        registerMenu.classList.add('none');
+        profile.classList.remove('none');
+    
+        const numberProfileElement = document.querySelector('.number-profile');
+        if (numberProfileElement) {
+          numberProfileElement.textContent = `${currentUser.cardNumber}`;
+        }
+      }
+    }
+  }
+});
+
+var cardCopyButtons = document.querySelectorAll(".card-copy");
+  cardCopyButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      var cardNumberElement = this.parentNode.querySelector(".cn");
+      var cardNumber = cardNumberElement.textContent.trim();
+
+      var tempElement = document.createElement("textarea");
+      tempElement.value = cardNumber;
+      document.body.appendChild(tempElement);
+
+      tempElement.select();
+
+      document.execCommand("copy");
+
+      document.body.removeChild(tempElement);
+
+    });
+  });
+
+  const closeButton = document.querySelector('.close-button-mp');
+  const myProfile = document.querySelector('.popup-my-profile');
+  const buttonMyProfile = document.querySelector('.my-profile');
+
+  closeButton.addEventListener('click', () => {
+    myProfile.classList.toggle('hidden-profile')
+  })
+
+  buttonMyProfile.addEventListener('click', () =>{
+    myProfile.classList.toggle('hidden-profile')
+    profile.classList.toggle('menu-exit-log');
+  })
+
+  myProfile.addEventListener('click', (event) => {
+    if (event.target.classList.contains('popup-my-profile')) {
+      myProfile.classList.toggle('hidden-profile');
+      clearFields();
+    }
+   });
+
+   DLCProfile.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    myProfile.classList.toggle('hidden-profile')
+   })
