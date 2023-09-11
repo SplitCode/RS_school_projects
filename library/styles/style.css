@@ -1484,15 +1484,15 @@ margin-right: -2px;
   border-color: var(--sand);
 }
 
-.non-display-card {
-  display: none;
-}
-
 .cards-container-login {
   display: flex;
   /* display: none; */
   justify-content: space-between;
   margin-top: 40px;
+}
+
+.non-display-card {
+  display: none;
 }
 
 .card-count-container {

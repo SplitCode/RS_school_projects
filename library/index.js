@@ -604,3 +604,54 @@ const closeBuy = document.querySelector('.close-buy');
       buyCardModal.classList.toggle('non-visible-4');
     }
    });
+
+
+ const checkCard = document.querySelector('.find-button');
+ const name = document.querySelector('#name');
+ const number = document.querySelector('#card');
+
+ checkCard.addEventListener('click', () => {
+  const storedUserData = localStorage.getItem('userData');
+  const enteredFullName = name.value.trim();
+  const enteredNumber = number.value.trim();
+
+  if (storedUserData) {
+    const userDataArray = JSON.parse(storedUserData);
+    const matchingUser = userDataArray.find(someUser => (someUser.firstName + someUser.lastName) === enteredFullName && someUser.cardNumber === enteredNumber);
+
+    if (matchingUser) {
+      libraryCard.classList.add('non-display-card');
+      libraryCardLogin.classList.remove('non-display-card');
+      
+      setTimeout(() => {
+        libraryCardLogin.classList.add('non-display-card');
+        libraryCard.classList.remove('non-display-card');
+        clearDLCData();
+      }, 10000);
+
+      updateDLCFields(matchingUser);
+    }
+  }
+});
+
+const clearDLCData =() => {
+  name.value = '';
+  number.value = '';
+}
+
+const fullNameDlC = document.querySelector('.name-digital-card');
+const cardNumberDLC = document.querySelector('.card-digital-card');
+
+const updateDLCFields = (someUser) => {
+  fullNameDlC.textContent = `${someUser.firstName} ${someUser.lastName}`;
+  cardNumberDLC.textContent = someUser.cardNumber;
+  visitsCount.textContent = someUser.visitsCount;
+  booksCount.textContent = someUser.booksCount;
+  visitsCount.forEach(visitsCount => {
+    visitsCount.textContent = `${someUser.visitsCount}`;
+  })
+  booksCount.forEach(booksCount => {
+    booksCount.textContent = `${someUser.booksCount}`;
+  })
+}
+
