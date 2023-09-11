@@ -47,10 +47,10 @@
         </div>
 
         <div class="profile-drop-menu non-display-menu">
-          <p class="drop-menu-text profile">Profile</p>
+          <p class="drop-menu-text profile profile-num">Profile</p>
           <div class="drop-menu-btn-container">
-              <button class="drop-menu-button drop-menu-text">My profile</button>
-              <button class="drop-menu-button drop-menu-text">Log Out</button>
+              <button class="drop-menu-button my-profile-btn drop-menu-text">My profile</button>
+              <button class="drop-menu-button logout-button drop-menu-text">Log Out</button>
           </div>
         </div>
 <!----------------------------------------------->
@@ -67,64 +67,6 @@
 </header>
 
 <!----------------------------------------------->
-
-<!-- модалка BY A LIBRARY CARD -->
-
-<div class="buy-card">
-<div class="buy-card-top">
-  <p class="modal-title white-modal-title">Buy a library card</p>
-  <button class="modal-close-button close-white">
-    <img src="./assets/img/svg/close_btn_white.svg" alt="modal_close_button">
-  </button>
-</div>
-<div class="buy-card-container">
-  <div>
-  <form class="buy-card-left">
-  <label class="modal-content-title">Bank card number
-    <input type="text" id="bank-card-number" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-  <label class="modal-content-title">Expiration code
-    <div class="exp-code">
-    <label>
-    <input type="text" id="mounth" class="modal-input small-modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-    </label>
-    <label>
-    <input type="text" id="year" class="modal-input small-modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-  </div>
-</label>
-  <label class="modal-content-title">CVC
-    <div>
-    <input type="text" id="cvc" class="modal-input small-modal-input big-int" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </div>
-  </label>
-  <label class="modal-content-title">Cardholder name
-    <input type="text" id="cardholder-name" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-  <label class="modal-content-title">Postal code
-    <input type="text" id="postal-code" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-  <label class="modal-content-title">City / Town
-    <input type="text" id="city-town" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
-  </label>
-  </form>
-  <div class="buy-card-bottom">
-  <button class="buy-book-button">Buy</button>
-  <p class="buy-card-price">$ 25.00</p>
-</div>
-</div>
-  <div class="buy-card-right">
-<p class="buy-card-text">If you are live, work, attend school, or pay property taxes in New York State,
-  you can get a $25 digital library card right now using this online form.
-  Visitors to New York State can also use this form to apply for a temporary card.
-</p>
-  </div>
-</div>
-</div>
-
-<!----------------------------------------------->
-
-
 
     <main class="main">
 
@@ -225,10 +167,8 @@
 
 
       <div class="rented-books-count">
-<ul>
-  <li></li>
-  <li></li>
-</ul>
+<nav class="rented-list">
+</nav>
       </div>
 
     </div>
@@ -236,7 +176,7 @@
       <p class="card-number-text">Card number</p>
       <p class="card-number">F00234030</p>
       <button class="card-copy-button">
-      <img class="card-copy" src="./assets/img/svg/icon copy.svg" alt="ccard_copy">
+      <img class="card-copy" src="./assets/img/svg/icon copy.svg" alt="card_copy">
       </button>
     </div>
   </div>
@@ -245,14 +185,62 @@
 </div>
 <!----------------------------------------------->
 
+<!-- модалка BY A LIBRARY CARD -->
 
-
-
-
-
-
-
-
+<div class="pop-up-4 non-visible-4">
+<div class="buy-card">
+  <div class="buy-card-top">
+    <p class="modal-title white-modal-title">Buy a library card</p>
+    <button class="modal-close-button close-white close-buy">
+      <img src="./assets/img/svg/close_btn_white.svg" alt="modal_close_button">
+    </button>
+  </div>
+  <div class="buy-card-container">
+    <div>
+    <form class="buy-card-left">
+    <label class="modal-content-title">Bank card number
+      <input type="text" id="bank-card-number" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </label>
+    <label class="modal-content-title">Expiration code
+      <div class="exp-code">
+      <label>
+      <input type="text" id="mounth" class="modal-input small-modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+      </label>
+      <label>
+      <input type="text" id="year" class="modal-input small-modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </label>
+    </div>
+  </label>
+    <label class="modal-content-title">CVC
+      <div>
+      <input type="text" id="cvc" class="modal-input small-modal-input big-int" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </div>
+    </label>
+    <label class="modal-content-title">Cardholder name
+      <input type="text" id="cardholder-name" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </label>
+    <label class="modal-content-title">Postal code
+      <input type="text" id="postal-code" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </label>
+    <label class="modal-content-title">City / Town
+      <input type="text" id="city-town" class="modal-input" pattern="[A-Za-zА-Яа-яЁё0-9\-]+">
+    </label>
+    </form>
+    <div class="buy-card-bottom">
+    <button class="buy-book-button">Buy</button>
+    <p class="buy-card-price">$ 25.00</p>
+  </div>
+  </div>
+    <div class="buy-card-right">
+  <p class="buy-card-text">If you are live, work, attend school, or pay property taxes in New York State,
+    you can get a $25 digital library card right now using this online form.
+    Visitors to New York State can also use this form to apply for a temporary card.
+  </p>
+    </div>
+  </div>
+  </div>
+</div>
+  <!----------------------------------------------->
 
 
       <section class="welcome">
@@ -361,9 +349,11 @@
         <div class="favorites-books flex-container">
             <div class="favorites-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">The Book Eaters</div>
+              <div class="book-author">By Sunyi Dean</div>
+              <!-- <div class="book-title">
                 <span>The Book Eaters</span><br>By Sunyi Dean
-              </div>
+              </div> -->
               <div class="book-text">
                 An unusual sci-fi story about a book eater woman who tries
                 desperately to save her dangerous mind-eater son from tradition
@@ -371,28 +361,29 @@
                 light Sapphic romance, and a strong, complex protagonist. Not
                 for the faint of heart.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="1">Buy</button>
               <img class="book-img" src="./assets/img/book01.png" alt="The Book Eaters">
             </div>
             <div class="favorites-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
-                <span>Cackle</span><br>By Rachel Harrison
-              </div>
+              <div class="book-title">Cackle</div>
+              <div class="book-author">By Rachel Harrison</div>
               <div class="book-text">
                 Are your Halloween movies of choice The Witches of Eastwick and
                 Practical Magic? Look no further than here - where a woman
                 recovering from a breakup moves to a quaint town in upstate New
                 York and befriends a beautiful witch.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="2">Buy</button>
               <img class="book-img" src="./assets/img/book02.png" alt="Cackle">
             </div>
             <div class="favorites-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Dante: Poet of the Secular World</div>
+              <div class="book-author">By Erich Auerbach</div>
+              <!-- <div class="book-title">
                 <span>Dante: Poet of the Secular World</span><br>By Erich Auerbach
-              </div>
+              </div> -->
               <div class="book-text">
                 Auerbach's engaging book places the 'Comedy' within the
                 tradition of epic, tragedy, and philosophy in general, arguing
@@ -400,68 +391,79 @@
                 drama of soul into something of divine significance—an inspired
                 introduction to Dante's main themes.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="3">Buy</button>
               <img class="book-img" src="./assets/img/book03.png" alt="Dante">
             </div>
             <div class="favorites-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">The Last Queen</div>
+              <div class="book-author">By Clive Irving</div>
+              <!-- <div class="book-title">
                 <span>The Last Queen</span><br>By Clive Irving
-              </div>
+              </div> -->
               <div class="book-text">
                 A timely and revelatory new biography of Queen Elizabeth (and
                 her family) exploring how the Windsors have evolved and thrived
                 as the modern world has changed around them.
               </div>
               <!-- <button disabled="" class="own-button">Own</button> -->
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="4">Buy</button>
               <img class="book-img" src="./assets/img/book04.png" alt="The Last Queen">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">The Body</div>
+              <div class="book-author">By Stephen King</div>
+              <!-- <div class="book-title">
                 <span>The Body</span><br>By Stephen King
-              </div>
+              </div> -->
               <div class="book-text">
                 Powerful novel that takes you back to a nostalgic time,
                 exploring both the beauty and danger and loss of innocence that
                 is youth.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="5">Buy</button>
               <img class="book-img" src="./assets/img/book1.png" alt="The Body">
             </div>
+
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
-                <span>Carry: A Memoir of Survival on Stolen Land</span><br>By
+              <!-- <div class="book-title"> -->
+                <div class="book-title">Carry: A Memoir of Survival on Stolen Land</div>
+                <div class="book-author">By Toni Jenson</div>
+                <!-- <span>Carry: A Memoir of Survival on Stolen Land</span><br>By
                 Toni Jenson
-              </div>
+              </div> -->
               <div class="book-text">
                 This memoir about the author's relationship with gun violence
                 feels both expansive and intimate, resulting in a lyrical
                 indictment of the way things are.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="6">Buy</button>
               <img class="book-img" src="./assets/img/book2.png" alt="Carry">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Days of Distraction</div>
+                <div class="book-author">By Alexandra Chang</div>
+              <!-- <div class="book-title">
                 <span>Days of Distraction</span><br>By Alexandra Chang
-              </div>
+              </div> -->
               <div class="book-text">
                 A sardonic view of Silicon Valley culture, a meditation on race,
                 and a journal of displacement and belonging, all in one
                 form-defying package of spare prose.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="7">Buy</button>
               <img class="book-img" src="./assets/img/book3.png" alt="Days of Distraction">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Dominicana</div>
+                <div class="book-author">By Angie Cruz</div>
+              <!-- <div class="book-title">
                 <span>Dominicana</span><br>By Angie Cruz
-              </div>
+              </div> -->
               <div class="book-text">
                 A fascinating story of a teenage girl who marries a man twice
                 her age with the promise to bring her to America. Her marriage
@@ -469,28 +471,32 @@
                 fans of Isabel Allende and Julia Alvarez.
               </div>
               <!-- <button disabled="" class="own-button">Own</button> -->
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="8">Buy</button>
               <img class="book-img" src="./assets/img/book4.png" alt="Dominicana">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Crude: A Memoir</div>
+                <div class="book-author">By Pablo Fajardo & Sophie Tardy-Joubert</div>
+              <!-- <div class="book-title">
                 <span>Crude: A Memoir</span><br>By Pablo Fajardo & Sophie Tardy-Joubertn
-              </div>
+              </div> -->
               <div class="book-text">
                 Drawing and color by Damien Roudeau | This book illustrates the
                 struggles of a group of indigenous Ecuadoreans as they try to
                 sue the ChevronTexaco company for damage their oil fields did to
                 the Amazon and her people
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="9">Buy</button>
               <img class="book-img" src="./assets/img/book5.png" alt="Crude">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Let My People Go Surfing</div>
+                <div class="book-author">By Yvon Chouinard</div>
+              <!-- <div class="book-title">
                 <span>Let My People Go Surfing</span><br>By Yvon Chouinard
-              </div>
+              </div> -->
               <div class="book-text">
                 Chouinard—climber, businessman, environmentalist—shares tales of
                 courage and persistence from his experience of founding and
@@ -498,89 +504,101 @@
                 The Education of a Reluctant Businessman, Including 10 More
                 Years of Business Unusual.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="10">Buy</button>
               <img class="book-img" src="./assets/img/book6.png" alt="Let My People Go Surfing">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">The Octopus Museum: Poems</div>
+                <div class="book-author">By Brenda Shaughnessy</div>
+              <!-- <div class="book-title">
                 <span>The Octopus Museum: Poems</span><br>By Brenda Shaughnessy
-              </div>
+              </div> -->
               <div class="book-text">
                 This collection of bold and scathingly beautiful feminist poems
                 imagines what comes after our current age of environmental
                 destruction, racism, sexism, and divisive politics.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="11">Buy</button>
               <img class="book-img" src="./assets/img/book7.png" alt="The Octopus Museum">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Shark Dialogues: A Novel By Kiana Davenport</div>
+              <div class="book-author">By Kiana Davenport</div>
+              <!-- <div class="book-title">
                 <span>Shark Dialogues: A Novel By Kiana Davenport</span><br>By Kiana Davenport
-              </div>
+              </div> -->
               <div class="book-text">
                 An epic saga of seven generations of one family encompasses the
                 tumultuous history of Hawaii as a Hawaiian woman gathers her
                 four granddaughters together in an erotic tale of villains and
                 dreamers, queens and revolutionaries, lepers and healers.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="12">Buy</button>
               <img class="book-img" src="./assets/img/book8.png" alt="Shark Dialogues">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Casual Conversation</div>
+              <div class="book-author">By Renia White</div>
+              <!-- <div class="book-title">
                 <span>Casual Conversation</span><br>By Renia White
-              </div>
+              </div> -->
               <div class="book-text">
                 White's impressive debut collection takes readers through and
                 beyond the concepts of conversation and the casual - both what
                 we say to each other and what we don't, examining the
                 possibilities around how we construct and communicate identity.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="13">Buy</button>
               <img class="book-img" src="./assets/img/book9.png" alt="Casual Conversation">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">The Great Fire</div>
+              <div class="book-author">By Lou Ureneck</div>
+              <!-- <div class="book-title">
                 <span>The Great Fire</span><br>By Lou Ureneck
-              </div>
+              </div> -->
               <div class="book-text">
                 The harrowing story of an ordinary American and a principled
                 Naval officer who, horrified by the burning of Smyrna, led an
                 extraordinary rescue effort that saved a quarter of a million
                 refugees from the Armenian Genocide
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="14">Buy</button>
               <img class="book-img" src="./assets/img/book10.png" alt="The Great Fire">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Rickey: The Life and Legend</div>
+              <div class="book-author">By Howard Bryant</div>
+              <!-- <div class="book-title">
                 <span>Rickey: The Life and Legend</span><br>By Howard Bryant
-              </div>
+              </div> -->
               <div class="book-text">
                 With the fall rolling around, one can't help but think of
                 baseball's postseason coming up! And what better way to prepare
                 for it than reading the biography of one of the game's all-time
                 greatest performers, the Man of Steal, Rickey Henderson?
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="15">Buy</button>
               <img class="book-img" src="./assets/img/book11.png" alt="Rickey">
             </div>
             <div class="favorites-book non-display-book">
               <div class="item-title">Staff Picks</div>
-              <div class="book-title">
+              <div class="book-title">Slug: And Other Stories</div>
+              <div class="book-author">By Megan Milks</div>
+              <!-- <div class="book-title">
                 <span>Slug: And Other Stories</span><br>By Megan Milks
-              </div>
+              </div> -->
               <div class="book-text">
                 Exes Tegan and Sara find themselves chained together by
                 hairballs of codependency. A father and child experience the
                 shared trauma of giving birth to gods from their wounds.
               </div>
-              <button class="book-button">Buy</button>
+              <button class="book-button" data-id="16">Buy</button>
               <img class="book-img" src="./assets/img/book12.png" alt="Slug">
             </div>
        
@@ -689,11 +707,12 @@
       </div>
       </section>
 
+
       <section class="section card-section" id="libraryCard">
         <div class="container">
         <h2 class="section-title">Digital Library Cards</h2>
 
-        <div class="cards-container non-display-card">
+        <div class="cards-container">
           <div class="find-card">
             <p class="find-card-title">Find your Library card</p>
             <div class="card-form">
@@ -721,7 +740,7 @@
 
     <!-- DIGITAL LIBRARY CARD after login -->
 
-        <div class="cards-container-login">
+        <div class="cards-container-login non-display-card">
           <div class="find-card">
             <p class="find-card-title">Your Library card</p>
             <div class="card-form bottom-p">
@@ -762,7 +781,7 @@
               educational resources, and more.
             </p>
             <div class="card-buttons">
-              <button class="card-button">Profile</button>
+              <button class="card-button dlc-button">Profile</button>
             </div>
           </div>
         </div>

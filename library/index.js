@@ -295,7 +295,11 @@ const newUser = {
  const registerLogin = document.querySelector('.register')
  const loginRegister = document.querySelector('.login');
  const closeModal = document.querySelector('.modal-close');
-//  const loginButton = document.querySelector('.log-in-btn');
+ const loginBtn = document.querySelector('.log-in-btn');
+ const libraryCard = document.querySelector('.cards-container');
+ const libraryCardLogin = document.querySelector('.cards-container-login');
+ const buyCardModal = document.querySelector('.pop-up-4');
+ const buyCard = document.querySelector('.buy-book-button');
 
  const clearLoginData = () => {
   emailLoginInput.value = '';
@@ -341,110 +345,97 @@ const newUser = {
 
  let currentUser = null;
 
-loginButton.addEventListener('click', () => {
-  const email = emailInputLog.value.trim();
-  const password = passwordInputLog.value;
+loginBtn.addEventListener('click', () => {
+  const email = emailLoginInput.value.trim();
+  const password = passwordLoginInput.value;
 
   const storedUserData = localStorage.getItem('userData');
   if (storedUserData) {
     const userDataArray = JSON.parse(storedUserData);
-    const user = userDataArray.find(user => user.email === email && user.password === password);
+    const someUser = userDataArray.find(someUser => someUser.email === email && someUser.password === password);
 
-    if (user) {
-     alert('Вы успешно авторизованы!');
-     user.visits += 1; 
-     popupLog.classList.toggle('hidden-log');
-     clearFieldsLog();
+    if (someUser) {
+     alert('Congratulations! You are successfully logged in!');
+     someUser.visitsCount += 1;
+     loginModal.classList.toggle('non-visible-2');
+     clearLoginData();
      buyButtons.forEach((button) => {
        button.classList.add('registered')
      })
-     registerMenu.classList.add('none')
-     profile.classList.remove('none')
-     const fullName = `${user.firstName} ${user.lastName}`;
-  
-     const firstNameInitial = user.firstName[0];
-     const lastNameInitial = user.lastName[0];
-     
-     userIcon.textContent = `${firstNameInitial}${lastNameInitial}`.toUpperCase();
-     profileIcon.textContent = `${firstNameInitial}${lastNameInitial}`.toUpperCase();
-     profileName.textContent = fullName;
-     cardNumber.textContent = user.cardNumber
-     visits.textContent = `${user.visits}`;
-     books.textContent = `${user.books}`;
+     registerMenu.classList.add('non-display-menu')
+     profileMenu.classList.remove('non-display-menu')
+     const fullName = `${someUser.firstName} ${someUser.lastName}`;
+
+     const firstNameInit = someUser.firstName[0];
+     const lastNameInit = someUser.lastName[0];
+
+     loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+     userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+     userName.textContent = fullName;
+     cardNumber.textContent = someUser.cardNumber
+     visitsCount.textContent = `${someUser.visitsCount}`;
+     booksCount.textContent = `${someUser.booksCount}`;
      userIcon.setAttribute('title', fullName);
      userIcon.style.display = 'block';
      userIcon.style.font
-     icon.classList.add('none')
-     currentUser = user;
+     user.classList.add('none-display-icon')
+     currentUser = someUser;
      localStorage.setItem('isLoggedIn', 'true');
      localStorage.setItem('loggedInEmail', email);
-     const numberProfileElement = document.querySelector('.number-profile');
+     const profileNumber = document.querySelector('.profile-num');
      localStorage.setItem('userData', JSON.stringify(userDataArray));
      location.reload();
-     if (numberProfileElement) {
-       numberProfileElement.textContent = `${currentUser.cardNumber}`;
+     if (profileNumber) {
+      profileNumber.textContent = `${currentUser.cardNumber}`;
      }
     } else {
-      alert('Неверный email или пароль.');
+      alert('Invalid password or email.');
     }
   } else {
-    alert('Пользователь не найден. Зарегистрируйтесь сначала.');
+    alert('The user was not found. Please register.');
   }
 });
 
-const logOut = document.querySelector('.Log-out')
+const logOut = document.querySelector('.logout-button')
 
 logOut.addEventListener('click', () => {
   localStorage.setItem('isLoggedIn', 'false');
   location.reload();
 })
 
-closestPopupLog.addEventListener('click', () => {
- popupLog.classList.toggle('hidden-log');
- clearFieldsLog();
-});
-
  buyButtons.forEach(function(button) {
    button.addEventListener("click", function() {
      if (button.textContent.includes("Buy") && !button.classList.contains('registered')) {
-       window.scrollTo({
-         top: 0,
-         behavior: 'smooth'
-       });
-       popupLog.classList.toggle('hidden-log');
-       clearFieldsLog();
+       loginModal.classList.toggle('non-visible-2');
+       clearLoginData();
      }
    });
  });
 
  document.addEventListener('DOMContentLoaded', () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
-  
+
   if (isLoggedIn === 'true') {
     const storedUserData = localStorage.getItem('userData');
     if (storedUserData) {
       const userDataArray = JSON.parse(storedUserData);
       const email = localStorage.getItem('loggedInEmail');
-      const currentUser = userDataArray.find(user => user.email === email);
+      const currentUser = userDataArray.find(someUser => someUser.email === email);
 
       if (currentUser) {
-        libraruCard.classList.add('none');
-        libraruCardLogin.classList.remove('none');
+        libraryCard.classList.add('non-display-card');
+        libraryCardLogin.classList.remove('non-display-card');
         buyButtons.forEach(function(button) {
           button.addEventListener("click", function() {
             if (currentUser && !currentUser.subscription && button.classList.contains('registered')) {
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-              });
-              popupBc.classList.toggle('hidden-Bc');
-            } else if(button.classList.contains('own')){
+              buyCardModal.classList.toggle('non-visible-4');
+            } else if(button.classList.contains('own-button')){
 
             } else {
-              button.classList.add('own');
+              button.classList.add('own-button');
               button.textContent = 'Own';
 
-              currentUser.books += 1;
+              currentUser.booksCount += 1;
 
               const buttonId = button.dataset.id;
 
@@ -452,88 +443,102 @@ closestPopupLog.addEventListener('click', () => {
                 currentUser.buyButton.push(buttonId);
               }
 
-              const bookElement = button.closest('.item');
-              const bookSubtitle = bookElement.querySelector('.book_subtitle').textContent;
-              const bookNextTitle = bookElement.querySelector('.book_nexttitle').textContent;
+              const bookItem = button.closest('.favorites-book');
+              const bookTitle = bookItem.querySelector('.book-title').textContent;
+              const bookAuthor = bookItem.querySelector('.book-author').textContent;
 
-              currentUser.booksName.push({ subtitle: bookSubtitle, nextTitle: bookNextTitle });
+              currentUser.booksName.push({ title: bookTitle, author: bookAuthor });
 
-              const userIndex = userDataArray.findIndex(user => user.email === currentUser.email);
+              const userIndex = userDataArray.findIndex(someUser => someUser.email === currentUser.email);
               if (userIndex !== -1) {
                 userDataArray[userIndex] = currentUser;
                 localStorage.setItem('userData', JSON.stringify(userDataArray));
               }
               const li = document.createElement('li');
-              li.textContent = `${bookSubtitle}, ${bookNextTitle}`;
-              li.classList.add('li-rentendet');
+              li.textContent = `${bookTitle}, ${bookAuthor}`;
+              li.classList.add('rented-item');
               document.querySelector('.rented-books nav').appendChild(li);
             }
           });
         });
         currentUser.booksName.forEach(book => {
           const li = document.createElement('li');
-          li.textContent = `${book.subtitle}, ${book.nextTitle}`;
-          li.classList.add('li-rentendet');
+          li.textContent = `${book.title}, ${book.author}`;
+          li.classList.add('rented-item');
           document.querySelector('.rented-books nav').appendChild(li);
         });
         buyButtons.forEach(function(button) {
           const buttonId = button.dataset.id;
           if (currentUser.buyButton.includes(buttonId)) {
-            button.classList.add('own');
+            button.classList.add('own-button');
             button.textContent = 'Own';
           }
         });
-        buyBc.addEventListener('click', () => {
-          const BCN = BCNInput.value.trim();
+
+
+        const buyCNInput = document.querySelector('#bank-card-number');
+        const mounthInput = document.querySelector('#mounth');
+        const yearInput = document.querySelector('#year');
+        const cvcInput = document.querySelector('#cvc');
+        const cardholderNameInput = document.querySelector('#cardholder-name');
+        const postalCodeInput = document.querySelector('#postal-code');
+        const cityInput = document.querySelector('#city-town');
+       
+        const fullNameDlC = document.querySelector('.name-digital-card');
+        const cardNumberDLC = document.querySelector('.card-digital-card');
+
+        buyCard.addEventListener('click', () => {
+          const buyCN = buyCNInput.value.trim();
           const mounth = mounthInput.value.trim();
-          const years = yearsInput.value.trim();
-          const CVC = CVCInput.value.trim();
+          const year = yearInput.value.trim();
+          const cvc = cvcInput.value.trim();
           const cardholderName = cardholderNameInput.value.trim();
           const postalCode = postalCodeInput.value.trim();
-          const CT = CTInput.value.trim();
-        
-          if (BCN.length !== 16 || mounth.length !== 2 || years.length !== 2 || CVC.length !== 3 || !cardholderName || !postalCode || !CT) {
-            alert('Заполните все поля правильно!');
+          const city = cityInput.value.trim();
+
+          if (buyCN.length !== 16 || mounth.length !== 2 || year.length !== 2 || cvc.length !== 3 || !cardholderName || !postalCode || !city) {
+            alert('Fill in all the fields correctly!');
           } else {
-            alert('Спасибо за покупку');
-            popupBc.classList.toggle('hidden-Bc');
+            alert('Thanks for the purchase!');
+            buyCardModal.classList.toggle('non-visible-4');
             currentUser.subscription = true;
-            const userIndex = userDataArray.findIndex(user => user.email === currentUser.email);
+            const userIndex = userDataArray.findIndex(someUser => someUser.email === currentUser.email);
             if (userIndex !== -1) {
               userDataArray[userIndex] = currentUser;
               localStorage.setItem('userData', JSON.stringify(userDataArray));
             }
           }
-        });     
+        });
+
         const fullName = `${currentUser.firstName} ${currentUser.lastName}`;
-        const firstNameInitial = currentUser.firstName[0];
-        const lastNameInitial = currentUser.lastName[0];
-        const visitsVBB = currentUser.visits;
-        const booksVBB = currentUser.books;
-        
-        userIcon.textContent = `${firstNameInitial}${lastNameInitial}`.toUpperCase();
-        profileIcon.textContent = `${firstNameInitial}${lastNameInitial}`.toUpperCase();
-        visits.forEach(visits => {
-          visits.textContent = `${visitsVBB}`;
+        const firstNameInit = currentUser.firstName[0];
+        const lastNameInit = currentUser.lastName[0];
+        const visitsVBB = currentUser.visitsCount;
+        const booksVBB = currentUser.booksCount;
+
+       loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+       userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+        visitsCount.forEach(visitsCount => {
+          visitsCount.textContent = `${visitsVBB}`;
         })
-        books.forEach(books => {
-          books.textContent = `${booksVBB}`;
+        booksCount.forEach(booksCount => {
+          booksCount.textContent = `${booksVBB}`;
         })
         fullNameDlC.textContent = `${fullName}`
         cardNumberDLC.textContent = `${currentUser.cardNumber}`
         cardNumber.textContent = currentUser.cardNumber
-        profileName.textContent = fullName;
-        userIcon.setAttribute('title', fullName);
-        userIcon.style.display = 'block';
-        icon.classList.add('none');
+        userName.textContent = fullName;
+        loginUser.setAttribute('title', fullName);
+        loginUser.style.display = 'block';
+        user.classList.add('non-display-icon');
         buyButtons.forEach((button) => {
           button.classList.add('registered');
         });
         registerMenu.classList.add('registered');
-        registerMenu.classList.add('none');
-        profile.classList.remove('none');
-    
-        const numberProfileElement = document.querySelector('.number-profile');
+        registerMenu.classList.add('non-display-menu');
+        profileMenu.classList.remove('non-display-menu');
+
+        const numberProfileElement = document.querySelector('.profile-num');
         if (numberProfileElement) {
           numberProfileElement.textContent = `${currentUser.cardNumber}`;
         }
@@ -545,7 +550,7 @@ closestPopupLog.addEventListener('click', () => {
 var cardCopyButtons = document.querySelectorAll(".card-copy");
   cardCopyButtons.forEach(function(button) {
     button.addEventListener("click", function() {
-      var cardNumberElement = this.parentNode.querySelector(".cn");
+      var cardNumberElement = this.parentNode.querySelector(".card-number");
       var cardNumber = cardNumberElement.textContent.trim();
 
       var tempElement = document.createElement("textarea");
@@ -561,30 +566,41 @@ var cardCopyButtons = document.querySelectorAll(".card-copy");
     });
   });
 
-  const closeButton = document.querySelector('.close-button-mp');
-  const myProfile = document.querySelector('.popup-my-profile');
-  const buttonMyProfile = document.querySelector('.my-profile');
+  const closeProfile = document.querySelector('.close-profile');
+  const myProfile = document.querySelector('.pop-up-3');
+  const buttonMyProfile = document.querySelector('.my-profile-btn');
 
-  closeButton.addEventListener('click', () => {
-    myProfile.classList.toggle('hidden-profile')
+  closeProfile.addEventListener('click', () => {
+    myProfile.classList.toggle('non-visible-3')
   })
 
-  buttonMyProfile.addEventListener('click', () =>{
-    myProfile.classList.toggle('hidden-profile')
-    profile.classList.toggle('menu-exit-log');
+  buttonMyProfile.addEventListener('click', () => {
+    myProfile.classList.toggle('non-visible-3')
+    profileMenu.classList.toggle('login-menu-open');
   })
 
   myProfile.addEventListener('click', (event) => {
-    if (event.target.classList.contains('popup-my-profile')) {
-      myProfile.classList.toggle('hidden-profile');
-      clearFields();
+    if (event.target.classList.contains('pop-up-3')) {
+      myProfile.classList.toggle('non-visible-3');
+      clearData();
     }
    });
 
+   const DLCProfile = document.querySelector('.dlc-button');
+
    DLCProfile.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    myProfile.classList.toggle('hidden-profile')
+    myProfile.classList.toggle('non-visible-3')
    })
+
+const closeBuy = document.querySelector('.close-buy');
+
+   closeBuy.addEventListener('click', () => {
+    console.log('закрываюсь');
+    buyCardModal.classList.toggle('non-visible-4')
+  })
+
+  buyCardModal.addEventListener('click', (event) => {
+    if (event.target.classList.contains('pop-up-4')) {
+      buyCardModal.classList.toggle('non-visible-4');
+    }
+   });
