@@ -53,6 +53,12 @@
     align-items: center;
   }
 
+  .cards-container-login {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
   .get-card {
     /* margin: auto; */
     margin-top: 23px;
