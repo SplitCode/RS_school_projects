@@ -484,8 +484,8 @@ logOut.addEventListener('click', () => {
         const postalCodeInput = document.querySelector('#postal-code');
         const cityInput = document.querySelector('#city-town');
 
-        const fullNameDlC = document.querySelector('.name-digital-card');
-        const cardNumberDLC = document.querySelector('.card-digital-card');
+        const fullNameCard = document.querySelector('.name-digital-card');
+        const cardNumberCard = document.querySelector('.card-digital-card');
 
         buyCard.addEventListener('click', () => {
           const buyCN = buyCNInput.value.trim();
@@ -524,8 +524,8 @@ logOut.addEventListener('click', () => {
         booksCount.forEach(booksCount => {
           booksCount.textContent = `${currentBooks}`;
         })
-        fullNameDlC.textContent = `${fullName}`
-        cardNumberDLC.textContent = `${currentUser.cardNumber}`
+        fullNameCard.textContent = `${fullName}`
+        cardNumberCard.textContent = `${currentUser.cardNumber}`
         cardNumber.textContent = currentUser.cardNumber
         userName.textContent = fullName;
         loginUser.setAttribute('title', fullName);
@@ -586,7 +586,7 @@ let cardCopyButtons = document.querySelectorAll(".card-copy-button");
     }
    });
 
-   const cardProfile = document.querySelector('.dlc-button');
+   const cardProfile = document.querySelector('.card-profile-button');
 
    cardProfile.addEventListener('click', () => {
     myProfile.classList.toggle('non-visible-3')
@@ -622,29 +622,29 @@ const closeBuy = document.querySelector('.close-buy');
     if (matchingUser) {
       libraryCard.classList.add('non-display-card');
       libraryCardLogin.classList.remove('non-display-card');
-      
+
       setTimeout(() => {
         libraryCardLogin.classList.add('non-display-card');
         libraryCard.classList.remove('non-display-card');
-        clearDLCData();
+        clearCardData();
       }, 10000);
 
-      updateDLCFields(matchingUser);
+      updateCardData(matchingUser);
     }
   }
 });
 
-const clearDLCData = () => {
+const clearCardData = () => {
   name.value = '';
   number.value = '';
 }
 
-const fullNameDlC = document.querySelector('.name-digital-card');
-const cardNumberDLC = document.querySelector('.card-digital-card');
+const fullNameCard = document.querySelector('.name-digital-card');
+const cardNumberCard = document.querySelector('.card-digital-card');
 
-const updateDLCFields = (someUser) => {
-  fullNameDlC.textContent = `${someUser.firstName} ${someUser.lastName}`;
-  cardNumberDLC.textContent = someUser.cardNumber;
+const updateCardData = (someUser) => {
+  fullNameCard.textContent = `${someUser.firstName} ${someUser.lastName}`;
+  cardNumberCard.textContent = someUser.cardNumber;
   visitsCount.textContent = someUser.visitsCount;
   booksCount.textContent = someUser.booksCount;
   visitsCount.forEach(visitsCount => {
