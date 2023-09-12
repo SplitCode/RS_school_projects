@@ -483,7 +483,7 @@ logOut.addEventListener('click', () => {
         const cardholderNameInput = document.querySelector('#cardholder-name');
         const postalCodeInput = document.querySelector('#postal-code');
         const cityInput = document.querySelector('#city-town');
-       
+
         const fullNameDlC = document.querySelector('.name-digital-card');
         const cardNumberDLC = document.querySelector('.card-digital-card');
 
@@ -513,16 +513,16 @@ logOut.addEventListener('click', () => {
         const fullName = `${currentUser.firstName} ${currentUser.lastName}`;
         const firstNameInit = currentUser.firstName[0];
         const lastNameInit = currentUser.lastName[0];
-        const visitsVBB = currentUser.visitsCount;
-        const booksVBB = currentUser.booksCount;
+        const currentVisits = currentUser.visitsCount;
+        const currentBooks = currentUser.booksCount;
 
        loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
        userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
         visitsCount.forEach(visitsCount => {
-          visitsCount.textContent = `${visitsVBB}`;
+          visitsCount.textContent = `${currentVisits}`;
         })
         booksCount.forEach(booksCount => {
-          booksCount.textContent = `${booksVBB}`;
+          booksCount.textContent = `${currentBooks}`;
         })
         fullNameDlC.textContent = `${fullName}`
         cardNumberDLC.textContent = `${currentUser.cardNumber}`
