@@ -547,21 +547,21 @@ logOut.addEventListener('click', () => {
   }
 });
 
-let cardCopyButtons = document.querySelectorAll(".card-copy");
+let cardCopyButtons = document.querySelectorAll(".card-copy-button");
   cardCopyButtons.forEach(function(button) {
     button.addEventListener("click", function() {
-      let cardNumberElement = this.parentNode.querySelector(".card-number");
-      let cardNumber = cardNumberElement.textContent.trim();
+      let cardNumberNumber = this.parentNode.querySelector(".card-number");
+      let cardNumber = cardNumberNumber.textContent.trim();
 
-      let tempElement = document.createElement("textarea");
-      tempElement.value = cardNumber;
-      document.body.appendChild(tempElement);
+      let tempText = document.createElement("textarea");
+      tempText.value = cardNumber;
+      document.body.appendChild(tempText);
 
-      tempElement.select();
+      tempText.select();
 
       document.execCommand("copy");
 
-      document.body.removeChild(tempElement);
+      document.body.removeChild(tempText);
 
     });
   });

@@ -237,6 +237,10 @@ button {
   background-color: var(--sand);
 }
 
+.profile-num {
+  font-size: 12px;
+}
+
 .burger-menu {
   display: none;
 }
