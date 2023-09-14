@@ -582,7 +582,7 @@ buyCard.addEventListener("click", () => {
      !postalCode ||
      !city
   ) {
-      alert("Fill in all the fields correctly!"); // Выводим сообщение об ошибке
+      alert("Fill in all the fields correctly! The bank card number must have 16 digits. The expiration code must have 4 digits. The CVC must have 3 digits."); // Выводим сообщение об ошибке
       } else {
       alert("Thanks for the purchase!"); // Выводим сообщение об успешной покупке
       buyCardModal.classList.toggle("non-visible-4");
@@ -650,30 +650,19 @@ profileMenu.classList.remove("non-display-menu");
 });
 
 // Copy-card----------------------------------------------------
-const copyCardNumber = document.querySelector("#card-number");
+const cardNumberElement = document.querySelector(".card-number");
+const cardCopyButton = document.querySelector(".card-copy-button");
 
-const cardCopyButtons = document.querySelectorAll(".card-copy-button");
+cardCopyButton.addEventListener('click', () => {
+  const cardNumber = cardNumberElement.textContent.trim();
 
-cardCopyButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    // Находим элемент с номером карты, который находится в родительском элементе кнопки
-    let cardNumberNumber = this.parentNode.querySelector(".card-number");
-    // Получаем текст номера карты и убираем лишние пробелы
-    let cardNumber = cardNumberNumber.textContent.trim();
-    // Создаем временный элемент textarea
-    let tempText = document.createElement("textarea");
-    //Устанавливаем значение номера карты
-    tempText.value = cardNumber;
-    // Добавляем временный элемент в DOM
-    document.body.appendChild(tempText);
-    // Выделяем текст внутри временного элемента
-    tempText.select();
-    // Копируем выделенный текст в буфер обмена браузера
-    document.execCommand("copy");
-    //Удаляем из DOM
-    document.body.removeChild(tempText);
-    alert('The card number has been copied to the cliboard')
-  });
+  navigator.clipboard.writeText(cardNumber)
+    .then(() => {
+      alert('The card number has been copied to the clipboard');
+    })
+    .catch((error) => {
+      console.error('Unable to copy to clipboard:', error);
+    });
 });
 
 //My-profile-------------------------------------------------
