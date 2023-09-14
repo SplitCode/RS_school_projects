@@ -109,17 +109,17 @@ paginationButtons.forEach((button, index) => {
 
 // Favorites-books----------------------------------------------------
 
-const books = document.querySelectorAll('.favorites-book')
-const radiobuttons = document.querySelectorAll("input[type='radio']")
+const books = document.querySelectorAll(".favorites-book");
+const radiobuttons = document.querySelectorAll("input[type='radio']");
 
 radiobuttons.forEach((button, index) => {
   button.addEventListener("change", () => {
     books.forEach((book, bookIndex) => {
       const categoryIndex = Math.floor(bookIndex / 4); // Разделяем книги по категориям (по 4 книги в каждой)
       if (categoryIndex === index) {
-        book.classList.remove('non-display-book');
+        book.classList.remove("non-display-book");
       } else {
-        book.classList.add('non-display-book');
+        book.classList.add("non-display-book");
       }
     });
   });
@@ -148,36 +148,36 @@ const closeMenu = () => {
 user.addEventListener("click", (event) => {
   event.stopPropagation(); // Предотвращаем всплытие события
 
-// Переключаем меню регистрации и меню профиля в зависимости от состояния
+  // Переключаем меню регистрации и меню профиля в зависимости от состояния
   if (!registerMenu.classList.contains("registered")) {
     registerMenu.classList.toggle("menu-open");
   } else {
     profileMenu.classList.toggle("login-menu-open");
   }
-// Переключаем видимость модальных окон входа и регистрации
+  // Переключаем видимость модальных окон входа и регистрации
   if (!modalLogin.classList.contains("non-visible-2")) {
     modalLogin.classList.toggle("non-visible-2");
   }
   if (!modalReg.classList.contains("non-visible-1")) {
     modalReg.classList.toggle("non-visible-1");
   }
-  closeMenu();// Закрываем меню
+  closeMenu(); // Закрываем меню
 });
 
 // Добавляем обработчик события на зарегистрированном пользователе
 loginUser.addEventListener("click", (event) => {
   event.stopPropagation();
-// Переключаем меню профиля в положение
+  // Переключаем меню профиля в положение
   profileMenu.classList.toggle("login-menu-open");
   closeMenu();
 });
 
 document.addEventListener("click", (event) => {
-// Закрываем меню регистрации, если клик был вне него
+  // Закрываем меню регистрации, если клик был вне него
   if (!registerMenu.contains(event.target)) {
     registerMenu.classList.remove("menu-open");
   }
-// Закрываем меню профиля, если клик был вне него
+  // Закрываем меню профиля, если клик был вне него
   if (!profileMenu.contains(event.target)) {
     profileMenu.classList.remove("login-menu-open");
   }
@@ -258,7 +258,7 @@ signUpBtn.addEventListener("click", () => {
   const lastName = lastNameInput.value.trim();
   const email = emailInput.value.trim();
   const password = passwordInput.value;
- // Проверяем правильно ли введены данные
+  // Проверяем правильно ли введены данные
   if (
     !firstName ||
     !lastName ||
@@ -282,10 +282,10 @@ signUpBtn.addEventListener("click", () => {
     return;
   }
 
-// Есле нет
+  // Есле нет
   const cardNumber = getCardNumber();
 
-// Создаем нового пользователя
+  // Создаем нового пользователя
   const newUser = {
     firstName,
     lastName,
@@ -299,7 +299,7 @@ signUpBtn.addEventListener("click", () => {
     booksName: [],
   };
 
-// Добавляем пользователя в массив и сохраняем в локальное хранилище
+  // Добавляем пользователя в массив и сохраняем в локальное хранилище
   userDataArray.push(newUser);
   localStorage.setItem("userData", JSON.stringify(userDataArray));
 
@@ -386,12 +386,13 @@ loginBtn.addEventListener("click", () => {
   if (storedUserData) {
     const userDataArray = JSON.parse(storedUserData);
 
-     // Ищем пользователя с введенным email и паролем
+    // Ищем пользователя с введенным email и паролем
     const someUser = userDataArray.find(
       (someUser) => someUser.email === email && someUser.password === password
     );
 
-    if (someUser) { //если нашли
+    if (someUser) {
+      //если нашли
       alert("Congratulations! You are successfully logged in!"); // Выводим сообщение об успешном входе
       someUser.visitsCount += 1; //Увеличиваем счетчик посещений пользователя
       loginModal.classList.toggle("non-visible-2");
@@ -407,24 +408,24 @@ loginBtn.addEventListener("click", () => {
       const firstNameInit = someUser.firstName[0];
       const lastNameInit = someUser.lastName[0];
 
-      // Устанавливаем для пользователя
-      loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
-      userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
-      userName.textContent = fullName;
-      cardNumber.textContent = someUser.cardNumber;
-      visitsCount.textContent = `${someUser.visitsCount}`;
-      booksCount.textContent = `${someUser.booksCount}`;
-      userIcon.setAttribute("title", fullName);
-      userIcon.style.display = "block";
-      userIcon.style.font;
-      user.classList.add("none-display-icon");
-      currentUser = someUser;
-      localStorage.setItem("isLoggedIn", "true"); // Устанавливаем флаг "true"
-      localStorage.setItem("loggedInEmail", email); // Сохраняем email зарегистрированного пользователя
-      const profileNumber = document.querySelector(".profile-num");
-      // Обновляем данные пользователя в локальном хранилище
-      localStorage.setItem("userData", JSON.stringify(userDataArray));
-      location.reload(); // Перезагружаем страницу
+// Устанавливаем для пользователя
+loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+userName.textContent = fullName;
+cardNumber.textContent = someUser.cardNumber;
+visitsCount.textContent = `${someUser.visitsCount}`;
+booksCount.textContent = `${someUser.booksCount}`;
+userIcon.setAttribute("title", fullName);
+userIcon.style.display = "block";
+userIcon.style.font;
+user.classList.add("none-display-icon");
+currentUser = someUser;
+localStorage.setItem("isLoggedIn", "true"); // Устанавливаем флаг "true"
+localStorage.setItem("loggedInEmail", email); // Сохраняем email зарегистрированного пользователя
+ const profileNumber = document.querySelector(".profile-num");
+// Обновляем данные пользователя в локальном хранилище
+localStorage.setItem("userData", JSON.stringify(userDataArray));
+location.reload(); // Перезагружаем страницу
       if (profileNumber) {
         profileNumber.textContent = `${currentUser.cardNumber}`;
       }
@@ -445,7 +446,6 @@ logOut.addEventListener("click", () => {
   localStorage.setItem("isLoggedIn", "false"); // Устанавливаем  в "false"
   location.reload();
 });
-
 
 // Buy-books---------------------------------------------------
 
@@ -472,175 +472,175 @@ document.addEventListener("DOMContentLoaded", () => {
       const userDataArray = JSON.parse(storedUserData);
       const email = localStorage.getItem("loggedInEmail");
 
-         // Находим текущего пользователя по email
+      // Находим текущего пользователя по email
       const currentUser = userDataArray.find(
         (someUser) => someUser.email === email
       );
 
-      if (currentUser) {
-        libraryCard.classList.add("non-display-card"); // Скрываем карточку библиотеки
-        libraryCardLogin.classList.remove("non-display-card"); // Отображаем для зарегистрированных пользователей
-        buyButtons.forEach(function (button) {
-          button.addEventListener("click", function () {
-              // Проверяем, что текущий пользователь не имеет подписки и кнопка имеет класс "registered"
-            if (
-              currentUser &&
-              !currentUser.subscription &&
-              button.classList.contains("registered")
-            ) {
-              buyCardModal.classList.toggle("non-visible-4");
-            } else if (button.classList.contains("own-button")) {
-                // Если кнопка уже имеет класс "own-button", ничего не делаем
-            } else {
-              button.classList.add("own-button"); //Добавляем own к купленной книге
-              button.textContent = "Own";
+if (currentUser) {
+ libraryCard.classList.add("non-display-card"); // Скрываем карточку библиотеки
+  libraryCardLogin.classList.remove("non-display-card"); // Отображаем для зарегистрированных пользователей
+  buyButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+// Проверяем, что текущий пользователь не имеет подписки и кнопка имеет класс "registered"
+     if (
+   currentUser &&
+   !currentUser.subscription &&
+    button.classList.contains("registered")
+     ) {
+    buyCardModal.classList.toggle("non-visible-4");
+     } else if (button.classList.contains("own-button")) {
+      // Если кнопка уже имеет класс "own-button", ничего не делаем
+     } else {
+     button.classList.add("own-button"); //Добавляем own к купленной книге
+     button.textContent = "Own";
 
-              currentUser.booksCount += 1; //Увеличиваем счетчик купленных книг
+     currentUser.booksCount += 1; //Увеличиваем счетчик купленных книг
 
-              const buttonId = button.dataset.id;
+     const buttonId = button.dataset.id;
 
-              if (!currentUser.buyButton.includes(buttonId)) {
-                currentUser.buyButton.push(buttonId); // Добавляем идентификатор кнопки к списку купленных
-              }
+    if (!currentUser.buyButton.includes(buttonId)) {
+       currentUser.buyButton.push(buttonId); // Добавляем идентификатор кнопки к списку купленных
+     }
 
-              const bookItem = button.closest(".favorites-book");
-              const bookTitle =
-                bookItem.querySelector(".book-title").textContent;
-              const bookAuthor =
-                bookItem.querySelector(".book-author").textContent;
+    const bookItem = button.closest(".favorites-book");
+    const bookTitle =
+    bookItem.querySelector(".book-title").textContent;
+    const bookAuthor =
+    bookItem.querySelector(".book-author").textContent;
 
-         // Добавляем инфо о купленной книге в данные пользователя
-              currentUser.booksName.push({
-                title: bookTitle,
-                author: bookAuthor,
-              });
+    // Добавляем инфо о купленной книге в данные пользователя
+    currentUser.booksName.push({
+      title: bookTitle,
+      author: bookAuthor,
+    });
 
-              const userIndex = userDataArray.findIndex(
-                (someUser) => someUser.email === currentUser.email
-              );
-              if (userIndex !== -1) {
-                userDataArray[userIndex] = currentUser;
-                localStorage.setItem("userData", JSON.stringify(userDataArray));
-              }
+    const userIndex = userDataArray.findIndex(
+      (someUser) => someUser.email === currentUser.email
+    );
+    if (userIndex !== -1) {
+      userDataArray[userIndex] = currentUser;
+      localStorage.setItem("userData", JSON.stringify(userDataArray));
+    }
 
-        // Создаем и добавляем элемент списка арендованных книг в библиотеку пользователя
-              const li = document.createElement("li");
-              li.textContent = `${bookTitle}, ${bookAuthor}`;
-              li.classList.add("rented-item");
-              document.querySelector(".rented-books nav").appendChild(li);
-            }
-          });
-        });
+// Создаем и добавляем элемент списка арендованных книг в библиотеку пользователя
+   const li = document.createElement("li");
+   li.textContent = `${bookTitle}, ${bookAuthor}`;
+   li.classList.add("rented-item");
+  document.querySelector(".rented-books nav").appendChild(li);
+     }
+   });
+});
 
-        // Добавляем купленные книги пользователя в список
-        currentUser.booksName.forEach((book) => {
-          const li = document.createElement("li");
-          li.textContent = `${book.title}, ${book.author}`;
-          li.classList.add("rented-item");
-          document.querySelector(".rented-books nav").appendChild(li);
-        });
+// Добавляем купленные книги пользователя в список
+    currentUser.booksName.forEach((book) => {
+    const li = document.createElement("li");
+    li.textContent = `${book.title}, ${book.author}`;
+    li.classList.add("rented-item");
+    document.querySelector(".rented-books nav").appendChild(li);
+});
 
-         // Помечаем книги, которые уже куплены пользователем
-        buyButtons.forEach(function (button) {
-          const buttonId = button.dataset.id;
-          if (currentUser.buyButton.includes(buttonId)) {
-            button.classList.add("own-button");
-            button.textContent = "Own";
-          }
-        });
+// Помечаем книги, которые уже куплены пользователем
+    buyButtons.forEach(function (button) {
+      const buttonId = button.dataset.id;
+       if (currentUser.buyButton.includes(buttonId)) {
+       button.classList.add("own-button");
+       button.textContent = "Own";
+    }
+});
 
 // Buy-Library-cards---------------------------------------------------
 
-        const buyCNInput = document.querySelector("#bank-card-number");
-        const mounthInput = document.querySelector("#mounth");
-        const yearInput = document.querySelector("#year");
-        const cvcInput = document.querySelector("#cvc");
-        const cardholderNameInput = document.querySelector("#cardholder-name");
-        const postalCodeInput = document.querySelector("#postal-code");
-        const cityInput = document.querySelector("#city-town");
+const buyCNInput = document.querySelector("#bank-card-number");
+const mounthInput = document.querySelector("#mounth");
+const yearInput = document.querySelector("#year");
+const cvcInput = document.querySelector("#cvc");
+const cardholderNameInput = document.querySelector("#cardholder-name");
+const postalCodeInput = document.querySelector("#postal-code");
+const cityInput = document.querySelector("#city-town");
 
-        const fullNameCard = document.querySelector(".name-digital-card");
-        const cardNumberCard = document.querySelector(".card-digital-card");
+const fullNameCard = document.querySelector(".name-digital-card");
+const cardNumberCard = document.querySelector(".card-digital-card");
 
-        //Покупка подписки
-        buyCard.addEventListener("click", () => {
-          const buyCN = buyCNInput.value.trim();
-          const mounth = mounthInput.value.trim();
-          const year = yearInput.value.trim();
-          const cvc = cvcInput.value.trim();
-          const cardholderName = cardholderNameInput.value.trim();
-          const postalCode = postalCodeInput.value.trim();
-          const city = cityInput.value.trim();
+//Покупка подписки
+buyCard.addEventListener("click", () => {
+  const buyCN = buyCNInput.value.trim();
+  const mounth = mounthInput.value.trim();
+  const year = yearInput.value.trim();
+  const cvc = cvcInput.value.trim();
+  const cardholderName = cardholderNameInput.value.trim();
+  const postalCode = postalCodeInput.value.trim();
+  const city = cityInput.value.trim();
 
-            // Проверяем правильность заполнения всех полей формы
-          if (
-            buyCN.length !== 16 ||
-            mounth.length !== 2 ||
-            year.length !== 2 ||
-            cvc.length !== 3 ||
-            !cardholderName ||
-            !postalCode ||
-            !city
-          ) {
-            alert("Fill in all the fields correctly!"); // Выводим сообщение об ошибке
-          } else {
-            alert("Thanks for the purchase!"); // Выводим сообщение об успешной покупке
-            buyCardModal.classList.toggle("non-visible-4");
+// Проверяем правильность заполнения всех полей формы
+   if (
+     buyCN.length !== 16 ||
+     mounth.length !== 2 ||
+     year.length !== 2 ||
+     cvc.length !== 3 ||
+     !cardholderName ||
+     !postalCode ||
+     !city
+  ) {
+      alert("Fill in all the fields correctly!"); // Выводим сообщение об ошибке
+      } else {
+      alert("Thanks for the purchase!"); // Выводим сообщение об успешной покупке
+      buyCardModal.classList.toggle("non-visible-4");
 
-            // Устанавливаем флаг подписки текущего пользователя в "true"
-            currentUser.subscription = true;
+// Устанавливаем флаг подписки текущего пользователя в "true"
+      currentUser.subscription = true;
 
-            // Находим индекс текущего пользователя в массиве данных пользователей
-            const userIndex = userDataArray.findIndex(
-              (someUser) => someUser.email === currentUser.email
-            );
-            if (userIndex !== -1) {
-              userDataArray[userIndex] = currentUser;
-              localStorage.setItem("userData", JSON.stringify(userDataArray));
-            }
-          }
-        });
+// Находим индекс текущего пользователя в массиве данных пользователей
+      const userIndex = userDataArray.findIndex(
+      (someUser) => someUser.email === currentUser.email
+     );
+       if (userIndex !== -1) {
+       userDataArray[userIndex] = currentUser;
+       localStorage.setItem("userData", JSON.stringify(userDataArray));
+        }
+     }
+ });
 
- // Visits-count, books-count---------------------------------------------------
+// Visits-count, books-count---------------------------------------------------
 
-        const fullName = `${currentUser.firstName} ${currentUser.lastName}`;
-        const firstNameInit = currentUser.firstName[0];
-        const lastNameInit = currentUser.lastName[0];
-        const currentVisits = currentUser.visitsCount;
-        const currentBooks = currentUser.booksCount;
+const fullName = `${currentUser.firstName} ${currentUser.lastName}`;
+const firstNameInit = currentUser.firstName[0];
+const lastNameInit = currentUser.lastName[0];
+const currentVisits = currentUser.visitsCount;
+const currentBooks = currentUser.booksCount;
 
-        loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
-        userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
 
-        visitsCount.forEach((visitsCount) => {
-          visitsCount.textContent = `${currentVisits}`; // Количество посещений
-        });
+visitsCount.forEach((visitsCount) => {
+   visitsCount.textContent = `${currentVisits}`; // Количество посещений
+});
 
-        booksCount.forEach((booksCount) => {
-          booksCount.textContent = `${currentBooks}`; // Количество купленных книг
-        });
+booksCount.forEach((booksCount) => {
+   booksCount.textContent = `${currentBooks}`; // Количество купленных книг
+});
 
 //Interface----------------------------------------------------------------------
 
-        fullNameCard.textContent = `${fullName}`; // Полное имя пользователя в модальном окне
-        cardNumberCard.textContent = `${currentUser.cardNumber}`; // Номер карты в модальном окне
-        cardNumber.textContent = currentUser.cardNumber; // Номер карты в верхнем меню
-        userName.textContent = fullName; // Имя пользователя в верхнем меню
-        loginUser.setAttribute("title", fullName); // Всплывающая подсказка с именем пользователя
-        loginUser.style.display = "block";
-        user.classList.add("non-display-icon");
+fullNameCard.textContent = `${fullName}`; // Полное имя пользователя в модальном окне
+cardNumberCard.textContent = `${currentUser.cardNumber}`; // Номер карты в модальном окне
+cardNumber.textContent = currentUser.cardNumber; // Номер карты в верхнем меню
+userName.textContent = fullName; // Имя пользователя в верхнем меню
+loginUser.setAttribute("title", fullName); // Всплывающая подсказка с именем пользователя
+loginUser.style.display = "block";
+user.classList.add("non-display-icon");
 
-        // Добавляем класс "registered" ко всем кнопкам Buy
-        buyButtons.forEach((button) => {
-          button.classList.add("registered");
-        });
+ // Добавляем класс "registered" ко всем кнопкам Buy
+    buyButtons.forEach((button) => {
+      button.classList.add("registered");
+    });
 
-        registerMenu.classList.add("registered"); // Добавляем класс "registered" к меню регистрации
-        registerMenu.classList.add("non-display-menu");
-        profileMenu.classList.remove("non-display-menu");
+registerMenu.classList.add("registered"); // Добавляем класс "registered" к меню регистрации
+registerMenu.classList.add("non-display-menu");
+profileMenu.classList.remove("non-display-menu");
 
-        // Обновляем номер профиля, если он есть на странице
-        const numberProfileElement = document.querySelector(".profile-num");
+  // Обновляем номер профиля, если он есть на странице
+    const numberProfileElement = document.querySelector(".profile-num");
         if (numberProfileElement) {
           numberProfileElement.textContent = `${currentUser.cardNumber}`;
         }
@@ -656,15 +656,15 @@ cardCopyButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     // Находим элемент с номером карты, который находится в родительском элементе кнопки
     let cardNumberNumber = this.parentNode.querySelector(".card-number");
-     // Получаем текст номера карты и убираем лишние пробелы
+    // Получаем текст номера карты и убираем лишние пробелы
     let cardNumber = cardNumberNumber.textContent.trim();
-   // Создаем временный элемент textarea
+    // Создаем временный элемент textarea
     let tempText = document.createElement("textarea");
     //Устанавливаем значение номера карты
     tempText.value = cardNumber;
-   // Добавляем временный элемент в DOM
+    // Добавляем временный элемент в DOM
     document.body.appendChild(tempText);
-   // Выделяем текст внутри временного элемента
+    // Выделяем текст внутри временного элемента
     tempText.select();
     // Копируем выделенный текст в буфер обмена браузера
     document.execCommand("copy");
