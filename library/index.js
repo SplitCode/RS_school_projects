@@ -481,7 +481,7 @@ if (currentUser) {
   libraryCard.classList.add("non-display-card"); // Скрываем карточку библиотеки
   libraryCardLogin.classList.remove("non-display-card"); // Отображаем для зарегистрированных пользователей
 
-  function updateBookCount(count) {
+  const updateBookCount = (count) => {
     const booksCountElements = document.querySelectorAll(".books-count");
     booksCountElements.forEach((element) => {
       element.textContent = count;
@@ -733,9 +733,11 @@ const updateCardData = (someUser) => {
 
 //Check-card-----------------------------------------------------
 
-const libraryCard1 = document.querySelector(".cards-container");
-const libraryCardLogin1 = document.querySelector(".cards-container-login");
+// const cardForm = document.querySelector('.card-form');
 const checkCard = document.querySelector(".find-button");
+
+const checkCardLogin = document.querySelector(".check-count-container");
+
 const name = document.querySelector("#name");
 const number = document.querySelector("#card");
 
@@ -749,17 +751,18 @@ checkCard.addEventListener("click", () => {
     const userDataArray = JSON.parse(storedUserData);
     const existUser = userDataArray.find(
       (someUser) =>
-        someUser.firstName + someUser.lastName === enteredFullName &&
+        someUser.firstName + ' ' + someUser.lastName === enteredFullName &&
         someUser.cardNumber === enteredNumber
     );
 
     if (existUser) {
-      libraryCard1.classList.add("non-display-card");
-      libraryCardLogin1.classList.remove("non-display-card");
+      console.log('myau');
+      checkCard.classList.add("non-display-card");
+      checkCardLogin.classList.remove("none-display-check");
 
       setTimeout(() => {
-        libraryCardLogin1.classList.add("non-display-card");
-        libraryCard1.classList.remove("non-display-card");
+        checkCardLogin.classList.add("none-display-check");
+        checkCard.classList.remove("non-display-card");
         clearCardData();
       }, 10000);
 
@@ -776,6 +779,3 @@ const clearCardData = () => {
 
 const fullNameCard = document.querySelector(".name-digital-card");
 const cardNumberCard = document.querySelector(".card-digital-card");
-
-
-
