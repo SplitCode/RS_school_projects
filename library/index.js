@@ -506,8 +506,6 @@ if (currentUser) {
      currentUser.booksCount += 1;  //Увеличиваем счетчик купленных книг
      updateBookCount(currentUser.booksCount);
 
-    //  currentUser.booksCount += 1;
-
      const buttonId = button.dataset.id;
 
     if (!currentUser.buyButton.includes(buttonId)) {
