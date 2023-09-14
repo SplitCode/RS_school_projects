@@ -478,8 +478,16 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 if (currentUser) {
- libraryCard.classList.add("non-display-card"); // Скрываем карточку библиотеки
+  libraryCard.classList.add("non-display-card"); // Скрываем карточку библиотеки
   libraryCardLogin.classList.remove("non-display-card"); // Отображаем для зарегистрированных пользователей
+
+  function updateBookCount(count) {
+    const booksCountElements = document.querySelectorAll(".books-count");
+    booksCountElements.forEach((element) => {
+      element.textContent = count;
+    });
+  }
+
   buyButtons.forEach(function (button) {
   button.addEventListener("click", function () {
 // Проверяем, что текущий пользователь не имеет подписки и кнопка имеет класс "registered"
@@ -495,7 +503,10 @@ if (currentUser) {
      button.classList.add("own-button"); //Добавляем own к купленной книге
      button.textContent = "Own";
 
-     currentUser.booksCount += 1; //Увеличиваем счетчик купленных книг
+     currentUser.booksCount += 1;  //Увеличиваем счетчик купленных книг
+     updateBookCount(currentUser.booksCount);
+
+    //  currentUser.booksCount += 1;
 
      const buttonId = button.dataset.id;
 
