@@ -650,8 +650,10 @@ profileMenu.classList.remove("non-display-menu");
 });
 
 // Copy-card----------------------------------------------------
+const copyCardNumber = document.querySelector("#card-number");
 
-let cardCopyButtons = document.querySelectorAll(".card-copy-button");
+const cardCopyButtons = document.querySelectorAll(".card-copy-button");
+
 cardCopyButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     // Находим элемент с номером карты, который находится в родительском элементе кнопки
@@ -670,6 +672,7 @@ cardCopyButtons.forEach(function (button) {
     document.execCommand("copy");
     //Удаляем из DOM
     document.body.removeChild(tempText);
+    alert('The card number has been copied to the cliboard')
   });
 });
 
