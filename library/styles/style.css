@@ -1507,10 +1507,21 @@ margin-right: -2px;
   display: none;
 }
 
+
 .card-count-container {
   display: flex;
   margin-top: 15px;
   gap: 35px;
+}
+
+.check-count-container {
+  display: flex;
+  margin-top: 15px;
+  gap: 35px;
+}
+
+.none-display-check {
+  display: none;
 }
 
 .mini-v {
