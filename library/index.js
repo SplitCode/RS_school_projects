@@ -708,36 +708,53 @@ buyCardModal.addEventListener("click", (event) => {
   }
 });
 
+// Update-profile-----------------------------------------------------
+const updateCardData = (someUser) => {
+  fullNameCard.textContent = `${someUser.firstName} ${someUser.lastName}`;
+  cardNumberCard.textContent = someUser.cardNumber;
+  visitsCount.textContent = someUser.visitsCount;
+  booksCount.textContent = someUser.booksCount;
+  visitsCount.forEach((visitsCount) => {
+    visitsCount.textContent = `${someUser.visitsCount}`;
+  });
+  booksCount.forEach((booksCount) => {
+    booksCount.textContent = `${someUser.booksCount}`;
+  });
+};
+
 //Check-card-----------------------------------------------------
 
+const libraryCard1 = document.querySelector(".cards-container");
+const libraryCardLogin1 = document.querySelector(".cards-container-login");
 const checkCard = document.querySelector(".find-button");
 const name = document.querySelector("#name");
 const number = document.querySelector("#card");
 
 checkCard.addEventListener("click", () => {
+  console.log("закрываюсь");
   const storedUserData = localStorage.getItem("userData");
   const enteredFullName = name.value.trim();
   const enteredNumber = number.value.trim();
 
   if (storedUserData) {
     const userDataArray = JSON.parse(storedUserData);
-    const matchingUser = userDataArray.find(
+    const existUser = userDataArray.find(
       (someUser) =>
         someUser.firstName + someUser.lastName === enteredFullName &&
         someUser.cardNumber === enteredNumber
     );
 
-    if (matchingUser) {
-      libraryCard.classList.add("non-display-card");
-      libraryCardLogin.classList.remove("non-display-card");
+    if (existUser) {
+      libraryCard1.classList.add("non-display-card");
+      libraryCardLogin1.classList.remove("non-display-card");
 
       setTimeout(() => {
-        libraryCardLogin.classList.add("non-display-card");
-        libraryCard.classList.remove("non-display-card");
+        libraryCardLogin1.classList.add("non-display-card");
+        libraryCard1.classList.remove("non-display-card");
         clearCardData();
       }, 10000);
 
-      updateCardData(matchingUser); // Обновляем данные в карточке профиля
+      updateCardData(existUser); // Обновляем данные в карточке профиля
     }
   }
 });
@@ -751,16 +768,5 @@ const clearCardData = () => {
 const fullNameCard = document.querySelector(".name-digital-card");
 const cardNumberCard = document.querySelector(".card-digital-card");
 
-// Обновление данных в карточке профиля
-const updateCardData = (someUser) => {
-  fullNameCard.textContent = `${someUser.firstName} ${someUser.lastName}`;
-  cardNumberCard.textContent = someUser.cardNumber;
-  visitsCount.textContent = someUser.visitsCount;
-  booksCount.textContent = someUser.booksCount;
-  visitsCount.forEach((visitsCount) => {
-    visitsCount.textContent = `${someUser.visitsCount}`;
-  });
-  booksCount.forEach((booksCount) => {
-    booksCount.textContent = `${someUser.booksCount}`;
-  });
-};
+
+
