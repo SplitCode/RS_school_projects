@@ -565,6 +565,7 @@ button {
   max-height: 70px;
   max-width: 350px;
   overflow-x: auto;
+  overflow-y: auto;
   white-space: nowrap;
 }
 

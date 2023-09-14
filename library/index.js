@@ -536,7 +536,7 @@ if (currentUser) {
    const li = document.createElement("li");
    li.textContent = `${bookTitle}, ${bookAuthor}`;
    li.classList.add("rented-item");
-  document.querySelector(".rented-books nav").appendChild(li);
+  document.querySelector(".rented-books ul").appendChild(li);
      }
    });
 });
@@ -546,7 +546,7 @@ if (currentUser) {
     const li = document.createElement("li");
     li.textContent = `${book.title}, ${book.author}`;
     li.classList.add("rented-item");
-    document.querySelector(".rented-books nav").appendChild(li);
+    document.querySelector(".rented-books ul").appendChild(li);
 });
 
 // Помечаем книги, которые уже куплены пользователем
