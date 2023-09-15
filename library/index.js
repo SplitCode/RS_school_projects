@@ -107,7 +107,7 @@ paginationButtons.forEach((button, index) => {
   });
 });
 
-// Favorites-books----------------------------------------------------
+// Favorites-books-slider----------------------------------------------------
 
 const books = document.querySelectorAll(".favorites-book");
 const radiobuttons = document.querySelectorAll("input[type='radio']");
@@ -128,18 +128,18 @@ radiobuttons.forEach((button, index) => {
 // Drop-menu----------------------------------------------------
 
 const user = document.querySelector(".user-icon");
+const loginUser = document.querySelector(".user-icon-login");
 const registerMenu = document.querySelector(".register-drop-menu");
 const profileMenu = document.querySelector(".profile-drop-menu");
-const loginUser = document.querySelector(".user-icon-login");
+const modalRegister = document.querySelector(".pop-up-1");
 const modalLogin = document.querySelector(".pop-up-2");
-const modalReg = document.querySelector(".pop-up-1");
 
 // Отслеживаем состояние меню
-let isOpenMenu = false;
+let openMenu = false;
 
 // Функция для закрытия меню
 const closeMenu = () => {
-  isOpenMenu = false;
+  openMenu = false;
   burger.classList.remove("cross");
   nav.classList.remove("open");
 };
@@ -154,12 +154,13 @@ user.addEventListener("click", (event) => {
   } else {
     profileMenu.classList.toggle("login-menu-open");
   }
+
   // Переключаем видимость модальных окон входа и регистрации
   if (!modalLogin.classList.contains("non-visible-2")) {
     modalLogin.classList.toggle("non-visible-2");
   }
-  if (!modalReg.classList.contains("non-visible-1")) {
-    modalReg.classList.toggle("non-visible-1");
+  if (!modalRegister.classList.contains("non-visible-1")) {
+    modalRegister.classList.toggle("non-visible-1");
   }
   closeMenu(); // Закрываем меню
 });
@@ -173,7 +174,7 @@ loginUser.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  // Закрываем меню регистрации, если клик был вне него
+  // Закрываем дроп-меню регистрации, если клик был вне него
   if (!registerMenu.contains(event.target)) {
     registerMenu.classList.remove("menu-open");
   }
@@ -185,32 +186,31 @@ document.addEventListener("click", (event) => {
 
 // Registration----------------------------------------------------
 
-const userIcon = document.querySelector(".my-profile-init");
-const userName = document.querySelector(".my-profile-name");
+const registerButton = document.querySelector(".register-button");
+const registerCardButton = document.querySelector(".register-card-btn");
+const closeRegister = document.querySelector(".register-close");
+const signUpButton = modalRegister.querySelector(".sign-up-btn");
+
+const firstNameInput = modalRegister.querySelector("#first-name");
+const lastNameInput = modalRegister.querySelector("#last-name");
+const emailInput = modalRegister.querySelector("#email");
+const passwordInput = modalRegister.querySelector("#password");
+
 const visitsCount = document.querySelectorAll(".visits-count");
 const booksCount = document.querySelectorAll(".books-count");
-const cardNumber = document.querySelector(".card-number");
-const registerModal = document.querySelector(".pop-up-1");
-const registerButton = document.querySelector(".register-button");
-const registerCardBtn = document.querySelector(".register-card-btn");
-const signUpBtn = registerModal.querySelector(".sign-up-btn");
-const firstNameInput = registerModal.querySelector("#first-name");
-const lastNameInput = registerModal.querySelector("#last-name");
-const emailInput = registerModal.querySelector("#email");
-const passwordInput = registerModal.querySelector("#password");
-const closeRegister = document.querySelector(".register-close");
 const buyButtons = document.querySelectorAll(".book-button");
-
-// Проверяем email
-const checkEmail = (email) => {
-  const emailRules = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailRules.test(email);
-};
+const cardNumber = document.querySelector(".card-number");
 
 // Получаем случайный номер карты
 const getCardNumber = () => {
   const randomNumber = Math.random();
   return randomNumber.toString(16).toUpperCase().slice(-9);
+};
+
+// Проверяем email
+const checkEmail = (email) => {
+  const emailRules = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRules.test(email);
 };
 
 // Очистка данных в форме регистрации
@@ -230,30 +230,33 @@ if (!Array.isArray(userDataArray)) {
   userDataArray = [];
 }
 
+// Обработчик на кнопке Register в дроп-меню
 registerButton.addEventListener("click", () => {
-  registerModal.classList.toggle("non-visible-1");
+  modalRegister.classList.toggle("non-visible-1");
   clearData();
   registerMenu.classList.toggle("menu-open");
 });
 
-registerCardBtn.addEventListener("click", () => {
-  registerModal.classList.toggle("non-visible-1");
+// Обработчик на кнопке Register в digital library cards
+registerCardButton.addEventListener("click", () => {
+  modalRegister.classList.toggle("non-visible-1");
   clearData();
 });
 
-registerModal.addEventListener("click", (event) => {
+modalRegister.addEventListener("click", (event) => {
   if (event.target.classList.contains("pop-up-1")) {
-    registerModal.classList.toggle("non-visible-1");
+    modalRegister.classList.toggle("non-visible-1");
     clearData();
   }
 });
 
 closeRegister.addEventListener("click", () => {
-  registerModal.classList.toggle("non-visible-1");
+  modalRegister.classList.toggle("non-visible-1");
   clearData();
 });
 
-signUpBtn.addEventListener("click", () => {
+// Обработчик на кнопке sign up в модалке register
+signUpButton.addEventListener("click", () => {
   const firstName = firstNameInput.value.trim();
   const lastName = lastNameInput.value.trim();
   const email = emailInput.value.trim();
@@ -282,7 +285,7 @@ signUpBtn.addEventListener("click", () => {
     return;
   }
 
-  // Есле нет
+  // Если нет
   const cardNumber = getCardNumber();
 
   // Создаем нового пользователя
@@ -312,19 +315,20 @@ signUpBtn.addEventListener("click", () => {
 
 // Log-In----------------------------------------------------
 
-const loginModal = document.querySelector(".pop-up-2");
-const emailLoginInput = document.querySelector("#email-login");
-const passwordLoginInput = document.querySelector("#password-login");
 const loginButton = document.querySelector(".login-button");
-const loginCardBtn = document.querySelector(".login-card-btn");
 const registerLogin = document.querySelector(".register");
 const loginRegister = document.querySelector(".login");
+const loginCardButton = document.querySelector(".login-card-btn");
+const modalLoginButton = document.querySelector(".log-in-btn");
+
 const closeModal = document.querySelector(".modal-close");
-const loginBtn = document.querySelector(".log-in-btn");
-const libraryCard = document.querySelector(".cards-container");
-const libraryCardLogin = document.querySelector(".cards-container-login");
-const buyCardModal = document.querySelector(".pop-up-4");
-const buyCard = document.querySelector(".buy-book-button");
+const loginModal = document.querySelector(".pop-up-2");
+
+const userIcon = document.querySelector(".my-profile-init");
+const userName = document.querySelector(".my-profile-name");
+
+const emailLoginInput = document.querySelector("#email-login");
+const passwordLoginInput = document.querySelector("#password-login");
 
 // Очистка данных в форме входа
 const clearLoginData = () => {
@@ -332,30 +336,31 @@ const clearLoginData = () => {
   passwordLoginInput.value = "";
 };
 
-// Обработчик на кнопке входа
+// Обработчик на кнопке Login в дроп-меню
 loginButton.addEventListener("click", () => {
   loginModal.classList.toggle("non-visible-2");
   clearLoginData();
   registerMenu.classList.toggle("menu-open");
 });
 
-// Обработчик на кнопке перехода к регистрации из окна входа
+// Обработчик на ссылке register в модалке LOGIN
 registerLogin.addEventListener("click", () => {
   loginModal.classList.toggle("non-visible-2");
   setTimeout(() => {
-    registerModal.classList.toggle("non-visible-1");
+    modalRegister.classList.toggle("non-visible-1");
   }, 200);
 });
 
-// Обработчик на кнопке перехода к входу из окна регистрации
+// Обработчик на ссылке Login в модалке REGISTER
 loginRegister.addEventListener("click", () => {
-  registerModal.classList.toggle("non-visible-1");
+  modalRegister.classList.toggle("non-visible-1");
   setTimeout(() => {
     loginModal.classList.toggle("non-visible-2");
   }, 200);
 });
 
-loginCardBtn.addEventListener("click", () => {
+// Обработчик на кнопке Login в digital library cards
+loginCardButton.addEventListener("click", () => {
   loginModal.classList.toggle("non-visible-2");
   clearLoginData();
 });
@@ -376,8 +381,8 @@ closeModal.addEventListener("click", () => {
 // Переменная для хранения текущего пользователя
 let currentUser = null;
 
-// Обработчик на кнопке входа
-loginBtn.addEventListener("click", () => {
+// Обработчик на кнопке входа модалки LOGIN
+modalLoginButton.addEventListener("click", () => {
   const email = emailLoginInput.value.trim();
   const password = passwordLoginInput.value;
 
@@ -386,49 +391,50 @@ loginBtn.addEventListener("click", () => {
   if (storedUserData) {
     const userDataArray = JSON.parse(storedUserData);
 
-    // Ищем пользователя с введенным email и паролем
-    const someUser = userDataArray.find(
-      (someUser) => someUser.email === email && someUser.password === password
-    );
+  // Ищем пользователя с введенным email и паролем
+  const someUser = userDataArray.find(
+    (someUser) => someUser.email === email && someUser.password === password
+  );
 
-    if (someUser) {
-      //если нашли
-      alert("Congratulations! You are successfully logged in!"); // Выводим сообщение об успешном входе
-      someUser.visitsCount += 1; //Увеличиваем счетчик посещений пользователя
-      loginModal.classList.toggle("non-visible-2");
-      clearLoginData();
-      // Добавляем класс "registered" к кнопкам покупки
-      buyButtons.forEach((button) => {
-        button.classList.add("registered");
-      });
-      registerMenu.classList.add("non-display-menu");
-      profileMenu.classList.remove("non-display-menu");
-      const fullName = `${someUser.firstName} ${someUser.lastName}`;
+  if (someUser) {
+    //если нашли
+    alert("Congratulations! You are successfully logged in!"); // Выводим сообщение об успешном входе
+    someUser.visitsCount += 1; //Увеличиваем счетчик посещений пользователя
+    loginModal.classList.toggle("non-visible-2");
+    clearLoginData();
+    // Добавляем класс "registered" к кнопкам покупки
+    buyButtons.forEach((button) => {
+      button.classList.add("registered");
+    });
+    registerMenu.classList.add("non-display-menu");
+    profileMenu.classList.remove("non-display-menu");
+    const fullName = `${someUser.firstName} ${someUser.lastName}`;
 
-      const firstNameInit = someUser.firstName[0];
-      const lastNameInit = someUser.lastName[0];
+    const firstNameInit = someUser.firstName[0]; // инициалы
+    const lastNameInit = someUser.lastName[0];
 
-// Устанавливаем для пользователя
-loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
-userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
-userName.textContent = fullName;
-cardNumber.textContent = someUser.cardNumber;
-visitsCount.textContent = `${someUser.visitsCount}`;
-booksCount.textContent = `${someUser.booksCount}`;
-userIcon.setAttribute("title", fullName);
-userIcon.style.display = "block";
-userIcon.style.font;
-user.classList.add("none-display-icon");
-currentUser = someUser;
-localStorage.setItem("isLoggedIn", "true"); // Устанавливаем флаг "true"
-localStorage.setItem("loggedInEmail", email); // Сохраняем email зарегистрированного пользователя
- const profileNumber = document.querySelector(".profile-num");
-// Обновляем данные пользователя в локальном хранилище
-localStorage.setItem("userData", JSON.stringify(userDataArray));
-location.reload(); // Перезагружаем страницу
-      if (profileNumber) {
-        profileNumber.textContent = `${currentUser.cardNumber}`;
-      }
+  // Устанавливаем для пользователя
+  loginUser.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+  userIcon.textContent = `${firstNameInit}${lastNameInit}`.toUpperCase();
+  userName.textContent = fullName;
+  cardNumber.textContent = someUser.cardNumber;
+  visitsCount.textContent = `${someUser.visitsCount}`;
+  booksCount.textContent = `${someUser.booksCount}`;
+  userIcon.setAttribute("title", fullName);
+  userIcon.style.display = "block";
+  userIcon.style.font;
+  user.classList.add("none-display-icon");
+  currentUser = someUser;
+  localStorage.setItem("isLoggedIn", "true"); // Устанавливаем флаг "true"
+  localStorage.setItem("loggedInEmail", email); // Сохраняем email зарегистрированного пользователя
+  const profileNumber = document.querySelector(".profile-num");
+
+  // Обновляем данные пользователя в локальном хранилище
+  localStorage.setItem("userData", JSON.stringify(userDataArray));
+  location.reload(); // Перезагружаем страницу
+    if (profileNumber) {
+      profileNumber.textContent = `${currentUser.cardNumber}`;
+    }
     } else {
       alert("Invalid password or email."); //Выводим сообщение об ошибке
     }
@@ -448,6 +454,11 @@ logOut.addEventListener("click", () => {
 });
 
 // Buy-books---------------------------------------------------
+
+const libraryCard = document.querySelector(".cards-container");
+const libraryCardLogin = document.querySelector(".cards-container-login");
+const buyCardModal = document.querySelector(".pop-up-4");
+const buyCard = document.querySelector(".buy-book-button");
 
 buyButtons.forEach(function (button) {
   button.addEventListener("click", function () {
@@ -533,10 +544,11 @@ if (currentUser) {
     }
 
 // Создаем и добавляем элемент списка арендованных книг в библиотеку пользователя
+   let bookname = button.parentElement.children[2].innerHTML + ', ' + button.parentElement.children[3].innerHTML.slice(3);
    const li = document.createElement("li");
    li.textContent = `${bookTitle}, ${bookAuthor}`;
    li.classList.add("rented-item");
-  document.querySelector(".rented-books ul").appendChild(li);
+   document.querySelector(".rented-books ul").appendChild(li);
      }
    });
 });
@@ -699,12 +711,11 @@ myProfile.addEventListener("click", (event) => {
 //Card-profile--------------------------------------------------
 
 const cardProfile = document.querySelector(".card-profile-button");
+const closeBuy = document.querySelector(".close-buy");
 
 cardProfile.addEventListener("click", () => {
   myProfile.classList.toggle("non-visible-3");
 });
-
-const closeBuy = document.querySelector(".close-buy");
 
 closeBuy.addEventListener("click", () => {
   console.log("закрываюсь");
@@ -718,6 +729,7 @@ buyCardModal.addEventListener("click", (event) => {
 });
 
 // Update-profile-----------------------------------------------------
+
 const updateCardData = (someUser) => {
   fullNameCard.textContent = `${someUser.firstName} ${someUser.lastName}`;
   cardNumberCard.textContent = someUser.cardNumber;
@@ -735,11 +747,18 @@ const updateCardData = (someUser) => {
 
 // const cardForm = document.querySelector('.card-form');
 const checkCard = document.querySelector(".find-button");
-
 const checkCardLogin = document.querySelector(".check-count-container");
 
 const name = document.querySelector("#name");
 const number = document.querySelector("#card");
+const fullNameCard = document.querySelector(".name-digital-card");
+const cardNumberCard = document.querySelector(".card-digital-card");
+
+// Очистка данных в форме
+const clearCardData = () => {
+  name.value = "";
+  number.value = "";
+};
 
 checkCard.addEventListener("click", () => {
   console.log("закрываюсь");
@@ -771,11 +790,3 @@ checkCard.addEventListener("click", () => {
   }
 });
 
-// Очистка данных в форме
-const clearCardData = () => {
-  name.value = "";
-  number.value = "";
-};
-
-const fullNameCard = document.querySelector(".name-digital-card");
-const cardNumberCard = document.querySelector(".card-digital-card");
