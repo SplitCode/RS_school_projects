@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <!-- <link rel="stylesheet" href="./styles/mq.css"> -->
     <link rel="icon" href="./assets/image/favicon.ico">
     <title>Audio player</title>
 
 </head>
 <body>
+    <div class="main-container">
 <main>
 <div class="audio-player-container">
     <div class="track-cover">
@@ -22,17 +22,20 @@
         <p class="track-artist">Arctic Monkeys</p>
     </div>
 
+    <div class="player-button-container">
+        <button id="prev-button"><img src="./assets/svg/иконки/play1.svg" alt="Previous"></button>
+        <button id="play-pause-button"><img src="./assets/svg/иконки/play.svg" alt="Play"></button>
+        <button id="next-button"><img src="./assets/svg/иконки/play1.svg" alt="Next"></button>
+        <!-- <div class="volume-control-container"> -->
+            <button id="volume-mute-button"><img src="./assets/svg/иконки/volume_um4y9wbrjhuz.svg" alt="Volume"></button>
+            <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
+        <!-- </div> -->
 
-    <!-- поменять кнопки на иконки  -->
-    <div class="player-button">
-        <button class="prev-button">Prev</button>
-        <button class="play-pause-button">Play</button>
-        <button class="next-button">Next</button>
     </div>
 
     <div class="progress-bar-container">
         <input type="range" class="progress-bar" id="progress-bar" min="0" value="0">
-        <div class="time-info">
+        <div class="duration-info">
             <span class="current-time">0:00</span> / <span class="duration">0:00</span>
         </div>
     </div>
@@ -44,15 +47,15 @@
 </main>
 
 <footer class="footer">
-    <div class="container flex-container">
+    <div class="footer-container">
       <a class="footer-link" href="https://github.com/SplitCode/">
       <img class="github-icon" src="./assets/svg/github_icon.svg" alt="github-icon" width="26" height="26">
       <p>Visit my GitHub</p></a>
-      <p>© 2023</p>
       <a href="https://rs.school/js/">
         <img src="./assets/svg/rss.svg" alt="Rsschool Icon" class="rss-logo">
       </a>
     </div>
   </footer>
+</div>
 </body>
 </html>
