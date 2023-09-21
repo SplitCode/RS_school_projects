@@ -31,6 +31,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .audio-player-container {
@@ -134,12 +135,31 @@ button {
     background-size: 25px 25px;
 }
 
-/* .progress-bar {
-  background: linear-gradient(to right, #000 0%, #000 40%, #fff 40%, #fff 100%);
-} */
+.play-pause-button {
+  width: 30px;
+  height: 36px;
+  /* margin: 10px; */
+  background-size: 30px 30px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.play {
+  background-image: url(../assets/svg/play_white.svg);
+}
+
+.pause {
+  background-image: url(../assets/svg/pause_white.svg);
+}
 
 .duration-info {
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.current-time {
+  width: 35px;
 }
 
 .volume-control-container {
