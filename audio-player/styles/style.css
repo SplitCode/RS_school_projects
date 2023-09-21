@@ -55,6 +55,10 @@ body {
   display: flex;
 }
 
+.button-container {
+    display: flex;
+}
+
 button {
   font-size: 16px;
   /* padding: 10px 20px; */
@@ -80,6 +84,7 @@ button {
 .player-button-container button img {
   width: 30px;
   height: 30px;
+  transition: filter 0.5s linear;
 }
 
 .progress-bar-container {
@@ -113,14 +118,14 @@ button {
 }
 
 .duration-info {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .volume-control-container {
   display: flex;
   align-items: center;
   /* margin-top: 20px; */
-  width: 50%;
+  width: 100%;
 }
 
 /* .volume-control-container button {
@@ -167,9 +172,27 @@ button {
   width: 24px;
   height: 24px;
   margin-right: 15px;
+  transition: filter 0.5s linear;
 }
 
 .rss-logo {
   width: 100px;
   height: 35px;
+  transition: filter 0.5s linear;
+}
+
+.visit {
+  transition: filter 0.5s linear;
+}
+
+/* .button-container img {
+  transition-duration: 0.5s;
+} */
+
+.player-button-container button img:hover,
+.github-icon:hover,
+.rss-logo:hover,
+.visit:hover {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
 }
