@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'Montserrat';
-  src: url('./assets/fonts/Montserrat-Regular.ttf');
+  src: url('../assets/fonts/Montserrat-Regular.ttf');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('./assets/fonts/Montserrat-Bold.ttf');
+  src: url('../assets/fonts/Montserrat-Bold.ttf');
   font-weight: 700;
 }
 
@@ -22,7 +22,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   color: #000;
-  background-image: url(../assets/image/Arctic_Monkeys_AM_cover.jpg);
+  background-image: url(../image/Cover1_Arctic_Monkeys.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -115,6 +115,10 @@ button {
   border-radius: 10%;
   cursor: pointer;
   appearance: none;
+}
+
+.volume-bar {
+background: linear-gradient(to right, #000 0%, #000 40%, #fff 40%, #fff 100%);
 }
 
 .duration-info {

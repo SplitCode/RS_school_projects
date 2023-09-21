@@ -5,45 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="icon" href="./assets/image/favicon.ico">
+    <link rel="icon" href="./image/favicon.ico">
     <title>Audio player</title>
 
 </head>
+
 <body>
     <div class="main-container">
 <main>
 <div class="audio-player-container">
     <div class="track-cover">
-        <img src="./assets/image/Arctic_Monkeys_AM_cover.jpg" alt="track1_cover">
+        <img class="cover" src="./image/Cover1_Arctic_Monkeys.jpg" alt="track1_cover">
     </div>
 
     <div class="track-info">
-        <h2 class="track-title">R U Mine</h2>
+        <h2 class="track-title">R U Mine?</h2>
         <p class="track-artist">Arctic Monkeys</p>
     </div>
 
     <div class="player-button-container">
         <div class="button-container">
-        <button id="prev-button"><img src="./assets/svg/backward_9db01jht4nmm (1).svg" alt="Previous"></button>
-        <button id="play-pause-button"><img src="./assets/svg/play_jbvn6j6gvqnx (1).svg" alt="Play"></button>
-        <button id="next-button" class="next" ><img src="./assets/svg/forward_gu5jar83x4xn (1).svg" alt="Next"></button>
+        <button id="prev-button"><img src="./assets/svg/backward_white.svg" alt="Previous"></button>
+        <button class="play-pause-button"><img src="./assets/svg/play_white.svg" alt="Play"></button>
+        <button id="next-button" class="next" ><img src="./assets/svg/forward_white.svg" alt="Next"></button>
     </div>
         <div class="volume-control-container">
-            <button id="volume-mute-button"><img src="./assets/svg/volume_hdhvdbxvaf8f (1).svg" alt="Volume"></button>
-            <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" class="bar">
+            <button id="volume-mute-button"><img src="./assets/svg/volume_white.svg" alt="Volume"></button>
+            <input type="range" id="volume-bar" min="0" max="100" step="1" value="40" class="bar volume-bar">
         </div>
 
     </div>
 
     <div class="progress-bar-container">
-        <input type="range" id="progress-bar" min="0" value="0" class="bar">
+        <input type="range" id="progress-bar" min="0" value="0" class="bar progress-bar">
         <div class="duration-info">
             <span class="current-time">0:00</span> / <span class="duration">0:00</span>
         </div>
     </div>
 
-    <audio id="audio" src="./assets/audio/arctic-monkeys_-_r-u-mine.mp3"></audio>
-    <audio id="audio2" src="./assets/audio/Red Hot Chili Peppers-Dark Necessities.mp3"></audio>
+    <audio id="audio" src="./audio/Track1_Arctic-monkeys_r_u_mine.mp3"></audio>
+    <audio id="audio2" src="./audio/Track2_RHCP_Dark_Necessities.mp3"></audio>
 
 </div>
 </main>
@@ -59,5 +60,7 @@
     </div>
   </footer>
 </div>
+
+<script src="index.js"></script>
 </body>
 </html>
