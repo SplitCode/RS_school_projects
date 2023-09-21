@@ -92,11 +92,6 @@ button {
   position: relative;
 }
 
-/* input[type="range"] {
-  width: 100%;
-  appearance: none;
-} */
-
 .bar {
     cursor: pointer;
     border-radius: 3px;
@@ -118,8 +113,30 @@ button {
 }
 
 .volume-bar {
-background: linear-gradient(to right, #000 0%, #000 40%, #fff 40%, #fff 100%);
+  background: linear-gradient(to right, #000 0%, #000 40%, #fff 40%, #fff 100%);
 }
+
+.volume-mute-button {
+    width: 50px;
+    height: 40px;
+    background-size: 30px 30px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.volume {
+    background-image: url(../assets/svg/volume_white.svg);
+}
+
+.mute {
+    /* background-image: url(../assets/svg/volume_mute_white.svg); */
+    background-image: url(../assets/svg/volume1_mute_white.svg);
+    background-size: 25px 25px;
+}
+
+/* .progress-bar {
+  background: linear-gradient(to right, #000 0%, #000 40%, #fff 40%, #fff 100%);
+} */
 
 .duration-info {
   margin-top: 10px;
@@ -193,10 +210,15 @@ background: linear-gradient(to right, #000 0%, #000 40%, #fff 40%, #fff 100%);
   transition-duration: 0.5s;
 } */
 
-.player-button-container button img:hover,
+/* .player-button-container button img:hover, */
 .github-icon:hover,
 .rss-logo:hover,
 .visit:hover {
-    filter: invert(100%);
-    -webkit-filter: invert(100%);
+    transform: scale(1.1);
+    /* filter: invert(100%);
+    -webkit-filter: invert(100%); */
+}
+
+.player-button-container button:active {
+    transform: scale(1.1);
 }
