@@ -247,3 +247,8 @@ button {
 .player-button-container button:active {
     transform: scale(1.1);
 }
+
+.year {
+  margin-bottom: 0;
+  color: #fff;
+}
