@@ -6,6 +6,7 @@ const volumeMuteButton = document.querySelector('.volume-mute-button');
 const audioElements = [
     document.getElementById('audio1'),
     document.getElementById('audio2'),
+    document.getElementById('audio3'),
 ];
 
 let isMuted = false;
@@ -105,12 +106,20 @@ const tracks = [
         src: './audio/Track2_Pink Floyd - Breathe (In The Air).mp3',
         coverSrc: './image/Cover2_Pink_Floyd.jpg',
         duration: '02:50'
+    },
+    {
+        title: 'Love will tear us apart',
+        artist: 'Joy division',
+        src: './audio/Track3_Joy+division_Love_will_tear_us_apart.mp3',
+        coverSrc: './image/Cover3_Joy_Division.jpg',
+        duration: '03:27'
     }
 ];
 
 const backgroundImages = [
     'url(./image/Cover1_Arctic_Monkeys.jpg)',
     'url(./image/Cover2_Pink_Floyd.jpg)',
+    'url(./image/Cover3_Joy_Division_bckgr.jpg)',
 ];
 
 function loadTrack(trackIndex) {
