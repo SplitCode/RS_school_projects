@@ -22,41 +22,79 @@ progressBar.addEventListener('input', function() {
   this.style.background = `linear-gradient(to right, #000 0%, #000 ${value}%, #fff ${value}%, white 100%)`
 })
 
-volumeMuteButton.addEventListener('click', () => {
-    const currentAudio = audioElements[currentAudioIndex];
+const checkVolume = () => {
+        const currentAudio = audioElements[currentAudioIndex];
 
-    if (currentAudio.volume > 0 && !isMuted) {
-        currentAudio.volume = 0;
-        isMuted = true;
-        volumeMuteButton.classList.remove('volume');
-        volumeMuteButton.classList.add('mute');
-        volumeBar.value = 0;
-        volumeBar.style.background = `linear-gradient(to right, #000 0%, #000 ${volumeBar.value}%, #fff ${volumeBar.value}%, white 100%)`;
+        if (currentAudio.volume > 0 && !isMuted) {
+            currentAudio.volume = 0;
+            isMuted = true;
+            volumeMuteButton.classList.remove('volume');
+            volumeMuteButton.classList.add('mute');
+            volumeBar.value = 0;
+            volumeBar.style.background = `linear-gradient(to right, #000 0%, #000 ${volumeBar.value}%, #fff ${volumeBar.value}%, white 100%)`;
 
-        // Явно вызываем событие input после изменения значения
-        const inputEvent = new Event('input', {
-            bubbles: true,
-            cancelable: true,
-        });
-        volumeBar.dispatchEvent(inputEvent);
-    } else {
-        isMuted = false;
-        volumeMuteButton.classList.remove('mute');
-        volumeMuteButton.classList.add('volume');
-        volumeBar.value = 40;
-        volumeBar.style.background = `linear-gradient(to right, #000 0%, #000 ${volumeBar.value}%, #fff ${volumeBar.value}%, white 100%)`;
+            // Явно вызываем событие input после изменения значения
+            const inputEvent = new Event('input', {
+                bubbles: true,
+                cancelable: true,
+            });
+            volumeBar.dispatchEvent(inputEvent);
+        } else {
+            isMuted = false;
+            volumeMuteButton.classList.remove('mute');
+            volumeMuteButton.classList.add('volume');
+            volumeBar.value = 40;
+            volumeBar.style.background = `linear-gradient(to right, #000 0%, #000 ${volumeBar.value + 0.1}%, #fff ${volumeBar.value}%, white 100%)`;
 
-        // Устанавливаем громкость текущего трека
-        currentAudio.volume = parseFloat(volumeBar.value) / 100;
+            // Устанавливаем громкость текущего трека
+            currentAudio.volume = parseFloat(volumeBar.value) / 100;
 
-        // Явно вызываем событие input после изменения значения
-        const inputEvent = new Event('input', {
-            bubbles: true,
-            cancelable: true,
-        });
-        volumeBar.dispatchEvent(inputEvent);
+            // Явно вызываем событие input после изменения значения
+            const inputEvent = new Event('input', {
+                bubbles: true,
+                cancelable: true,
+            });
+            volumeBar.dispatchEvent(inputEvent);
+        }
     }
-});
+
+    volumeMuteButton.addEventListener('click', checkVolume);
+
+// volumeMuteButton.addEventListener('click', () => {
+//     const currentAudio = audioElements[currentAudioIndex];
+
+//     if (currentAudio.volume > 0 && !isMuted) {
+//         currentAudio.volume = 0;
+//         isMuted = true;
+//         volumeMuteButton.classList.remove('volume');
+//         volumeMuteButton.classList.add('mute');
+//         volumeBar.value = 0;
+//         volumeBar.style.background = `linear-gradient(to right, #000 0%, #000 ${volumeBar.value}%, #fff ${volumeBar.value}%, white 100%)`;
+
+//         // Явно вызываем событие input после изменения значения
+//         // const inputEvent = new Event('input', {
+//         //     bubbles: true,
+//         //     cancelable: true,
+//         // });
+//         // volumeBar.dispatchEvent(inputEvent);
+//     } else {
+//         isMuted = false;
+//         volumeMuteButton.classList.remove('mute');
+//         volumeMuteButton.classList.add('volume');
+//         volumeBar.value = 40;
+//         volumeBar.style.background = `linear-gradient(to right, #000 0%, #000 ${volumeBar.value}%, #fff ${volumeBar.value}%, white 100%)`;
+
+//         // Устанавливаем громкость текущего трека
+//         currentAudio.volume = parseFloat(volumeBar.value) / 100;
+
+//         // Явно вызываем событие input после изменения значения
+//         // const inputEvent = new Event('input', {
+//         //     bubbles: true,
+//         //     cancelable: true,
+//         // });
+//         // volumeBar.dispatchEvent(inputEvent);
+//     }
+// });
 
 volumeBar.addEventListener('input', () => {
     const currentAudio = audioElements[currentAudioIndex];
@@ -160,6 +198,7 @@ function nextTrack() {
 
     progressBar.value = 0;
 
+
     if (isPlaying) {
         audioElements[currentAudioIndex].play();
     }
@@ -188,7 +227,7 @@ function updateProgressBar() {
     currentTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
     // Обновление градиента прогресс-бара
-    progressBar.style.background = `linear-gradient(to right, #000 0%, #000 ${percent}%, #fff ${percent}%, white 100%)`;
+    progressBar.style.background = `linear-gradient(to right, #000 0%, #000 ${percent + 0.1}%, #fff ${percent}%, white 100%)`;
 }
 
 audioElements.forEach((audio) => {
@@ -206,7 +245,7 @@ progressBar.addEventListener('input', () => {
     currentAudio.currentTime = seekTime;
 
     const percent = (seekTime / currentAudio.duration) * 100;
-    progressBar.style.background = `linear-gradient(to right, #000 0%, #000 ${percent}%, #fff ${percent}%, white 100%)`;
+    progressBar.style.background = `linear-gradient(to right, #000 0%, #000 ${percent + 0.1}%, #fff ${percent}%, white 100%)`;
 });
 
 playPauseButton.addEventListener('click', playPause);
