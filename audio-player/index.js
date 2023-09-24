@@ -195,7 +195,7 @@ progressBar.addEventListener('input', () => {
     const currentAudio = audioElements[currentAudioIndex];
     const seekTime = (progressBar.value / 100) * currentAudio.duration;
     currentAudio.currentTime = seekTime;
-а
+
     const percent = (seekTime / currentAudio.duration) * 100;
     progressBar.style.background = `linear-gradient(to right, #000 0%, #000 ${percent}%, #fff ${percent}%, white 100%)`;
 });

@@ -228,6 +228,7 @@ button {
 
 .visit {
   transition: filter 0.5s linear;
+  margin-bottom: 0;
 }
 
 /* .button-container img {
