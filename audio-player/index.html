@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="icon" href="./image/favicon.ico">
+    <title>Audio player</title>
+
+</head>
+
+<body>
+    <div class="main-container">
+<main>
+<div class="audio-player-container">
+    <div class="track-cover">
+        <img class="cover" src="./image/Cover1_Arctic_Monkeys.jpg" alt="track1_cover">
+    </div>
+
+    <div class="track-info">
+        <h2 class="track-title">R U Mine?</h2>
+        <p class="track-artist">Arctic Monkeys</p>
+    </div>
+
+    <div class="player-button-container">
+        <div class="button-container">
+        <button id="prev-button"><img src="./assets/svg/backward_white.svg" alt="Previous"></button>
+        <button class="play-pause-button play"></button>
+        <button id="next-button" class="next" ><img src="./assets/svg/forward_white.svg" alt="Next"></button>
+    </div>
+        <div class="volume-control-container">
+            <!-- <button id="volume-mute-button"><img src="./assets/svg/volume_white.svg" alt="Volume"></button> -->
+            <button class="volume-mute-button volume"></button>
+            <input type="range" id="volume-bar" min="0" max="100" step="1" value="40" class="bar volume-bar">
+        </div>
+
+    </div>
+
+    <div class="progress-bar-container">
+        <input type="range" id="progress-bar" min="0" step="0.1" value="0" class="bar progress-bar">
+        <div class="duration-info">
+            <div class="current-time">0:00</div><div>&nbsp;/&nbsp; </div><div class="duration">0:00</div>
+        </div>
+    </div>
+
+    <audio id="audio1" src="./audio/Track1_Arctic-monkeys_r_u_mine.mp3"></audio>
+    <audio id="audio2" src="./audio/Track2_Pink Floyd - Breathe (In The Air).mp3"></audio>
+    <audio id="audio3" src="./audio/Track3_Joy+division_Love_will_tear_us_apart.mp3"></audio>
+
+</div>
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+      <a class="footer-link" href="https://github.com/SplitCode/">
+      <img class="github-icon" src="./assets/svg/github_icon.svg" alt="github-icon" width="26" height="26">
+      <p class="visit">Visit my GitHub</p></a>
+      <p class="year">© 2023</p>
+      <a href="https://rs.school/js/">
+        <img src="./assets/svg/rss.svg" alt="Rsschool Icon" class="rss-logo">
+      </a>
+    </div>
+  </footer>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
