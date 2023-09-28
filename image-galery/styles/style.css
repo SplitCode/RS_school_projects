@@ -43,7 +43,7 @@ body {
   justify-content: space-between;
   margin: 0;
   padding: 20px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -71,7 +71,12 @@ header {
   padding: 15px;
 }
 
-input[type="text"] {
+.search-container {
+	display: flex;
+	align-items: center;
+}
+
+input[type="search"] {
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -94,13 +99,19 @@ input[type="text"] {
 }
 
 .clearSearch {
-	padding: 10px 20px;
+	padding: 0;
+	margin: 0;
+  display: none;
 	font-size: 16px;
-	background-color: #fff;
-	color: #000;
+	background-color: transparent;
+	color: #999;
 	border-radius: 5px;
 	margin-left: 10px;
 	transition: all 0.5s ease-in;
+}
+
+.clearSearch:focus {
+	outline: none;
 }
 
 
@@ -119,14 +130,14 @@ main {
   /* width: 1280px;
   height: 600px;
   margin: auto; */
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .image {
 	margin: 10px;
 	overflow: hidden;
 	border-radius: 5px;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 5px rgba(39, 127, 138, 0.3);
 }
 
 .image img {
