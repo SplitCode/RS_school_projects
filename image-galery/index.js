@@ -14,7 +14,7 @@ const searchImages = () => {
 }
 
 const fetchImages = async (query) => {
-    const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=20&client_id=${apiKey}`;
+    const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=30&client_id=${apiKey}`;
 
     try {
         const response = await fetch(url);
@@ -30,7 +30,11 @@ const fetchImages = async (query) => {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    fetchImages('nature');
+    const randomQueries = ['nature', 'city', 'animals', 'food', 'travel', 'fox', 'flowers', 'mountain'];
+    const randomIndex = Math.floor(Math.random() * randomQueries.length);
+    const randomQuery = randomQueries[randomIndex];
+    fetchImages(randomQuery);
+    // fetchImages('random');
     searchInput.focus();
 });
 
@@ -56,6 +60,9 @@ const displayImages = (images) => {
         const img = document.createElement('img');
         img.src = image.urls.small;
         img.alt = image.alt_description;
+        img.style.width = '380px';
+        img.style.height = '257px';
+
         imageDiv.appendChild(img);
         imageContainer.appendChild(imageDiv);
     });
