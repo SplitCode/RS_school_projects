@@ -1,11 +1,173 @@
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/Montserrat-Regular.ttf');
-    font-weight: 400;
-  }
-  
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('../assets/fonts/Montserrat-Bold.ttf');
-    font-weight: 700;
-  }
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Bold.ttf");
+  font-weight: 700;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  /* background-color: #000; */
+  color: #fff;
+  background-color: #f0f0f0;
+}
+
+.general-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 20px;
+  border: 2px solid red;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* header, main, footer {
+    width: 1280px;
+    margin: auto;
+  } */
+
+header {
+  background-color: #333;;
+  border-bottom: 5px solid #277f8a;
+}
+
+.header-container {
+  width: 1280px;
+  margin: auto;
+  /* border: 1px solid blue; */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.searchButton {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #fff;
+	color: #000;
+	border-radius: 5px;
+	margin-left: 10px;
+	transition: all 0.5s ease-in;
+}
+
+.searchButton:hover {
+	background-color: #277f8a;
+	color: #fff;
+}
+
+.clearSearch {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #fff;
+	color: #000;
+	border-radius: 5px;
+	margin-left: 10px;
+	transition: all 0.5s ease-in;
+}
+
+
+main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+}
+
+.image-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+  /* width: 1280px;
+  height: 600px;
+  margin: auto; */
+  border: 1px solid blue;
+}
+
+.image {
+	margin: 10px;
+	overflow: hidden;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.image img {
+	max-width: 100%;
+	height: auto;
+}
+
+footer {
+  background-color: #222;
+  border-top: 5px solid rgb(39, 127, 138);
+}
+
+.footer-container {
+  width: 1280px;
+  margin: auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+p {
+	font-size: 16px;
+}
+
+.github-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.rss-logo {
+  width: 121px;
+  height: 45px;
+}
