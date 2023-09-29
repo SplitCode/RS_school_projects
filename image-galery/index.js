@@ -36,7 +36,7 @@ const fetchImages = async (query) => {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    const randomQueries = ['birds', 'nature', 'city', 'animals', 'food', 'travel', 'fox', 'flowers', 'mountaine', 'dogs', 'sport', 'cats', 'random', 'winter', 'autumn', 'spring', 'summer', 'cars'];
+    const randomQueries = ['violet', 'red', 'blue', 'birds', 'nature', 'city', 'animals', 'food', 'sunset', 'sunrise', 'travel', 'fox', 'flowers', 'mountaine', 'yellow', 'cats', 'winter', 'autumn', 'green', 'spring', 'summer', 'pink'];
     const randomIndex = Math.floor(Math.random() * randomQueries.length);
     const randomQuery = randomQueries[randomIndex];
     fetchImages(randomQuery);
@@ -66,8 +66,8 @@ const displayImages = (images) => {
         const img = document.createElement('img');
         img.src = image.urls.small;
         img.alt = image.alt_description;
-        img.style.width = '380px';
-        img.style.height = '257px';
+        // img.style.width = '380px';
+        // img.style.height = '300px';
 
         imageDiv.appendChild(img);
         imageContainer.appendChild(imageDiv);

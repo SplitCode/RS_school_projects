@@ -11,6 +11,7 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -31,19 +32,29 @@ button {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+  min-width: 100vh;
+  /* height: 100vh; */
   font-family: "Montserrat", sans-serif;
   background-color: #000;
   color: #fff;
+  overflow-x: hidden;
+  margin: 0;
 }
 
-.general-container {
+/* .general-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   min-height: 100vh;
-}
+} */
 
 header {
   border-bottom: 5px solid #277f8a;
@@ -59,6 +70,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   padding: 20px;
 }
 
@@ -160,20 +172,25 @@ input[type="search"]::-webkit-search-cancel-button {
   100% { background-position: 0 0; }
 }
 
-main {
+.main {
 	width: 1280px;
 	margin: auto;
+  overflow-y: hidden;
 }
 
 .image-container {
-	width: 100%;
+	/* width: 100%; */
+  /* padding: 0 20vh; */
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+  /* align-items: center; */
 }
 
 .image {
 	margin: 15px;
+  width: 380px;
+  height: 300px;
 	overflow: hidden;
 	border-radius: 5px;
 	background-color: #000;
@@ -182,9 +199,9 @@ main {
 }
 
 .image img {
-	max-width: 100%;
-	height: auto;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 	cursor: pointer;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
   transition: all 0.5s ease-in-out;
@@ -211,6 +228,7 @@ footer {
 
 .footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -249,6 +267,48 @@ p {
   /* transform: scale(1.1); */
   box-shadow: 0px 7px 7px 0px rgba(39, 127, 138, 0.6);
 }
+
+@media(max-width:1280px) {
+
+  .header-container,
+  .main,
+  .footer-container {
+    width: 100%;
+  }
+}
+
+@media(max-width:1231px) {
+
+  .image {
+    width: 40%;
+    height: 300px;
+  }
+}
+
+@media(max-width:1055px) {
+
+  .image-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .image {
+    width: 70%;
+    height: 400px;
+  }
+
+}
+
+@media(max-width:768px) {
+
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+}
+
+
 
 
 
