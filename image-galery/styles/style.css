@@ -62,6 +62,10 @@ header {
   padding: 20px;
 }
 
+.pageTitle {
+  cursor: pointer;
+}
+
 .search-container {
 	display: flex;
 	align-items: center;
@@ -188,7 +192,7 @@ main {
 
 .image:hover {
   margin-top: 10px;
-  box-shadow: 0px 7px 7px 0px rgba(39, 127, 138, 0.6);
+  box-shadow: 0px 12px 7px 0px rgba(39, 127, 138, 0.6);
 }
 
 .image img:hover {

@@ -1,10 +1,16 @@
 
 const apiKey = 'RQVsKWs76wW1DBXgxzf5UrxIdmZ_Zj96y8C2IHrPMwI';
 
+const pageTitle = document.querySelector('.pageTitle');
 const imageContainer = document.querySelector('.image-container');
 const searchInput = document.getElementById('search');
 const searchButton = document.querySelector('.searchButton');
 const clearSearch = document.querySelector('.clearSearch');
+
+
+pageTitle.addEventListener('click', () => {
+    location.reload();
+} )
 
 const searchImages = () => {
     const query = searchInput.value.trim();
@@ -30,7 +36,7 @@ const fetchImages = async (query) => {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    const randomQueries = ['nature', 'city', 'animals', 'food', 'travel', 'fox', 'flowers', 'mountaine', 'dogs', 'sport', 'cats', 'random', 'winter', 'autumn', 'spring', 'summer', 'cars'];
+    const randomQueries = ['birds', 'nature', 'city', 'animals', 'food', 'travel', 'fox', 'flowers', 'mountaine', 'dogs', 'sport', 'cats', 'random', 'winter', 'autumn', 'spring', 'summer', 'cars'];
     const randomIndex = Math.floor(Math.random() * randomQueries.length);
     const randomQuery = randomQueries[randomIndex];
     fetchImages(randomQuery);
