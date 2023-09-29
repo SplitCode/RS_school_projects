@@ -30,7 +30,7 @@ const fetchImages = async (query) => {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    const randomQueries = ['nature', 'city', 'animals', 'food', 'travel', 'fox', 'flowers', 'mountain'];
+    const randomQueries = ['nature', 'city', 'animals', 'food', 'travel', 'fox', 'flowers', 'mountaine', 'dogs', 'sport', 'cats', 'random', 'winter', 'autumn', 'spring', 'summer', 'cars'];
     const randomIndex = Math.floor(Math.random() * randomQueries.length);
     const randomQuery = randomQueries[randomIndex];
     fetchImages(randomQuery);
