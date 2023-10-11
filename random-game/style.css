@@ -1,0 +1,221 @@
+:root {
+    --white: #ffffff;
+    --black: #000000;
+    --main: #277f8a;
+    --square-size: 15vmin;
+    --square-gap: 2vmin;
+    --y: 0;
+    --x: 0;
+  }
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Bold.ttf");
+  font-weight: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: Montserrat, sans-serif;
+  color: #fff;
+}
+
+header {
+  border-bottom: 5px solid var(--main);
+  margin-bottom: 90px;
+}
+
+.header-container {
+  /* width: 1280px; */
+  width: 80vmin;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.game-name {
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.new-game-button {
+  padding: 10px 10px;
+  font-size: 16px;
+  background-color: var(--main);
+  color: var(--white);
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: all 0.5s ease-in;
+  position: relative;
+  z-index: 0;
+  font-family: Montserrat, sans-serif;
+}
+
+.glow:before {
+    content: '';
+    background: linear-gradient(45deg, #277f8a, #6a066a, #ce05c1, #5fde9e, #00ffd5, #002bff, #7a00ff, #ff00c8, #0f82b3);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  }
+
+  .glow:active:after {
+    background: transparent;
+  }
+
+  .glow:hover:before {
+    opacity: 1;
+  }
+
+  .glow:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--main);
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+  }
+
+  @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+  }
+
+.game-field {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, var(--square-size));
+  grid-template-rows: repeat(4, var(--square-size));
+  justify-content: center;
+  gap: 2vmin;
+  border-radius: 10px;
+}
+
+.square {
+  background-color: var(--white);
+  border-radius: 10px;
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: calc(var(--y) * (var(--square-size) + var(--square-gap)));
+  left: calc(var(--x) * (var(--square-size) + var(--square-gap)));
+  width: 15vmin;
+  height: 15vmin;
+  border-radius: 10px;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 7.5vmin;
+  background-color: hsl(25, 60%, var(--bg-color));
+  color: hsl(20, 25%, var(--text-color));
+  transition: 100ms;
+}
+
+footer {
+  border-top: 5px solid var(--main);
+  margin-top: 90px;
+}
+
+.footer-container {
+  /* width: 1280px; */
+  width: 80vmin;
+  margin: auto;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+}
+
+p {
+  font-size: 16px;
+}
+
+.github-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.rss-logo {
+  width: 121px;
+  height: 45px;
+  transition: all 0.5s ease-in-out;
+}
+
+.visit {
+  transition: all 0.5s ease-in-out;
+}
+
+.github-icon:hover,
+.rss-logo:hover,
+.visit:hover {
+  box-shadow: 0px 7px 7px 0px rgba(39, 127, 138, 0.6);
+}
+
+@media (max-width: 1280px) {
+  .header-container,
+  .main,
+  .footer-container {
+    width: 100%;
+  }
+}

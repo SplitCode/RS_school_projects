@@ -1,17 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./assets/img/favicon.ico">
-    <title>Game</title>
-</head>
-<body>
-    
+    <title>2048</title>
+  </head>
 
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header">
+          <h1 class="game-name">2048</h1>
 
+          <div class="score-container"><p>Score: <span id="score">0</span></p></div>
+          <div class="best-container"><p>Best: <span id="best">0</span></p></div>
+            <button class="new-game-button glow">New Game</button>
+            <p>Join the numbers and get to the 2048 tile!</p>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <script src="index.js"></script>
-</body>
+    <main class="main">
+      <div class="game-field">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+
+        <div class="tile">2</div>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer">
+          <a class="footer-link" href="https://github.com/SplitCode/"
+            ><img
+              class="github-icon"
+              src="./assets/img/svg/github_icon.svg"
+              alt="github-icon"
+              width="26"
+              height="26"
+            />
+            <p class="visit">Visit my GitHub</p></a
+          >
+          <p class="year">© 2023</p>
+          <a href="https://rs.school/js/"
+            ><img
+              src="./assets/img/svg/rss.svg"
+              alt="RS School Icon"
+              class="rss-logo"
+          /></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js" type="module"></script>
+  </body>
 </html>
