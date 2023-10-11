@@ -12,5 +12,21 @@ export class Grid {
             );
 
         }
+
+        this.columns = this.getSquaresColumns();
+    }
+
+    addRandomSquare() {
+        const emptySquares = this.squares.filter(square => square.isEmpty());
+        const randomNum = Math.floor(Math.random() * emptySquares.length);
+        return emptySquares[randomNum];
+    }
+
+    getSquaresColumns() {
+        return this.squares.reduce((groupedSquares, square) => {
+            groupedSquares[square.x] = groupedSquares[square.x] || [];
+            groupedSquares[square.x][square.y] = square;
+            return groupedSquares;
+        }, [])
     }
 }
