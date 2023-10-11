@@ -20,4 +20,8 @@ export class Tile {
        this.tileItem.style.setProperty("--bg-color", `${bgColor}%`);
        this.tileItem.style.setProperty("--text-color", `${bgColor < 50 ? 90 : 10}%`);
     }
+
+    removeFromDOM() {
+        this.tileItem.remove();
+    }
 }

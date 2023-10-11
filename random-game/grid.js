@@ -14,6 +14,7 @@ export class Grid {
         }
 
         this.columns = this.getSquaresColumns();
+        this.reverseColumns = this.columns.map(column => [...column].reverse());
     }
 
     addRandomSquare() {

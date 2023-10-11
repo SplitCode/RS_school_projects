@@ -25,11 +25,21 @@ export class Square {
         this.linkedNewTile = tile;
     }
 
+    unlinkNewTile() {
+        this.linkedNewTile = null;
+    }
+
     hasNewTile() {
       return !!this.linkedNewTile;
     }
 
     canAccept(newTile) {
       return this.isEmpty() || (!this.hasNewTile() && this.linkedTile.number === newTile.number);
+    }
+
+    mergeTiles() {
+        this.linkedTile.setStyle(this.linkedTile.number + this.linkedNewTile.number);
+        this.linkedNewTile.removeFromDOM();
+        this.unlinkNewTile();
     }
 }

@@ -42,8 +42,16 @@ function moveUp() {
 	moveTiles(grid.columns);
 }
 
+function moveDown() {
+    moveTiles(grid.reverseColumns);
+}
+
 function moveTiles(groupedSquares) {
 	groupedSquares.forEach(group => moveTilesInGroup(group));
+
+    grid.squares.forEach(square => {
+        square.hasNewTile() && square.mergeTiles();
+    })
 }
 
 function moveTilesInGroup(group) {
