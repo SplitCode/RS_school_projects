@@ -46,6 +46,14 @@ function moveDown() {
     moveTiles(grid.reverseColumns);
 }
 
+function moveLeft() {
+    moveTiles(grid.rows);
+}
+
+function moveRight() {
+    moveTiles(grid.reverseRows);
+}
+
 function moveTiles(groupedSquares) {
 	groupedSquares.forEach(group => moveTilesInGroup(group));
 

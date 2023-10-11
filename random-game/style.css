@@ -155,7 +155,7 @@ header {
   font-family: Montserrat, sans-serif;
   font-weight: bold;
   font-size: 7.5vmin;
-  background-color: hsl(213, 60%, var(--bg-color));
+  background-color: hsl(216, 60%, var(--bg-color));
   color: hsl(20, 25%, var(--text-color));
   transition: 100ms;
 }

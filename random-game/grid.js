@@ -15,6 +15,8 @@ export class Grid {
 
         this.columns = this.getSquaresColumns();
         this.reverseColumns = this.columns.map(column => [...column].reverse());
+        this.rows = this.getSquaresRows();
+        this.reverseRows = this.rows.map(row => [...row].reverse());
     }
 
     addRandomSquare() {
@@ -27,6 +29,14 @@ export class Grid {
         return this.squares.reduce((groupedSquares, square) => {
             groupedSquares[square.x] = groupedSquares[square.x] || [];
             groupedSquares[square.x][square.y] = square;
+            return groupedSquares;
+        }, [])
+    }
+
+    getSquaresRows() {
+        return this.squares.reduce((groupedSquares, square) => {
+            groupedSquares[square.y] = groupedSquares[square.y] || [];
+            groupedSquares[square.y][square.x] = square;
             return groupedSquares;
         }, [])
     }
