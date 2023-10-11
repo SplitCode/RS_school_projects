@@ -25,9 +25,15 @@ export class Tile {
         this.tileItem.remove();
     }
 
-    waitForEndAnimation() {
+    waitForMoveEnd() {
         return new Promise(resolve => {
             this.tileItem.addEventListener("transitionend", resolve, { once: true });
-        })
+        });
+    }
+
+    waitForAnimationEnd() {
+        return new Promise(resolve => {
+          this.tileItem.addEventListener("animationend", resolve, { once: true });
+        });
     }
 }

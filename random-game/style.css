@@ -44,12 +44,12 @@ body {
   align-items: center;
   padding: 20px;
   font-family: Montserrat, sans-serif;
-  color: #fff;
+  color: var(--white);
 }
 
 header {
   border-bottom: 5px solid var(--main);
-  margin-bottom: 90px;
+  margin-bottom: 30px;
 }
 
 .header-container {
@@ -158,11 +158,19 @@ header {
   background-color: hsl(1, 40%, var(--bg-color));
   color: hsl(10, 25%, var(--text-color));
   transition: 100ms;
+  animation: show 200ms;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
 }
 
 footer {
   border-top: 5px solid var(--main);
-  margin-top: 90px;
+  margin-top: 30px;
 }
 
 .footer-container {

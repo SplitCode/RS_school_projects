@@ -12,8 +12,8 @@ function setInput() {
   window.addEventListener("keydown", handleInput, { once: true });
 }
 
-async function handleInput(event) {
-  switch (event.key) {
+async function handleInput(e) {
+  switch (e.key) {
     case "ArrowUp":
       if (!canMoveUp()) {
         setInput();
@@ -53,6 +53,13 @@ async function handleInput(event) {
 
   const newTile = new Tile(gameField);
   grid.addRandomSquare().linkTile(newTile);
+
+  if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
+    console.log('некуда');
+    await newTile.waitForAnimationEnd()
+    alert("Try again!")
+    return;
+  }
 
   setInput();
 }
@@ -103,7 +110,7 @@ function moveTilesInGroup(group, promises) {
       continue;
     }
 
-    promises.push(squareWithTile.linkedTile.waitForEndAnimation());
+    promises.push(squareWithTile.linkedTile.waitForMoveEnd());
 
     if (targetSquare.isEmpty()) {
       targetSquare.linkTile(squareWithTile.linkedTile);
