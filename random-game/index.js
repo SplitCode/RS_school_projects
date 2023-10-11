@@ -12,81 +12,140 @@ function setInput() {
   window.addEventListener("keydown", handleInput, { once: true });
 }
 
-function handleInput(event) {
+async function handleInput(event) {
   switch (event.key) {
     case "ArrowUp":
-			moveUp();
+      if (!canMoveUp()) {
+        setInput();
+        return;
+      }
+      await moveUp();
       break;
 
     case "ArrowDown":
-			moveDown();
+      if (!canMoveDown()) {
+        setInput();
+        return;
+      }
+      await moveDown();
       break;
 
     case "ArrowLeft":
-			moveLeft();
+      if (!canMoveLeft()) {
+        setInput();
+        return;
+      }
+      await moveLeft();
       break;
 
     case "ArrowRight":
-			moveRight();
+      if (!canMoveRight()) {
+        setInput();
+        return;
+      }
+      await moveRight();
       break;
 
-		default:
-			setInput();
-			return;
+    default:
+      setInput();
+      return;
   }
+
+  const newTile = new Tile(gameField);
+  grid.addRandomSquare().linkTile(newTile);
 
   setInput();
 }
 
-function moveUp() {
-	moveTiles(grid.columns);
+async function moveUp() {
+  await moveTiles(grid.columns);
 }
 
-function moveDown() {
-    moveTiles(grid.reverseColumns);
+async function moveDown() {
+  await moveTiles(grid.reverseColumns);
 }
 
-function moveLeft() {
-    moveTiles(grid.rows);
+async function moveLeft() {
+  await moveTiles(grid.rows);
 }
 
-function moveRight() {
-    moveTiles(grid.reverseRows);
+async function moveRight() {
+  await moveTiles(grid.reverseRows);
 }
 
-function moveTiles(groupedSquares) {
-	groupedSquares.forEach(group => moveTilesInGroup(group));
+async function moveTiles(groupedSquares) {
+  const promises = [];
+  groupedSquares.forEach((group) => moveTilesInGroup(group, promises));
 
-    grid.squares.forEach(square => {
-        square.hasNewTile() && square.mergeTiles();
-    })
+  await Promise.all(promises);
+
+  grid.squares.forEach((square) => {
+    square.hasNewTile() && square.mergeTiles();
+  });
 }
 
-function moveTilesInGroup(group) {
-	for (let i = 1; i < group.length; i += 1) {
-		if (group[i].isEmpty()) {
-			continue;
-		}
+function moveTilesInGroup(group, promises) {
+  for (let i = 1; i < group.length; i += 1) {
+    if (group[i].isEmpty()) {
+      continue;
+    }
 
-		const squareWithTile = group[i];
+    const squareWithTile = group[i];
 
-		let targetSquare;
-		let j = i - 1;
-		while (j >= 0  && group[j].canAccept(squareWithTile.linkedTile)) {
-			targetSquare = group[j];
-			j -= 1;
-		}
+    let targetSquare;
+    let j = i - 1;
+    while (j >= 0 && group[j].canAccept(squareWithTile.linkedTile)) {
+      targetSquare = group[j];
+      j -= 1;
+    }
 
-		if (!targetSquare) {
-			continue;
-		}
+    if (!targetSquare) {
+      continue;
+    }
 
-		if(targetSquare.isEmpty()) {
-			targetSquare.linkTile(squareWithTile.linkedTile);
-		} else {
-			targetSquare.linkNewTile(squareWithTile.linkedTile);
-		}
+    promises.push(squareWithTile.linkedTile.waitForEndAnimation());
 
-		squareWithTile.unlinkTile();
-	}
+    if (targetSquare.isEmpty()) {
+      targetSquare.linkTile(squareWithTile.linkedTile);
+    } else {
+      targetSquare.linkNewTile(squareWithTile.linkedTile);
+    }
+
+    squareWithTile.unlinkTile();
+  }
+}
+
+function canMoveUp() {
+  return canMove(grid.columns);
+}
+
+function canMoveDown() {
+  return canMove(grid.reverseColumns);
+}
+
+function canMoveLeft() {
+  return canMove(grid.rows);
+}
+
+function canMoveRight() {
+  return canMove(grid.reverseRows);
+}
+
+function canMove(groupedSquares) {
+  return groupedSquares.some(group => canMoveInGroup(group));
+}
+
+function canMoveInGroup(group) {
+  return group.some((square, index) => {
+    if (index === 0) {
+      return false;
+    }
+
+    if (square.isEmpty()) {
+      return false;
+    }
+
+    const targetSquare = group[index - 1];
+    return targetSquare.canAccept(square.linkedTile);
+  });
 }

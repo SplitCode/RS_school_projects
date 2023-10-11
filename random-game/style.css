@@ -155,8 +155,8 @@ header {
   font-family: Montserrat, sans-serif;
   font-weight: bold;
   font-size: 7.5vmin;
-  background-color: hsl(216, 60%, var(--bg-color));
-  color: hsl(20, 25%, var(--text-color));
+  background-color: hsl(1, 40%, var(--bg-color));
+  color: hsl(10, 25%, var(--text-color));
   transition: 100ms;
 }
 
@@ -212,10 +212,10 @@ p {
   box-shadow: 0px 7px 7px 0px rgba(39, 127, 138, 0.6);
 }
 
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .header-container,
   .main,
   .footer-container {
     width: 100%;
   }
-}
+} */
