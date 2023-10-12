@@ -34,19 +34,26 @@
           <button class="new-game-button glow">New Game</button>
 
         </div>
-          <div class="about-game">
+          <!-- <div class="about-game">
             <p><strong>HOW TO PLAY:</strong><br> Use your arrow keys to move the tiles. When two tiles slide into each other, they merge into one! Join the tiles and get to <strong>2048!</strong></p>
-          </div>
+          </div> -->
         </div>
     </header>
 
     <main class="main">
       <div class="game-field">
+        <!-- <div class="game-over">
+            <p>Game over!</p>
+        </div> -->
       </div>
 
       <!-- <div class="end" id="end">Game Over<div class="monkey">🙈</div><button class="btn not-recommended__item js-restart-btn" id="try-again">Try Again</button></div> -->
 
     </main>
+
+    <div class="about-game">
+        <p><strong>HOW TO PLAY:</strong><br> Use your arrow keys to move the tiles. When two tiles slide into each other, they merge into one! Join the tiles and get to <strong>2048!</strong></p>
+      </div>
 
     <footer>
       <div class="footer-container">
@@ -71,6 +78,31 @@
         </div>
       </div>
     </footer>
+
+    <div class="modal" id="leaderboardModal">
+        <div class="modal__wrapper">
+          <div class="modal__title">Game Over!</div>
+          <div class="result-table">
+            <ol id="leaderboardList">
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+            </ol>
+          </div>
+          <button class="button button-play" id="closeModal">Close</button>
+        </div>
+      </div>
+
+
+
+
 
     <script src="index.js" type="module"></script>
   </body>

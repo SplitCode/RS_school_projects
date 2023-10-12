@@ -9,6 +9,11 @@ const bestScoreElement = document.getElementById("bestScore");
 const gameField = document.querySelector(".game-field");
 const newGame = document.querySelector(".new-game-button");
 
+const moveSound = new Audio("./assets/sounds/moveSound.mp3");
+// window.mergeSound = new Audio("./assets/sounds/razrezayut-vozduh.mp3");
+const loseSound = new Audio("./assets/sounds/loseSound.mp3");
+const winSound = new Audio("./assets/sounds/winSound.mp3");
+
 function initBestScore() {
   bestScore = localStorage.getItem("bestScore") || 0;
   bestScoreElement.innerHTML = bestScore;
@@ -72,7 +77,8 @@ async function handleInput(e) {
   if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
     console.log('некуда');
     await newTile.waitForAnimationEnd()
-    alert("Try again!")
+    loseSound.play();
+    alert(`Game over! Your score is ${score}. Try again!`)
     resetGame();
     return;
   }
@@ -82,18 +88,22 @@ async function handleInput(e) {
 
 async function moveUp() {
   await moveTiles(grid.columns);
+  moveSound.play();
 }
 
 async function moveDown() {
   await moveTiles(grid.reverseColumns);
+  moveSound.play();
 }
 
 async function moveLeft() {
   await moveTiles(grid.rows);
+  moveSound.play();
 }
 
 async function moveRight() {
   await moveTiles(grid.reverseRows);
+  moveSound.play();
 }
 
 async function moveTiles(groupedSquares) {
@@ -189,14 +199,6 @@ function updateBestScore() {
     bestScoreElement.textContent = bestScore;
   }
 }
-
-// function resetGame() {
-//   score = 0;
-//   scoreElement.textContent = score;
-//   grid.clear();
-//   grid.addRandomSquare().linkTile(new Tile(gameField));
-//   grid.addRandomSquare().linkTile(new Tile(gameField));
-// }
 
 function resetGame() {
   score = 0;
