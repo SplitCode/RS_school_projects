@@ -6,8 +6,17 @@ let bestScore = 0;
 
 const scoreElement = document.getElementById("score");
 const bestScoreElement = document.getElementById("bestScore");
-
 const gameField = document.querySelector(".game-field");
+const newGame = document.querySelector(".new-game-button");
+
+function initBestScore() {
+  bestScore = localStorage.getItem("bestScore") || 0;
+  bestScoreElement.innerHTML = bestScore;
+}
+
+newGame.addEventListener("click", function() {
+  resetGame();
+});
 
 const grid = new Grid(gameField);
 grid.addRandomSquare().linkTile(new Tile(gameField));
@@ -64,6 +73,7 @@ async function handleInput(e) {
     console.log('некуда');
     await newTile.waitForAnimationEnd()
     alert("Try again!")
+    resetGame();
     return;
   }
 
@@ -161,4 +171,46 @@ function canMoveInGroup(group) {
     const targetSquare = group[index - 1];
     return targetSquare.canAccept(square.linkedTile);
   });
+}
+
+window.updateScore = function(points) {
+  score += points;
+  scoreElement.textContent = score;
+
+  if (score > bestScore) {
+    bestScore = score;
+    bestScoreElement.textContent = bestScore;
+  }
+}
+
+function updateBestScore() {
+  if (score > bestScore) {
+    bestScore = score;
+    bestScoreElement.textContent = bestScore;
+  }
+}
+
+// function resetGame() {
+//   score = 0;
+//   scoreElement.textContent = score;
+//   grid.clear();
+//   grid.addRandomSquare().linkTile(new Tile(gameField));
+//   grid.addRandomSquare().linkTile(new Tile(gameField));
+// }
+
+function resetGame() {
+  score = 0;
+  scoreElement.textContent = score;
+
+  grid.squares.forEach(square => {
+    if (square.linkedTile) {
+      square.linkedTile.clear();
+      square.unlinkTile();
+    }
+  });
+
+  grid.addRandomSquare().linkTile(new Tile(gameField));
+  grid.addRandomSquare().linkTile(new Tile(gameField));
+
+  setInput();
 }

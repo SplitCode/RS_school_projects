@@ -19,6 +19,15 @@ export class Grid {
         this.reverseRows = this.rows.map(row => [...row].reverse());
     }
 
+    clear() {
+        this.squares.forEach((square) => {
+            if (square.linkedTile) {
+                square.linkedTile.clear();
+            }
+            square.isEmpty();
+        });
+    }
+
     addRandomSquare() {
         const emptySquares = this.squares.filter(square => square.isEmpty());
         const randomNum = Math.floor(Math.random() * emptySquares.length);

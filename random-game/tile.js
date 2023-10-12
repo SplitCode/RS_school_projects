@@ -21,6 +21,10 @@ export class Tile {
        this.tileItem.style.setProperty("--text-color", `${bgColor < 50 ? 90 : 10}%`);
     }
 
+    clear() {
+        this.tileItem.remove();
+    }
+
     removeFromDOM() {
         this.tileItem.remove();
     }
