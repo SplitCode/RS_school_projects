@@ -40,4 +40,5 @@ export class Tile {
           this.tileItem.addEventListener("animationend", resolve, { once: true });
         });
     }
+
 }

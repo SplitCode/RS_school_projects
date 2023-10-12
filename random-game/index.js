@@ -10,7 +10,6 @@ const gameField = document.querySelector(".game-field");
 const newGame = document.querySelector(".new-game-button");
 
 const moveSound = new Audio("./assets/sounds/moveSound.mp3");
-// window.mergeSound = new Audio("./assets/sounds/razrezayut-vozduh.mp3");
 const loseSound = new Audio("./assets/sounds/loseSound.mp3");
 const winSound = new Audio("./assets/sounds/winSound.mp3");
 
@@ -31,6 +30,12 @@ setInput();
 function setInput() {
   window.addEventListener("keydown", handleInput, { once: true });
 }
+
+window.addEventListener('keydown', function (e) {
+  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+    e.preventDefault();
+  }
+});
 
 async function handleInput(e) {
   switch (e.key) {
@@ -83,6 +88,7 @@ async function handleInput(e) {
     return;
   }
 
+  check2048();
   setInput();
 }
 
@@ -216,3 +222,26 @@ function resetGame() {
 
   setInput();
 }
+
+// async function check2048() {
+//   if (grid.squares.some(square => square.linkedTile && square.linkedTile.number === 64)) {
+//     await waitForAnimationEnd()
+//     winSound.play();
+//     alert("Congratulations! You've reached 2048!");
+//     resetGame();
+//   }
+// }
+
+async function check2048() {
+  if (grid.squares.some(square => square.linkedTile && square.linkedTile.number === 2048)) {
+
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    winSound.play();
+    alert("Congratulations! You've reached 2048!");
+    resetGame();
+  }
+}
+
+
+

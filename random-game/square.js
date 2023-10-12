@@ -37,12 +37,6 @@ export class Square {
       return this.isEmpty() || (!this.hasNewTile() && this.linkedTile.number === newTile.number);
     }
 
-    // mergeTiles() {
-    //     this.linkedTile.setStyle(this.linkedTile.number + this.linkedNewTile.number);
-    //     this.linkedNewTile.removeFromDOM();
-    //     this.unlinkNewTile();
-    // }
-
     mergeTiles() {
         const mergedValue = this.linkedTile.number + this.linkedNewTile.number;
         this.linkedTile.setStyle(mergedValue);
