@@ -1,6 +1,12 @@
 import { Grid } from "./grid.js";
 import { Tile } from "./tile.js";
 
+let score = 0;
+let bestScore = 0;
+
+const scoreElement = document.getElementById("score");
+const bestScoreElement = document.getElementById("bestScore");
+
 const gameField = document.querySelector(".game-field");
 
 const grid = new Grid(gameField);

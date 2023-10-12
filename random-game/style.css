@@ -1,7 +1,8 @@
 :root {
     --white: #ffffff;
     --black: #000000;
-    --main: #277f8a;
+    --main: #1b3946;
+    --add: rgb(241, 223, 223);
     --square-size: 15vmin;
     --square-gap: 2vmin;
     --y: 0;
@@ -37,7 +38,7 @@ button {
 }
 
 body {
-  background-color: var(--black);
+  background-color: var(--main);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,7 +49,7 @@ body {
 }
 
 header {
-  border-bottom: 5px solid var(--main);
+  /* border-bottom: 5px solid var(--white); */
   margin-bottom: 30px;
 }
 
@@ -71,17 +72,42 @@ header {
   cursor: pointer;
 }
 
+.scores {
+  display: flex;
+  justify-content: center;
+  gap: 5vmin;
+}
+
+.score-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 2vmin; */
+  font-size: 2.5vmin;
+  /* line-height: 1; */
+  padding: 10px 10px;
+  border-radius: 5px;
+  /* text-transform: uppercase; */
+  /* box-shadow: 0px 0px 2px 2px rgb(255, 255, 255); */
+}
+
+.about-game {
+  padding: 10px;
+}
+
 .new-game-button {
   padding: 10px 10px;
-  font-size: 16px;
-  background-color: var(--main);
-  color: var(--white);
+  font-size: 2.5vmin;
   border-radius: 5px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   transition: all 0.5s ease-in;
   position: relative;
   z-index: 0;
   font-family: Montserrat, sans-serif;
+  color: var(--white);
+  background-color: var(--main);
+  /* text-transform: uppercase; */
+  /* box-shadow: 0px 0px 2px 2px rgb(255, 255, 255); */
 }
 
 .glow:before {
@@ -115,10 +141,11 @@ header {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: var(--main);
     left: 0;
     top: 0;
     border-radius: 5px;
+    background: var(--main);
+    /* box-shadow: 0px 0px 6px 8px rgba(39, 127, 138, 0.6); */
   }
 
   @keyframes glowing {
@@ -138,7 +165,7 @@ header {
 }
 
 .square {
-  background-color: var(--white);
+  background-color: var(--add);
   border-radius: 10px;
 }
 
@@ -169,7 +196,7 @@ header {
 }
 
 footer {
-  border-top: 5px solid var(--main);
+  /* border-top: 5px solid var(--white); */
   margin-top: 30px;
 }
 

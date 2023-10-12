@@ -14,37 +14,38 @@
         <div class="header">
           <h1 class="game-name">2048</h1>
 
-          <div class="score-container"><p>Score: <span id="score">0</span></p></div>
-          <div class="best-container"><p>Best: <span id="best">0</span></p></div>
-            <button class="new-game-button glow">New Game</button>
-            <p>Join the numbers and get to the 2048 tile!</p>
+        <div class="scores">
+            <div class="score-container best-score">
+              Best:
+              <div class="score">
+                <div id="bestScore">0</div>
+              </div>
+            </div>
+            <div class="score-container">
+              Score:
+              <div class="score">
+                <div id="score">0</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <button class="new-game-button glow">New Game</button>
+
+        </div>
+          <div class="about-game">
+            <p><strong>HOW TO PLAY:</strong><br> Use your arrow keys to move the tiles. When two tiles slide into each other, they merge into one! Join the tiles and get to <strong>2048!</strong></p>
           </div>
         </div>
-      </div>
     </header>
 
     <main class="main">
       <div class="game-field">
-        <!-- <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-
-        <div class="tile">2</div> -->
-
       </div>
+
+      <!-- <div class="end" id="end">Game Over<div class="monkey">🙈</div><button class="btn not-recommended__item js-restart-btn" id="try-again">Try Again</button></div> -->
+
     </main>
 
     <footer>
