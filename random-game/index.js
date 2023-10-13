@@ -134,10 +134,8 @@ async function handleInput(e) {
     console.log('некуда');
     await newTile.waitForAnimationEnd()
     loseSound.play();
-    // alert(`Game over! Your score is ${score}. Try again!`)
     loseModal.classList.remove("non-visible");
     addRecord();
-    // resetGame();
     return;
   }
 
@@ -287,12 +285,10 @@ async function check2048() {
     await new Promise(resolve => setTimeout(resolve, 500));
 
     winSound.play();
-    // alert("Congratulations! You've reached 2048!");
     winModal.classList.remove("non-visible");
     addRecord();
     fillWinRecord();
     blockTileMovement();
-    // resetGame();
   }
 }
 
@@ -303,7 +299,7 @@ function addRecord() {
   localStorage.setItem("bestScore", bestScore);
   fillRecord();
   fillLoseRecord();
-  fillWinRecord(); // Заполняем записи в окне "game-win"
+  fillWinRecord();
 }
 
 function savedRecords() {
@@ -349,11 +345,9 @@ function fillWinRecord() {
 }
 
 function blockTileMovement() {
-  // Отключите обработчики событий клавиатуры
   window.removeEventListener("keydown", handleInput);
 }
 
 function unblockTileMovement() {
-  // Включите обработчики событий клавиатуры
   window.addEventListener("keydown", handleInput, { once: true });
 }

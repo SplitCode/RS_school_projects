@@ -43,7 +43,6 @@ export class Square {
         this.linkedNewTile.removeFromDOM();
         this.unlinkNewTile();
 
-        // mergeSound.play();
         updateScore(mergedValue);
       }
 
