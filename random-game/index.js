@@ -2,20 +2,23 @@ import { Grid } from "./grid.js";
 import { Tile } from "./tile.js";
 
 const gameField = document.querySelector(".game-field");
+
 const newGame = document.getElementById("new-game-button");
 const tryAgain = document.getElementById("again-button");
+const records = document.getElementById("records-button");
+const close = document.getElementById("close-button");
 
 const scoreElements = document.querySelectorAll(".score");
 const bestScoreElement = document.getElementById("bestScore");
 
-const recordsListElement = document.querySelector(".recordsList");
-const recordsItems = recordsListElement.querySelectorAll("li");
-
-const records = document.getElementById("records-button");
-
-const loseModal = document.querySelector(".pop-up");
+const loseModal = document.querySelector(".pop-up-1");
 // const winModal = document.querySelector("");
-// const recordsModal = document.querySelector("");
+const recordsModal = document.querySelector(".pop-up-3");
+
+const recordsItems = recordsModal.querySelectorAll(".recordsList li");
+const gameRecordsItems = loseModal.querySelectorAll(".recordsList li");
+
+
 
 const moveSound = new Audio("./assets/sounds/moveSound.mp3");
 const loseSound = new Audio("./assets/sounds/loseSound.mp3");
@@ -53,7 +56,13 @@ tryAgain.addEventListener("click", function() {
 });
 
 records.addEventListener("click", function() {
-  loseModal.classList.remove("non-visible");
+  recordsModal.classList.remove("non-visible");
+  fillRecord();
+  fillGameRecord();
+})
+
+close.addEventListener("click", function() {
+  recordsModal.classList.add("non-visible");
 })
 
 const grid = new Grid(gameField);
@@ -281,6 +290,7 @@ function addRecord() {
   localStorage.setItem("savedRecords", JSON.stringify(recordsList));
   localStorage.setItem("bestScore", bestScore);
   fillRecord();
+  fillGameRecord();
 }
 
 function savedRecords() {
@@ -297,8 +307,8 @@ function savedRecords() {
   }
 }
 
-function fillRecord() {
-  recordsItems.forEach((elem, index) => {
+function fillRecords(items) {
+  items.forEach((elem, index) => {
     if (recordsList && recordsList[index] !== undefined) {
       elem.textContent = recordsList[index];
       if (recordsList[index] === score) {
@@ -311,4 +321,12 @@ function fillRecord() {
       elem.classList.remove("user-score");
     }
   });
+}
+
+function fillRecord() {
+  fillRecords(recordsItems);
+}
+
+function fillGameRecord() {
+  fillRecords(gameRecordsItems);
 }
