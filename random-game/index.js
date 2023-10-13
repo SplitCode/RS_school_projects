@@ -1,20 +1,21 @@
 import { Grid } from "./grid.js";
 import { Tile } from "./tile.js";
 
-const scoreElements = document.querySelectorAll(".score");
-const bestScoreElement = document.getElementById("bestScore");
 const gameField = document.querySelector(".game-field");
 const newGame = document.getElementById("new-game-button");
 const tryAgain = document.getElementById("again-button");
-const records = document.getElementById("records-button");
 
-const recordsTable = document.querySelector(".records-list");
-
+const scoreElements = document.querySelectorAll(".score");
+const bestScoreElement = document.getElementById("bestScore");
 
 const recordsListElement = document.querySelector(".recordsList");
 const recordsItems = recordsListElement.querySelectorAll("li");
 
+const records = document.getElementById("records-button");
+
 const loseModal = document.querySelector(".pop-up");
+// const winModal = document.querySelector("");
+// const recordsModal = document.querySelector("");
 
 const moveSound = new Audio("./assets/sounds/moveSound.mp3");
 const loseSound = new Audio("./assets/sounds/loseSound.mp3");
@@ -26,10 +27,17 @@ let recordsList = [];
 
 function initRecords() {
   const savedRecords = localStorage.getItem("savedRecords");
+  const savedBestScore = localStorage.getItem("bestScore");
+
   if (savedRecords) {
     recordsList = JSON.parse(savedRecords);
-    fillRecord();
   }
+  if (savedBestScore) {
+    bestScore = parseInt(savedBestScore);
+  }
+
+  bestScoreElement.textContent = bestScore;
+
   fillRecord();
 }
 
@@ -43,6 +51,10 @@ tryAgain.addEventListener("click", function() {
   loseModal.classList.add("non-visible");
   resetGame();
 });
+
+records.addEventListener("click", function() {
+  loseModal.classList.remove("non-visible");
+})
 
 const grid = new Grid(gameField);
 grid.addRandomSquare().linkTile(new Tile(gameField));
@@ -225,10 +237,9 @@ window.updateScore = function(points) {
   }
 }
 
-function updateBestScore() {
+function savedBestScore() {
   if (score > bestScore) {
     bestScore = score;
-    bestScoreElement.textContent = bestScore;
   }
 }
 
@@ -250,6 +261,7 @@ function resetGame() {
 
   setInput();
   addRecord();
+  savedBestScore();
 }
 
 async function check2048() {
@@ -265,7 +277,9 @@ async function check2048() {
 
 function addRecord() {
   savedRecords();
+  savedBestScore();
   localStorage.setItem("savedRecords", JSON.stringify(recordsList));
+  localStorage.setItem("bestScore", bestScore);
   fillRecord();
 }
 
@@ -285,9 +299,9 @@ function savedRecords() {
 
 function fillRecord() {
   recordsItems.forEach((elem, index) => {
-    if (recordsListElement && recordsListElement[index] !== undefined) {
-      elem.textContent = recordsListElement[index];
-      if (recordsListElement[index] === score) {
+    if (recordsList && recordsList[index] !== undefined) {
+      elem.textContent = recordsList[index];
+      if (recordsList[index] === score) {
         elem.classList.add("user-score");
       } else {
         elem.classList.remove("user-score");
