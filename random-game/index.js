@@ -1,14 +1,18 @@
 import { Grid } from "./grid.js";
 import { Tile } from "./tile.js";
 
-let score = 0;
-let bestScore = 0;
-
 const scoreElements = document.querySelectorAll(".score");
 const bestScoreElement = document.getElementById("bestScore");
 const gameField = document.querySelector(".game-field");
 const newGame = document.getElementById("new-game-button");
 const tryAgain = document.getElementById("again-button");
+const records = document.getElementById("records-button");
+
+const recordsTable = document.querySelector(".records-list");
+
+
+const recordsListElement = document.querySelector(".recordsList");
+const recordsItems = recordsListElement.querySelectorAll("li");
 
 const loseModal = document.querySelector(".pop-up");
 
@@ -16,10 +20,20 @@ const moveSound = new Audio("./assets/sounds/moveSound.mp3");
 const loseSound = new Audio("./assets/sounds/loseSound.mp3");
 const winSound = new Audio("./assets/sounds/winSound.mp3");
 
-function initBestScore() {
-  bestScore = localStorage.getItem("bestScore") || 0;
-  bestScoreElement.innerHTML = bestScore;
+let score = 0;
+let bestScore = 0;
+let recordsList = [];
+
+function initRecords() {
+  const savedRecords = localStorage.getItem("savedRecords");
+  if (savedRecords) {
+    recordsList = JSON.parse(savedRecords);
+    fillRecord();
+  }
+  fillRecord();
 }
+
+initRecords();
 
 newGame.addEventListener("click", function() {
   resetGame();
@@ -93,6 +107,7 @@ async function handleInput(e) {
     loseSound.play();
     // alert(`Game over! Your score is ${score}. Try again!`)
     loseModal.classList.remove("non-visible");
+    addRecord();
     // resetGame();
     return;
   }
@@ -234,6 +249,7 @@ function resetGame() {
   grid.addRandomSquare().linkTile(new Tile(gameField));
 
   setInput();
+  addRecord();
 }
 
 async function check2048() {
@@ -247,5 +263,38 @@ async function check2048() {
   }
 }
 
+function addRecord() {
+  savedRecords();
+  localStorage.setItem("savedRecords", JSON.stringify(recordsList));
+  fillRecord();
+}
 
+function savedRecords() {
+  if (recordsList) {
+    recordsList.push(score);
+    recordsList = recordsList
+      .sort((a, b) => b - a)
+      .slice(0, 10);
 
+    localStorage.setItem("savedRecords", JSON.stringify(recordsList));
+  } else if (recordsList == false) {
+    localStorage.setItem("savedRecords", JSON.stringify([score]));
+    recordsList = [score];
+  }
+}
+
+function fillRecord() {
+  recordsItems.forEach((elem, index) => {
+    if (recordsListElement && recordsListElement[index] !== undefined) {
+      elem.textContent = recordsListElement[index];
+      if (recordsListElement[index] === score) {
+        elem.classList.add("user-score");
+      } else {
+        elem.classList.remove("user-score");
+      }
+    } else {
+      elem.textContent = "0";
+      elem.classList.remove("user-score");
+    }
+  });
+}
