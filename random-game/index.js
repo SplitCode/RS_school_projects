@@ -3,22 +3,22 @@ import { Tile } from "./tile.js";
 
 const gameField = document.querySelector(".game-field");
 
+const loseModal = document.querySelector(".pop-up-1");
+const winModal = document.querySelector(".pop-up-2");
+const recordsModal = document.querySelector(".pop-up-3");
+
 const newGame = document.getElementById("new-game-button");
 const tryAgain = document.getElementById("again-button");
 const records = document.getElementById("records-button");
-const close = document.getElementById("close-button");
+const closeRecords = document.getElementById("close-button");
+const closeWin = document.getElementById("win-button");
 
 const scoreElements = document.querySelectorAll(".score");
 const bestScoreElement = document.getElementById("bestScore");
 
-const loseModal = document.querySelector(".pop-up-1");
-// const winModal = document.querySelector("");
-const recordsModal = document.querySelector(".pop-up-3");
-
 const recordsItems = recordsModal.querySelectorAll(".recordsList li");
-const gameRecordsItems = loseModal.querySelectorAll(".recordsList li");
-
-
+const loseRecordsItems = loseModal.querySelectorAll(".recordsList li");
+const winRecordsItems = winModal.querySelectorAll(".recordsList li");
 
 const moveSound = new Audio("./assets/sounds/moveSound.mp3");
 const loseSound = new Audio("./assets/sounds/loseSound.mp3");
@@ -55,14 +55,22 @@ tryAgain.addEventListener("click", function() {
   resetGame();
 });
 
+closeWin.addEventListener("click", function() {
+  winModal.classList.add("non-visible");
+  resetGame();
+  unblockTileMovement();
+});
+
 records.addEventListener("click", function() {
   recordsModal.classList.remove("non-visible");
   fillRecord();
-  fillGameRecord();
+  fillLoseRecord();
+  blockTileMovement();
 })
 
-close.addEventListener("click", function() {
+closeRecords.addEventListener("click", function() {
   recordsModal.classList.add("non-visible");
+  unblockTileMovement();
 })
 
 const grid = new Grid(gameField);
@@ -279,8 +287,12 @@ async function check2048() {
     await new Promise(resolve => setTimeout(resolve, 500));
 
     winSound.play();
-    alert("Congratulations! You've reached 2048!");
-    resetGame();
+    // alert("Congratulations! You've reached 2048!");
+    winModal.classList.remove("non-visible");
+    addRecord();
+    fillWinRecord();
+    blockTileMovement();
+    // resetGame();
   }
 }
 
@@ -290,7 +302,8 @@ function addRecord() {
   localStorage.setItem("savedRecords", JSON.stringify(recordsList));
   localStorage.setItem("bestScore", bestScore);
   fillRecord();
-  fillGameRecord();
+  fillLoseRecord();
+  fillWinRecord(); // Заполняем записи в окне "game-win"
 }
 
 function savedRecords() {
@@ -327,6 +340,20 @@ function fillRecord() {
   fillRecords(recordsItems);
 }
 
-function fillGameRecord() {
-  fillRecords(gameRecordsItems);
+function fillLoseRecord() {
+  fillRecords(loseRecordsItems);
+}
+
+function fillWinRecord() {
+  fillRecords(winRecordsItems);
+}
+
+function blockTileMovement() {
+  // Отключите обработчики событий клавиатуры
+  window.removeEventListener("keydown", handleInput);
+}
+
+function unblockTileMovement() {
+  // Включите обработчики событий клавиатуры
+  window.addEventListener("keydown", handleInput, { once: true });
 }

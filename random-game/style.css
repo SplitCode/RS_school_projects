@@ -50,6 +50,7 @@ body {
 
 header {
   /* border-bottom: 5px solid var(--white); */
+  /* box-shadow: 0px 10px 5px -5px rgba(39, 127, 138, 0.6); */
   margin-bottom: 30px;
 }
 
@@ -70,6 +71,7 @@ header {
 .game-name {
   font-size: 60px;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 
 .scores {
@@ -116,18 +118,17 @@ header {
 }
 
 .main-button {
-  padding: 10px 10px;
-  font-size: 2.5vmin;
-  border-radius: 5px;
-  /* margin-left: 10px; */
-  transition: all 0.5s ease-in;
   position: relative;
+  width: 20vmin;
+  padding: 10px 10px;
   z-index: 0;
+  border-radius: 5px;
   font-family: Montserrat, sans-serif;
+  font-size: 2.5vmin;
   color: var(--white);
   background-color: var(--main);
-  /* text-transform: uppercase; */
-  /* box-shadow: 0px 0px 2px 2px rgb(255, 255, 255); */
+  transition: all 0.5s ease-in;
+
 }
 
 .glow:before {
@@ -234,6 +235,7 @@ header {
 
 footer {
   /* border-top: 5px solid var(--white); */
+  /* box-shadow: 0px -10px 5px -5px rgba(39, 127, 138, 0.6); */
   margin-top: 30px;
 }
 
@@ -278,10 +280,11 @@ p {
   transition: all 0.5s ease-in-out;
 }
 
+/* .game-name:hover, */
 .github-icon:hover,
 .rss-logo:hover,
 .visit:hover {
-  box-shadow: 0px 7px 7px 0px rgba(39, 127, 138, 0.6);
+  box-shadow: 0px 10px 5px -5px rgba(39, 127, 138, 0.6);
 }
 
 /* @media (max-width: 1280px) {
@@ -373,12 +376,18 @@ p {
   padding: 10px 10px;
   font-size: 2.5vmin;
   border-radius: 5px;
-  /* transition: all 0.5s ease-in;
-  position: relative;
-  z-index: 0; */
   font-family: Montserrat, sans-serif;
   color: var(--main);
   background-color: var(--white);
   margin: 0 auto;
   margin-top: 20px;
+  width: 20vmin;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.add-button:hover {
+
 }
