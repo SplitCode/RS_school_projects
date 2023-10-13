@@ -4,10 +4,13 @@ import { Tile } from "./tile.js";
 let score = 0;
 let bestScore = 0;
 
-const scoreElement = document.getElementById("score");
+const scoreElements = document.querySelectorAll(".score");
 const bestScoreElement = document.getElementById("bestScore");
 const gameField = document.querySelector(".game-field");
-const newGame = document.querySelector(".new-game-button");
+const newGame = document.getElementById("new-game-button");
+const tryAgain = document.getElementById("again-button");
+
+const loseModal = document.querySelector(".pop-up");
 
 const moveSound = new Audio("./assets/sounds/moveSound.mp3");
 const loseSound = new Audio("./assets/sounds/loseSound.mp3");
@@ -19,6 +22,11 @@ function initBestScore() {
 }
 
 newGame.addEventListener("click", function() {
+  resetGame();
+});
+
+tryAgain.addEventListener("click", function() {
+  loseModal.classList.add("non-visible");
   resetGame();
 });
 
@@ -83,8 +91,9 @@ async function handleInput(e) {
     console.log('некуда');
     await newTile.waitForAnimationEnd()
     loseSound.play();
-    alert(`Game over! Your score is ${score}. Try again!`)
-    resetGame();
+    // alert(`Game over! Your score is ${score}. Try again!`)
+    loseModal.classList.remove("non-visible");
+    // resetGame();
     return;
   }
 
@@ -191,7 +200,9 @@ function canMoveInGroup(group) {
 
 window.updateScore = function(points) {
   score += points;
-  scoreElement.textContent = score;
+  scoreElements.forEach((scoreElement) => {
+    scoreElement.textContent = score;
+  });
 
   if (score > bestScore) {
     bestScore = score;
@@ -208,7 +219,9 @@ function updateBestScore() {
 
 function resetGame() {
   score = 0;
-  scoreElement.textContent = score;
+  scoreElements.forEach((scoreElement) => {
+    scoreElement.textContent = score;
+  });
 
   grid.squares.forEach(square => {
     if (square.linkedTile) {
@@ -222,15 +235,6 @@ function resetGame() {
 
   setInput();
 }
-
-// async function check2048() {
-//   if (grid.squares.some(square => square.linkedTile && square.linkedTile.number === 64)) {
-//     await waitForAnimationEnd()
-//     winSound.play();
-//     alert("Congratulations! You've reached 2048!");
-//     resetGame();
-//   }
-// }
 
 async function check2048() {
   if (grid.squares.some(square => square.linkedTile && square.linkedTile.number === 2048)) {

@@ -17,39 +17,61 @@
         <div class="scores">
             <div class="score-container best-score">
               Best:
-              <div class="score">
+              <div class="scoreCount">
                 <div id="bestScore">0</div>
               </div>
             </div>
             <div class="score-container">
               Score:
-              <div class="score">
-                <div id="score">0</div>
+              <div class="scoreCount">
+                <div class="score">0</div>
               </div>
             </div>
           </div>
-
-
-
-          <button class="new-game-button glow">New Game</button>
-
         </div>
-          <!-- <div class="about-game">
-            <p><strong>HOW TO PLAY:</strong><br> Use your arrow keys to move the tiles. When two tiles slide into each other, they merge into one! Join the tiles and get to <strong>2048!</strong></p>
-          </div> -->
+
         </div>
     </header>
 
     <main class="main">
-      <div class="game-field">
-        <!-- <div class="game-over">
-            <p>Game over!</p>
-        </div> -->
+<!-- //-------------------------- -->
+<div class="pop-up non-visible" id="game-over">
+    <div class="pop-up-bg">
+      <div class="pop-up-top">
+      <p class="pop-up-title">Game Over!</p>
+    </div>
+    <div class="result">
+        <p class="result-text">Your score is:&nbsp<span class="pop-upScore score">0</span></p>
       </div>
 
-      <!-- <div class="end" id="end">Game Over<div class="monkey">🙈</div><button class="btn not-recommended__item js-restart-btn" id="try-again">Try Again</button></div> -->
+    <div class="records-list">
+        <p class="records-text">Records:</p>
+        <ol id="recordsList" class="recordsList">
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+                <li>0</li>
+        </ol>
+      </div>
+      <button id="again-button" class="again-button">Try again!</button>
+    </div>
+    </div>
+<!-- //------------------------------- -->
+
+      <div class="game-field"></div>
 
     </main>
+
+    <div class="buttons-container">
+        <button class="main-button glow">Records</button>
+        <button id="new-game-button" class="main-button glow">New Game</button>
+      </div>
 
     <div class="about-game">
         <p><strong>HOW TO PLAY:</strong><br> Use your arrow keys to move the tiles. When two tiles slide into each other, they merge into one! Join the tiles and get to <strong>2048!</strong></p>
@@ -79,7 +101,7 @@
       </div>
     </footer>
 
-    <div class="modal" id="leaderboardModal">
+    <!-- <div class="modal" id="leaderboardModal">
         <div class="modal__wrapper">
           <div class="modal__title">Game Over!</div>
           <div class="result-table">
@@ -98,12 +120,10 @@
           </div>
           <button class="button button-play" id="closeModal">Close</button>
         </div>
-      </div>
+      </div> -->
 
 
-
-
-
+   
     <script src="index.js" type="module"></script>
   </body>
 </html>
