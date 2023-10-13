@@ -49,13 +49,10 @@ body {
 }
 
 header {
-  /* border-bottom: 5px solid var(--white); */
-  /* box-shadow: 0px 10px 5px -5px rgba(39, 127, 138, 0.6); */
   margin-bottom: 30px;
 }
 
 .header-container {
-  /* width: 1280px; */
   width: 80vmin;
   margin: auto;
 }
@@ -84,13 +81,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 2vmin; */
   font-size: 2.5vmin;
-  /* line-height: 1; */
   padding: 10px 10px;
   border-radius: 5px;
-  /* text-transform: uppercase; */
-  /* box-shadow: 0px 0px 2px 2px rgb(255, 255, 255); */
 }
 
 .scoreCount {
@@ -99,7 +92,6 @@ header {
   font-weight: bold;
   font-size: 2rem;
   vertical-align: middle;
-  /* text-align: right; */
   width: 80px;
 }
 
@@ -177,7 +169,6 @@ header {
   top: 0;
   border-radius: 5px;
   background: var(--main);
-  /* box-shadow: 0px 0px 6px 8px rgba(39, 127, 138, 0.6); */
 }
 
 @keyframes glowing {
@@ -234,13 +225,10 @@ header {
 }
 
 footer {
-  /* border-top: 5px solid var(--white); */
-  /* box-shadow: 0px -10px 5px -5px rgba(39, 127, 138, 0.6); */
   margin-top: 30px;
 }
 
 .footer-container {
-  /* width: 1280px; */
   width: 80vmin;
   margin: auto;
 }
@@ -280,20 +268,11 @@ p {
   transition: all 0.5s ease-in-out;
 }
 
-/* .game-name:hover, */
 .github-icon:hover,
 .rss-logo:hover,
 .visit:hover {
   box-shadow: 0px 10px 5px -5px rgba(39, 127, 138, 0.6);
 }
-
-/* @media (max-width: 1280px) {
-  .header-container,
-  .main,
-  .footer-container {
-    width: 100%;
-  }
-} */
 
 .pop-up {
   display: flex;
@@ -321,7 +300,6 @@ p {
   margin: 10% auto;
   width: 30rem;
   padding: 20px;
-  /* background: var(--white); */
   text-align: center;
   background-color: var(--main);
   opacity: 0.9;
@@ -342,7 +320,6 @@ p {
 }
 
 .result-text {
-  /* text-align: start; */
   font-size: 24px;
 }
 
@@ -362,7 +339,6 @@ p {
 }
 
 .recordsList {
-  /* list-style: decimal inside; */
   list-style: none;
   text-align: left;
   padding-left: 50px;
