@@ -362,32 +362,41 @@ p {
 }
 
 .recordsList {
-  list-style: decimal inside;
+  /* list-style: decimal inside; */
+  list-style: none;
   text-align: left;
+  padding-left: 50px;
+  padding-right: 10px;
 }
 
 .recordsList li {
   margin-bottom: 0.75rem;
   padding-left: 10px;
   font-size: 1.5rem;
+  position: relative;
+  counter-increment: my-counter;
+}
+
+.recordsList li::before {
+  content: counter(my-counter) ".";
+  position: absolute;
+  left: -40px;
 }
 
 .add-button {
   padding: 10px 10px;
   font-size: 2.5vmin;
   border-radius: 5px;
-  font-family: Montserrat, sans-serif;
-  color: var(--main);
-  background-color: var(--white);
   margin: 0 auto;
   margin-top: 20px;
   width: 20vmin;
-}
-
-.bold {
   font-weight: bold;
+  font-family: Montserrat, sans-serif;
+  color: var(--main);
+  background-color: var(--white);
+  transition: all 0.5s ease-in;
 }
 
 .add-button:hover {
-
+ background-color: var(--add);
 }
