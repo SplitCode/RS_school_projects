@@ -7,6 +7,7 @@
   --square-gap: 2vmin;
   --y: 0;
   --x: 0;
+  --text-size: 7.5vmin;
 }
 
 @font-face {
@@ -100,6 +101,7 @@ header {
   line-height: 1.5;
   width: 80vmin;
   margin-top: 30px;
+  text-align: justify;
 }
 
 .buttons-container {
@@ -210,9 +212,9 @@ header {
   border-radius: 10px;
   font-family: Montserrat, sans-serif;
   font-weight: bold;
-  font-size: 7.5vmin;
   background-color: hsl(1, 40%, var(--bg-color));
   color: hsl(10, 25%, var(--text-color));
+  font-size: var(--text-size);
   transition: 100ms;
   animation: show 200ms;
 }
@@ -375,4 +377,22 @@ p {
 
 .add-button:hover {
  background-color: var(--add);
+}
+
+
+@media (max-width: 670px) {
+
+  .visit {
+    display: none;
+  }
+
+  .rss-logo {
+    width: 90px;
+    height: 35px;
+  }
+
+  .pop-up-bg {
+    width: 20rem;
+  }
+
 }
