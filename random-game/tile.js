@@ -19,6 +19,9 @@ export class Tile {
        const bgColor = 100 - Math.log2(number) * 9;
        this.tileItem.style.setProperty("--bg-color", `${bgColor}%`);
        this.tileItem.style.setProperty("--text-color", `${bgColor < 50 ? 90 : 10}%`);
+       if (number > 1000) {
+        this.tileItem.style.setProperty("--text-size", '5vmin')
+       }
     }
 
     clear() {
