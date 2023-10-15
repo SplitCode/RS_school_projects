@@ -134,7 +134,6 @@ async function handleInput(e) {
   grid.addRandomSquare().linkTile(newTile);
 
   if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
-    console.log('некуда');
     await newTile.waitForAnimationEnd()
     loseSound.play();
     loseModal.classList.remove("non-visible");
