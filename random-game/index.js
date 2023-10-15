@@ -1,3 +1,6 @@
+console.log('Очищайте пожалуйста local storage для правильного функционирования игры!');
+
+
 import { Grid } from "./grid.js";
 import { Tile } from "./tile.js";
 
