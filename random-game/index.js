@@ -1,8 +1,8 @@
 console.log('Очищайте пожалуйста local storage для правильного функционирования игры!');
 
 
-import { Grid } from "./grid.js";
-import { Tile } from "./tile.js";
+import { Field } from "./field.js";
+import { Plate } from "./plate.js";
 
 const gameField = document.querySelector(".game-field");
 
@@ -61,24 +61,24 @@ tryAgain.addEventListener("click", function() {
 closeWin.addEventListener("click", function() {
   winModal.classList.add("non-visible");
   resetGame();
-  unblockTileMovement();
+  unblockPlateMovement();
 });
 
 records.addEventListener("click", function() {
   recordsModal.classList.remove("non-visible");
   fillRecord();
   fillLoseRecord();
-  blockTileMovement();
+  blockPlateMovement();
 })
 
 closeRecords.addEventListener("click", function() {
   recordsModal.classList.add("non-visible");
-  unblockTileMovement();
+  unblockPlateMovement();
 })
 
-const grid = new Grid(gameField);
-grid.addRandomSquare().linkTile(new Tile(gameField));
-grid.addRandomSquare().linkTile(new Tile(gameField));
+const field = new Field(gameField);
+field.addRandomSquare().linkPlate(new Plate(gameField));
+field.addRandomSquare().linkPlate(new Plate(gameField));
 setInput();
 
 function setInput() {
@@ -94,7 +94,7 @@ window.addEventListener('keydown', function (e) {
 async function handleInput(e) {
   switch (e.key) {
     case "ArrowUp":
-      if (!canMoveUp()) {
+      if (!possibleMoveUp()) {
         setInput();
         return;
       }
@@ -102,7 +102,7 @@ async function handleInput(e) {
       break;
 
     case "ArrowDown":
-      if (!canMoveDown()) {
+      if (!possibleMoveDown()) {
         setInput();
         return;
       }
@@ -110,7 +110,7 @@ async function handleInput(e) {
       break;
 
     case "ArrowLeft":
-      if (!canMoveLeft()) {
+      if (!possibleMoveLeft()) {
         setInput();
         return;
       }
@@ -118,7 +118,7 @@ async function handleInput(e) {
       break;
 
     case "ArrowRight":
-      if (!canMoveRight()) {
+      if (!possibleMoveRight()) {
         setInput();
         return;
       }
@@ -130,11 +130,11 @@ async function handleInput(e) {
       return;
   }
 
-  const newTile = new Tile(gameField);
-  grid.addRandomSquare().linkTile(newTile);
+  const newPlate = new Plate(gameField);
+  field.addRandomSquare().linkPlate(newPlate);
 
-  if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
-    await newTile.waitForAnimationEnd()
+  if (!possibleMoveUp() && !possibleMoveDown() && !possibleMoveLeft() && !possibleMoveRight()) {
+    await newPlate.waitForAnimationEnd()
     loseSound.play();
     loseModal.classList.remove("non-visible");
     addRecord();
@@ -146,47 +146,47 @@ async function handleInput(e) {
 }
 
 async function moveUp() {
-  await moveTiles(grid.columns);
+  await movePlates(field.columns);
   moveSound.play();
 }
 
 async function moveDown() {
-  await moveTiles(grid.reverseColumns);
+  await movePlates(field.reverseColumns);
   moveSound.play();
 }
 
 async function moveLeft() {
-  await moveTiles(grid.rows);
+  await movePlates(field.rows);
   moveSound.play();
 }
 
 async function moveRight() {
-  await moveTiles(grid.reverseRows);
+  await movePlates(field.reverseRows);
   moveSound.play();
 }
 
-async function moveTiles(groupedSquares) {
+async function movePlates(groupedSquares) {
   const promises = [];
-  groupedSquares.forEach((group) => moveTilesInGroup(group, promises));
+  groupedSquares.forEach((group) => movePlatesInGroup(group, promises));
 
   await Promise.all(promises);
 
-  grid.squares.forEach((square) => {
-    square.hasNewTile() && square.mergeTiles();
+  field.squares.forEach((square) => {
+    square.hasNewPlate() && square.mergePlates();
   });
 }
 
-function moveTilesInGroup(group, promises) {
+function movePlatesInGroup(group, promises) {
   for (let i = 1; i < group.length; i += 1) {
     if (group[i].isEmpty()) {
       continue;
     }
 
-    const squareWithTile = group[i];
+    const squareWithPlate = group[i];
 
     let targetSquare;
     let j = i - 1;
-    while (j >= 0 && group[j].canAccept(squareWithTile.linkedTile)) {
+    while (j >= 0 && group[j].canMake(squareWithPlate.linkedPlate)) {
       targetSquare = group[j];
       j -= 1;
     }
@@ -195,39 +195,39 @@ function moveTilesInGroup(group, promises) {
       continue;
     }
 
-    promises.push(squareWithTile.linkedTile.waitForMoveEnd());
+    promises.push(squareWithPlate.linkedPlate.waitForMoveEnd());
 
     if (targetSquare.isEmpty()) {
-      targetSquare.linkTile(squareWithTile.linkedTile);
+      targetSquare.linkPlate(squareWithPlate.linkedPlate);
     } else {
-      targetSquare.linkNewTile(squareWithTile.linkedTile);
+      targetSquare.linkNewPlate(squareWithPlate.linkedPlate);
     }
 
-    squareWithTile.unlinkTile();
+    squareWithPlate.unlinkPlate();
   }
 }
 
-function canMoveUp() {
-  return canMove(grid.columns);
+function possibleMoveUp() {
+  return possibleMove(field.columns);
 }
 
-function canMoveDown() {
-  return canMove(grid.reverseColumns);
+function possibleMoveDown() {
+  return possibleMove(field.reverseColumns);
 }
 
-function canMoveLeft() {
-  return canMove(grid.rows);
+function possibleMoveLeft() {
+  return possibleMove(field.rows);
 }
 
-function canMoveRight() {
-  return canMove(grid.reverseRows);
+function possibleMoveRight() {
+  return possibleMove(field.reverseRows);
 }
 
-function canMove(groupedSquares) {
-  return groupedSquares.some(group => canMoveInGroup(group));
+function possibleMove(groupedSquares) {
+  return groupedSquares.some(group => possibleMoveInGroup(group));
 }
 
-function canMoveInGroup(group) {
+function possibleMoveInGroup(group) {
   return group.some((square, index) => {
     if (index === 0) {
       return false;
@@ -238,7 +238,7 @@ function canMoveInGroup(group) {
     }
 
     const targetSquare = group[index - 1];
-    return targetSquare.canAccept(square.linkedTile);
+    return targetSquare.canMake(square.linkedPlate);
   });
 }
 
@@ -266,15 +266,15 @@ function resetGame() {
     scoreElement.textContent = score;
   });
 
-  grid.squares.forEach(square => {
-    if (square.linkedTile) {
-      square.linkedTile.clear();
-      square.unlinkTile();
+  field.squares.forEach(square => {
+    if (square.linkedPlate) {
+      square.linkedPlate.clear();
+      square.unlinkPlate();
     }
   });
 
-  grid.addRandomSquare().linkTile(new Tile(gameField));
-  grid.addRandomSquare().linkTile(new Tile(gameField));
+  field.addRandomSquare().linkPlate(new Plate(gameField));
+  field.addRandomSquare().linkPlate(new Plate(gameField));
 
   setInput();
   addRecord();
@@ -282,7 +282,7 @@ function resetGame() {
 }
 
 async function check2048() {
-  if (grid.squares.some(square => square.linkedTile && square.linkedTile.number === 2048)) {
+  if (field.squares.some(square => square.linkedPlate && square.linkedPlate.number === 2048)) {
 
     await new Promise(resolve => setTimeout(resolve, 500));
 
@@ -290,7 +290,7 @@ async function check2048() {
     winModal.classList.remove("non-visible");
     addRecord();
     fillWinRecord();
-    blockTileMovement();
+    blockPlateMovement();
   }
 }
 
@@ -346,10 +346,10 @@ function fillWinRecord() {
   fillRecords(winRecordsItems);
 }
 
-function blockTileMovement() {
+function blockPlateMovement() {
   window.removeEventListener("keydown", handleInput);
 }
 
-function unblockTileMovement() {
+function unblockPlateMovement() {
   window.addEventListener("keydown", handleInput, { once: true });
 }

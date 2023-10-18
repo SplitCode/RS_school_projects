@@ -3,12 +3,12 @@ import { Square } from "./square.js";
 const fieldSize = 4;
 const squaresCount = fieldSize * fieldSize;
 
-export class Grid {
-    constructor(gridItem) {
+export class Field {
+    constructor(fieldItem) {
         this.squares = [];
         for (let i = 0; i < squaresCount; i += 1) {
             this.squares.push(
-                new Square(gridItem, i % fieldSize, Math.floor(i / fieldSize))
+                new Square(fieldItem, i % fieldSize, Math.floor(i / fieldSize))
             );
 
         }
@@ -17,15 +17,6 @@ export class Grid {
         this.reverseColumns = this.columns.map(column => [...column].reverse());
         this.rows = this.getSquaresRows();
         this.reverseRows = this.rows.map(row => [...row].reverse());
-    }
-
-    clear() {
-        this.squares.forEach((square) => {
-            if (square.linkedTile) {
-                square.linkedTile.clear();
-            }
-            square.isEmpty();
-        });
     }
 
     addRandomSquare() {
@@ -49,4 +40,14 @@ export class Grid {
             return groupedSquares;
         }, [])
     }
+
+    clear() {
+        this.squares.forEach((square) => {
+            if (square.linkedPlate) {
+                square.linkedPlate.clear();
+            }
+            square.isEmpty();
+        });
+    }
+
 }

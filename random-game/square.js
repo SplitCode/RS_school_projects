@@ -1,49 +1,49 @@
 export class Square {
-    constructor (gridItem, x, y) {
+    constructor (fieldItem, x, y) {
         const square = document.createElement("div");
         square.classList.add("square");
-        gridItem.append(square);
+        fieldItem.append(square);
         this.x = x;
         this.y = y;
     }
 
-    linkTile(tile) {
-        tile.setCoordinate(this.x, this.y);
-        this.linkedTile = tile;
+    linkPlate(plate) {
+        plate.setCoordinate(this.x, this.y);
+        this.linkedPlate = plate;
     }
 
-    unlinkTile() {
-        this.linkedTile = null;
+    unlinkPlate() {
+        this.linkedPlate = null;
     }
 
     isEmpty() {
-        return !this.linkedTile;
+        return !this.linkedPlate;
     }
 
-    linkNewTile(tile) {
-        tile.setCoordinate(this.x, this.y);
-        this.linkedNewTile = tile;
+    linkNewPlate(plate) {
+        plate.setCoordinate(this.x, this.y);
+        this.linkedNewPlate = plate;
     }
 
-    unlinkNewTile() {
-        this.linkedNewTile = null;
+    unlinkNewPlate() {
+        this.linkedNewPlate = null;
     }
 
-    hasNewTile() {
-      return !!this.linkedNewTile;
+    hasNewPlate() {
+      return !!this.linkedNewPlate;
     }
 
-    canAccept(newTile) {
-      return this.isEmpty() || (!this.hasNewTile() && this.linkedTile.number === newTile.number);
+    canMake(newPlate) {
+      return this.isEmpty() || (!this.hasNewPlate() && this.linkedPlate.number === newPlate.number);
     }
 
-    mergeTiles() {
-        const mergedValue = this.linkedTile.number + this.linkedNewTile.number;
-        this.linkedTile.setStyle(mergedValue);
-        this.linkedNewTile.removeFromDOM();
-        this.unlinkNewTile();
+    mergePlates() {
+        const mergedValue = this.linkedPlate.number + this.linkedNewPlate.number;
+        this.linkedPlate.setStyle(mergedValue);
+        this.linkedNewPlate.removePlate();
+        this.unlinkNewPlate();
 
         updateScore(mergedValue);
-      }
+    }
 
 }
