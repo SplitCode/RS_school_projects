@@ -1,4 +1,6 @@
-# RS_school_projects
+# RS school projects
+
+Below are some of my projects that I did on my own during my studies at [RS School(stage 0)](https://rs.school/):
 
 -  📖 &nbsp;[Library](https://rolling-scopes-school.github.io/splitcode-JSFEPRESCHOOL2023Q2/library/) - A website with pop-up windows and the possibility of registration.
 -  🎲 &nbsp;[2048 Game](https://rolling-scopes-school.github.io/splitcode-JSFEPRESCHOOL2023Q2/random-game/) - Сlassic puzzle game. Join the tiles and get to 2048!
